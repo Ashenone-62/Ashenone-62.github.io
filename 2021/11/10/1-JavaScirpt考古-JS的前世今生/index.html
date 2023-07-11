@@ -10,8 +10,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="TriDiamond Obsidian,"> 
-    <meta name="description" content="前言这篇文章是JS考古这个系列的开篇之笔。
-这一系列主要是参考Nicholas C.Zakas所著由李松峰、曹力两人所译的JavaScript高级程序设计一书（其实就是学习笔记啦🤡）。这篇文章主要,"> 
+    <meta name="description" content="前言这篇文章是 JS 考古这个系列的开篇之笔。
+这一系列主要是参考 Nicholas C.Zakas 所著由李松峰、曹力两人所译的 JavaScript 高级程序设计一书（其实就是学习笔记啦 🤡）,"> 
     <meta name="author" content="Lee 62"> 
     <link rel="alternative" href="atom.xml" title="Lee 62&#39;s Site" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -100,13 +100,13 @@
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    5.8k
+                    6.1k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    5 mins.
+                    6 mins.
                 </span>
                 
                 
@@ -140,24 +140,24 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章是JS考古这个系列的开篇之笔。</p>
-<p>这一系列主要是参考Nicholas C.Zakas所著由李松峰、曹力两人所译的JavaScript高级程序设计一书<del>（其实就是学习笔记啦🤡）</del>。这篇文章主要介绍下面这些内容：</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章是 JS 考古这个系列的开篇之笔。</p>
+<p>这一系列主要是参考 Nicholas C.Zakas 所著由李松峰、曹力两人所译的 JavaScript 高级程序设计一书<del>（其实就是学习笔记啦 🤡）</del>。这篇文章主要介绍下面这些内容：</p>
 <ul>
-<li>JS的简史</li>
-<li>JS的三大组成部分：ECMAScript、DOM、BOM</li>
+<li>JS 的简史</li>
+<li>JS 的三大组成部分：ECMAScript、DOM、BOM</li>
 </ul>
-<h2 id="JS诞生之路"><a href="#JS诞生之路" class="headerlink" title="JS诞生之路"></a>JS诞生之路</h2><h3 id="JS的出生"><a href="#JS的出生" class="headerlink" title="JS的出生"></a>JS的出生</h3><p><strong>背景：</strong>1995年前，是绝大多数人网速还停留在28.8kbit&#x2F;s的时代，是表单校验只能由服务器完成的时代，是会出现填写完一张表单等待30秒后因关键字段没有填写而重填的时代！如果这些东西换到今天你会不会血压拉满？会不会捶胸顿足？会不会心脏直接漏跳半拍！？</p>
-<p><strong>诞生：</strong>当时的互联网大头Netscape（网景）公司决定开发一门语言在客户端完成一些简单的验证任务。在那个年代，数据能在发送到服务器之前，在客户端阶段完成校验工作的壮举绝对令人兴奋。当时就职于Netscape的Brendan Eich（布兰登-艾奇）计划为1995年2月发布的<code>Netscape Navigtor 2(Netscape的浏览器)</code>开发一款脚本语言，最初定名为LiveScript。再后来，为了赶在发布日期前完成任务，Netscape和Sun（开发Java的公司，后被Oracle收购）成立了一个开发联盟，并在发布前夕蹭了一波Java的热度（当时的Java可谓是如日中天，属于顶流级别），将LiveScript改名为JavaScript。</p>
-<h3 id="微软暗中发展，拿里程碑助攻"><a href="#微软暗中发展，拿里程碑助攻" class="headerlink" title="微软暗中发展，拿里程碑助攻"></a>微软暗中发展，拿里程碑助攻</h3><p>JavaScript1.0的发布获得了巨大成功，Netscape随即在自家浏览器Netscape Navigator 3中发布了JavaScript1.1，并将自己定位为行业领袖型公司。微软一看，不干了，我好歹也是互联网大佬啊，我面子不要啦！在自家浏览器投入了更多资源，在Netscape Navigator 3发布不久后发布了Internet Explore 3，并在其中加入了JScript（本质上是JavaScript的实现，两者没有太多区别；命名上为了避免撞名JavaScript引发版权纠纷，因为当时Netscape是付了钱给Sun拿到了Java名字的使用权的）。</p>
-<p>微软正式进军Web浏览器领域这一动作，标志着JavaScript作为一门开发语言前进了里程碑式的一步。</p>
-<h3 id="JS的事业编"><a href="#JS的事业编" class="headerlink" title="JS的事业编"></a>JS的事业编</h3><p>两大巨头在JS领域的互相欧拉欧拉让市面上出现了两个版本的JS，即Netscape Navigator的JavaScript和I Internal Explorer的JScript，随着业界的担心日益加剧，JavaScript的标准化问题被提上了日程。两种版本的JS会引发啥问题呢？必然是公司为了牟利搞垄断，你用其他版本的JS在我的浏览器就跑不起来，这对一门开发语言来说是非常可怕的。</p>
-<p>1997年，JavaScript1.1作为蓝本提交给了欧洲计算机制造商协会（European Computer Manufacturers Association，简称ECMA），由该协会的39号技术委员会负责标准化一种<strong>通用的、跨平台的、供应商中立的脚本语言的语义和语法</strong>。经过数月的努力，这个团队拿出了他们的成果ECMA-262，次年国际标准化组织和国际电工委员会（International Organization For Standardization and International Electrotechnical Commission，简称ISO&#x2F;IEC）采用了ECMAScript作为标准，即ISO&#x2F;IEC-16262。</p>
-<p>此后，浏览器开发商致力于将ECMAScript作为各自JavaScript实现的基础，取得了不同程度上的成功。</p>
+<h2 id="JS-诞生之路"><a href="#JS-诞生之路" class="headerlink" title="JS 诞生之路"></a>JS 诞生之路</h2><h3 id="JS-的出生"><a href="#JS-的出生" class="headerlink" title="JS 的出生"></a>JS 的出生</h3><p><strong>背景：</strong>1995 年前，是绝大多数人网速还停留在 28.8kbit&#x2F;s 的时代，是表单校验只能由服务器完成的时代，是会出现填写完一张表单等待 30 秒后因关键字段没有填写而重填的时代！如果这些东西换到今天你会不会血压拉满？会不会捶胸顿足？会不会心脏直接漏跳半拍！？</p>
+<p><strong>诞生：</strong>当时的互联网大头 Netscape（网景）公司决定开发一门语言在客户端完成一些简单的验证任务。在那个年代，数据能在发送到服务器之前，在客户端阶段完成校验工作的壮举绝对令人兴奋。当时就职于 Netscape 的 Brendan Eich（布兰登-艾奇）计划为 1995 年 2 月发布的<code>Netscape Navigtor 2(Netscape的浏览器)</code>开发一款脚本语言，最初定名为 LiveScript。再后来，为了赶在发布日期前完成任务，Netscape 和 Sun（开发 Java 的公司，后被 Oracle 收购）成立了一个开发联盟，并在发布前夕蹭了一波 Java 的热度（当时的 Java 可谓是如日中天，属于顶流级别），将 LiveScript 改名为 JavaScript。</p>
+<h3 id="微软暗中发展，拿里程碑助攻"><a href="#微软暗中发展，拿里程碑助攻" class="headerlink" title="微软暗中发展，拿里程碑助攻"></a>微软暗中发展，拿里程碑助攻</h3><p>JavaScript1.0 的发布获得了巨大成功，Netscape 随即在自家浏览器 Netscape Navigator 3 中发布了 JavaScript1.1，并将自己定位为行业领袖型公司。微软一看，不干了，我好歹也是互联网大佬啊，我面子不要啦！在自家浏览器投入了更多资源，在 Netscape Navigator 3 发布不久后发布了 Internet Explore 3，并在其中加入了 JScript（本质上是 JavaScript 的实现，两者没有太多区别；命名上为了避免撞名 JavaScript 引发版权纠纷，因为当时 Netscape 是付了钱给 Sun 拿到了 Java 名字的使用权的）。</p>
+<p>微软正式进军 Web 浏览器领域这一动作，标志着 JavaScript 作为一门开发语言前进了里程碑式的一步。</p>
+<h3 id="JS-的事业编"><a href="#JS-的事业编" class="headerlink" title="JS 的事业编"></a>JS 的事业编</h3><p>两大巨头在 JS 领域的互相欧拉欧拉让市面上出现了两个版本的 JS，即 Netscape Navigator 的 JavaScript 和 I Internal Explorer 的 JScript，随着业界的担心日益加剧，JavaScript 的标准化问题被提上了日程。两种版本的 JS 会引发啥问题呢？必然是公司为了牟利搞垄断，你用其他版本的 JS 在我的浏览器就跑不起来，这对一门开发语言来说是非常可怕的。</p>
+<p>1997 年，JavaScript1.1 作为蓝本提交给了欧洲计算机制造商协会（European Computer Manufacturers Association，简称 ECMA），由该协会的 39 号技术委员会负责标准化一种<strong>通用的、跨平台的、供应商中立的脚本语言的语义和语法</strong>。经过数月的努力，这个团队拿出了他们的成果 ECMA-262，次年国际标准化组织和国际电工委员会（International Organization For Standardization and International Electrotechnical Commission，简称 ISO&#x2F;IEC）采用了 ECMAScript 作为标准，即 ISO&#x2F;IEC-16262。</p>
+<p>此后，浏览器开发商致力于将 ECMAScript 作为各自 JavaScript 实现的基础，取得了不同程度上的成功。</p>
 <h3 id="ECMAScript"><a href="#ECMAScript" class="headerlink" title="ECMAScript"></a>ECMAScript</h3><blockquote>
-<p>JavaScript是由ECMAScript、DOM、BOM组成的，接下来会简单地聊聊他们的故事。</p>
+<p>JavaScript 是由 ECMAScript、DOM、BOM 组成的，接下来会简单地聊聊他们的故事。</p>
 </blockquote>
-<p>通常谈到JS我们最先联想到的东西就是脚本、交互、浏览器。ECMAScript和Web浏览器并没有任何依赖关系，事实上ECMAScript并不包含输入和输出的定义，它只定义了JavaScript这门语言的基础，在此基础之上可以构建更完善的脚本语言。硬要说Web浏览器和ECMAScript有什么关系的话，Web浏览器上ECMAScript实现可能的宿主环境之一（宿主环境会提供基本的实现和拓展，以便语言和环境之间对接交互），Node、Adobe Flash这些是我们常见的宿主环境。</p>
-<p>ECMAScript都规定了哪些内容呢？大致说来，它规定下面列表里的东西：</p>
+<p>通常谈到 JS 我们最先联想到的东西就是脚本、交互、浏览器。ECMAScript 和 Web 浏览器并没有任何依赖关系，事实上 ECMAScript 并不包含输入和输出的定义，它只定义了 JavaScript 这门语言的基础，在此基础之上可以构建更完善的脚本语言。硬要说 Web 浏览器和 ECMAScript 有什么关系的话，Web 浏览器上 ECMAScript 实现可能的宿主环境之一（宿主环境会提供基本的实现和拓展，以便语言和环境之间对接交互），Node、Adobe Flash 这些是我们常见的宿主环境。</p>
+<p>ECMAScript 都规定了哪些内容呢？大致说来，它规定下面列表里的东西：</p>
 <ul>
 <li>语法</li>
 <li>类型</li>
@@ -167,8 +167,8 @@
 <li>操作符</li>
 <li>对象</li>
 </ul>
-<p>简单来说，<strong>ECMAScrip就是对实现自身（ECMA-262）各方面的语言描述，而JavaScript实现了ECMAScript</strong>，同理Node、Adobe Flash也实现了ECMAScript。</p>
-<h3 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h3><p>文档对象模型（Document Object Model，简称DOM），是针对XML但经过拓展用于HMTL的应用程序编程接口（Application Programming Interface，简称API）。DOM把整个页面映射成一个多层节点结构，这些节点又包含着不同类型的数据。</p>
+<p>简单来说，<strong>ECMAScrip 就是对实现自身（ECMA-262）各方面的语言描述，而 JavaScript 实现了 ECMAScript</strong>，同理 Node、Adobe Flash 也实现了 ECMAScript。</p>
+<h3 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h3><p>文档对象模型（Document Object Model，简称 DOM），是针对 XML 但经过拓展用于 HMTL 的应用程序编程接口（Application Programming Interface，简称 API）。DOM 把整个页面映射成一个多层节点结构，这些节点又包含着不同类型的数据。</p>
 <pre><code class="html">&lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;我是标题&lt;/title&gt;
@@ -178,7 +178,7 @@
   &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p>上面这份HTML代码就会被映射为下面这个树形数据结构。通过DOM创建的这个树形图，开发者获得了控制页面内容和结构的主动权，能轻松自如地执行增、删、改操作。</p>
+<p>上面这份 HTML 代码就会被映射为下面这个树形数据结构。通过 DOM 创建的这个树形图，开发者获得了控制页面内容和结构的主动权，能轻松自如地执行增、删、改操作。</p>
 <pre><code class="shell"># |html
 # |- head
 # |- |- title
@@ -187,28 +187,28 @@
 # |- |- p
 # |- |- |- 我是内容
 </code></pre>
-<h4 id="DOM的事业编"><a href="#DOM的事业编" class="headerlink" title="DOM的事业编"></a>DOM的事业编</h4><p>随着Netscape Navigator 4和Internet Explore 4的发布，两种浏览器都支持了不同形式的Dynamic HTML（简称DHTML）。在此基础上，开发者不用刷新页面就能修改HTML的内容和外观。但是Microsoft和Netscape在DHTML方面各持己见，这意味着过去那个只编写一个HTML就能在不同浏览器上访问的时代已经结束了，DOM的标准化的问题被放在的台面上。负责Web通信标准的万维网联盟（World Wide Web Consortium，简称W3C）揽下了这个活儿。</p>
-<h4 id="DOM从1到3"><a href="#DOM从1到3" class="headerlink" title="DOM从1到3"></a>DOM从1到3</h4><p>到目前为止DOM总共有三个级别，DOM1级、DOM2级、DOM3级。在网上冲浪的时候，你有可能会看见DOM0级的字眼，事实上DOM0级是不存在的，DOM0级一般泛指DOM历史坐标中的一个时间点，即Netscape Navigator 4和Internet Explore 4最初支持的那版DHTML。</p>
-<p><strong>DOM1级：</strong>DOM1级于1998年10月称为W3C推荐标准，由DOM核心（DOM Core）和DOM HTML两部分组成。DOM核心规定了如何去映射基于XML的文档结构，简化了对文档中任意部分的访问和操作，而DOM HTML则在DOM核心的基础上加以拓展，添加了针对HTML的对象和方法。</p>
-<p><strong>DOM2级：</strong>DOM2级在原有DOM基础上拓展了鼠标和用户界面的事件，遍历DOM的方法等细分模块，而且通过对象接口增加了对CSS的支持。</p>
-<p><strong>DOM3级：</strong>DOM3级进一步拓展了DOM，引入了统一的加载和保存文档的方式，新增验证文档的方法。DOM3级也对DOM核心做了拓展，开始支持XML1.0规范，覆盖了XML Infoset，XPath和XML Base。</p>
-<h4 id="浏览器与DOM的那些事"><a href="#浏览器与DOM的那些事" class="headerlink" title="浏览器与DOM的那些事"></a>浏览器与DOM的那些事</h4><p>冷知识，DOM标准出现一段时间后，浏览器才开始实现它。</p>
-<p>Microsoft打算在IE 5中实现DOM，但在IE 5.5的时候才算真正支持DOM1级，并且在6，7版本没有更新任何和DOM相关的内容，在IE 8的时候才修复了之前DOM相关的BUG。</p>
-<p>Netscape则被AOL收购，一部分资源被注入一个非盈利基金会——Mozilla基金会，在Netscape 6（Mozilla 0.6.0）的时候开始支持DOM。Netscape 7之后，Mozilla基金会将开发重心转向到了今天我们熟知的Firefox上面，Mozilla的目标是打造一款构建与标准100%兼容的浏览器，他们的努力也获得了回报。Firefox 3完全支持了DOM1级，几乎支持了DOM2级，甚至还支持了DOM3级的一部分功能。</p>
-<h3 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h3><p>DOM是文档对象模型，大致猜一猜就能知道BOM是啥东西了，BOM代表的是浏览器对象模型（Browser Object Model）。从根本上讲，BOM只处理浏览器的窗口和框架，开发者可以使用BOM来控制浏览器显示页面以外的地方，但人们习惯性的将所有针对浏览器的JavaScript拓展也算作BOM的一部分，这些拓展包括不限于下面这些：</p>
+<h4 id="DOM-的事业编"><a href="#DOM-的事业编" class="headerlink" title="DOM 的事业编"></a>DOM 的事业编</h4><p>随着 Netscape Navigator 4 和 Internet Explore 4 的发布，两种浏览器都支持了不同形式的 Dynamic HTML（简称 DHTML）。在此基础上，开发者不用刷新页面就能修改 HTML 的内容和外观。但是 Microsoft 和 Netscape 在 DHTML 方面各持己见，这意味着过去那个只编写一个 HTML 就能在不同浏览器上访问的时代已经结束了，DOM 的标准化的问题被放在的台面上。负责 Web 通信标准的万维网联盟（World Wide Web Consortium，简称 W3C）揽下了这个活儿。</p>
+<h4 id="DOM-从-1-到-3"><a href="#DOM-从-1-到-3" class="headerlink" title="DOM 从 1 到 3"></a>DOM 从 1 到 3</h4><p>到目前为止 DOM 总共有三个级别，DOM1 级、DOM2 级、DOM3 级。在网上冲浪的时候，你有可能会看见 DOM0 级的字眼，事实上 DOM0 级是不存在的，DOM0 级一般泛指 DOM 历史坐标中的一个时间点，即 Netscape Navigator 4 和 Internet Explore 4 最初支持的那版 DHTML。</p>
+<p><strong>DOM1 级：</strong>DOM1 级于 1998 年 10 月称为 W3C 推荐标准，由 DOM 核心（DOM Core）和 DOM HTML 两部分组成。DOM 核心规定了如何去映射基于 XML 的文档结构，简化了对文档中任意部分的访问和操作，而 DOM HTML 则在 DOM 核心的基础上加以拓展，添加了针对 HTML 的对象和方法。</p>
+<p><strong>DOM2 级：</strong>DOM2 级在原有 DOM 基础上拓展了鼠标和用户界面的事件，遍历 DOM 的方法等细分模块，而且通过对象接口增加了对 CSS 的支持。</p>
+<p><strong>DOM3 级：</strong>DOM3 级进一步拓展了 DOM，引入了统一的加载和保存文档的方式，新增验证文档的方法。DOM3 级也对 DOM 核心做了拓展，开始支持 XML1.0 规范，覆盖了 XML Infoset，XPath 和 XML Base。</p>
+<h4 id="浏览器与-DOM-的那些事"><a href="#浏览器与-DOM-的那些事" class="headerlink" title="浏览器与 DOM 的那些事"></a>浏览器与 DOM 的那些事</h4><p>冷知识，DOM 标准出现一段时间后，浏览器才开始实现它。</p>
+<p>Microsoft 打算在 IE 5 中实现 DOM，但在 IE 5.5 的时候才算真正支持 DOM1 级，并且在 6，7 版本没有更新任何和 DOM 相关的内容，在 IE 8 的时候才修复了之前 DOM 相关的 BUG。</p>
+<p>Netscape 则被 AOL 收购，一部分资源被注入一个非盈利基金会——Mozilla 基金会，在 Netscape 6（Mozilla 0.6.0）的时候开始支持 DOM。Netscape 7 之后，Mozilla 基金会将开发重心转向到了今天我们熟知的 Firefox 上面，Mozilla 的目标是打造一款构建与标准 100%兼容的浏览器，他们的努力也获得了回报。Firefox 3 完全支持了 DOM1 级，几乎支持了 DOM2 级，甚至还支持了 DOM3 级的一部分功能。</p>
+<h3 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h3><p>DOM 是文档对象模型，大致猜一猜就能知道 BOM 是啥东西了，BOM 代表的是浏览器对象模型（Browser Object Model）。从根本上讲，BOM 只处理浏览器的窗口和框架，开发者可以使用 BOM 来控制浏览器显示页面以外的地方，但人们习惯性的将所有针对浏览器的 JavaScript 拓展也算作 BOM 的一部分，这些拓展包括不限于下面这些：</p>
 <ul>
 <li>弹出新浏览器的窗口</li>
 <li>移动、缩放、关闭浏览器窗口</li>
-<li>提供浏览器详细信息的navigator对象</li>
-<li>提供加载页面详细信息的location对象</li>
-<li>提供用户显示器分辨率详细信息的screen对象</li>
-<li>对cookie的支持</li>
-<li>自定义对象，如XMLHttpRequest、IE的ActionXObject</li>
+<li>提供浏览器详细信息的 navigator 对象</li>
+<li>提供加载页面详细信息的 location 对象</li>
+<li>提供用户显示器分辨率详细信息的 screen 对象</li>
+<li>对 cookie 的支持</li>
+<li>自定义对象，如 XMLHttpRequest、IE 的 ActionXObject</li>
 </ul>
-<p>BOM真正神奇的地方在于，它是JavaScript实现的一部分，但是没有相关标准。由于没有相关标准，因此每个浏览器都有自己的实现，对于一些约定俗成的标准，如window和navigator对象，不同的浏览器也往里面封装一些自己的属性和方法。这个问题在HTML5得到了解决，H5致力于很多BOM功能写入正式规范，BOM的高兼容性未来可期。</p>
+<p>BOM 真正神奇的地方在于，它是 JavaScript 实现的一部分，但是没有相关标准。由于没有相关标准，因此每个浏览器都有自己的实现，对于一些约定俗成的标准，如 window 和 navigator 对象，不同的浏览器也往里面封装一些自己的属性和方法。这个问题在 HTML5 得到了解决，H5 致力于很多 BOM 功能写入正式规范，BOM 的高兼容性未来可期。</p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li>JavaScript是一种专门为网页交互而设计的脚本语言，由ECMAScript、DOM、BOM三部分组成。</li>
-<li>ECMAScript是对JavaScript的语言描述，JavaScript实现了ECMAScript。</li>
+<li>JavaScript 是一种专门为网页交互而设计的脚本语言，由 ECMAScript、DOM、BOM 三部分组成。</li>
+<li>ECMAScript 是对 JavaScript 的语言描述，JavaScript 实现了 ECMAScript。</li>
 <li>DOM，文档对象模型，提供了访问和操作网页的方法和接口。</li>
 <li>BOM，浏览器对象模型，提供了与浏览器交互的方法和接口。</li>
 </ul>
@@ -231,12 +231,12 @@
             <div class="post-nav">
                 <hr>
                 
-                    <div class="post-nav-item">Previous Post:<a href="/2021/11/11/%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6%E3%80%81%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E6%B7%B1%E5%BA%A6%E3%80%81%E5%88%A4%E6%96%AD%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%E3%80%81%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E5%8C%96%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" rel="prev" 
+                    <div class="post-nav-item">Previous Post:<a href="/2021/11/11/%E3%80%8CLeetCode%E3%80%8D%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6%E3%80%81%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E6%B7%B1%E5%BA%A6%E3%80%81%E5%88%A4%E6%96%AD%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%E3%80%81%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E5%8C%96%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" rel="prev" 
                         title="树的最大深度、树的最小深度、判断平衡二叉树、将有序数组转化为二叉搜索树">树的最大深度、树的最小深度、判断平衡二叉树、将有序数组转化为二叉搜索树
                       </a></div>
                 
                 
-                    <div class="post-nav-item">Next Post:<a href="/2021/11/03/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E3%80%81%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91%E3%80%81%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="next" 
+                    <div class="post-nav-item">Next Post:<a href="/2021/11/03/%E3%80%8CLeetCode%E3%80%8D%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E3%80%81%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91%E3%80%81%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="next" 
                         title="中序遍历、相同的树、对称二叉树">中序遍历、相同的树、对称二叉树</a></div>
                                 
             </div>   
@@ -267,7 +267,7 @@
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>Contents</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS%E8%AF%9E%E7%94%9F%E4%B9%8B%E8%B7%AF"><span class="toc-number">2.</span> <span class="toc-text">JS诞生之路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JS%E7%9A%84%E5%87%BA%E7%94%9F"><span class="toc-number">2.1.</span> <span class="toc-text">JS的出生</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E8%BD%AF%E6%9A%97%E4%B8%AD%E5%8F%91%E5%B1%95%EF%BC%8C%E6%8B%BF%E9%87%8C%E7%A8%8B%E7%A2%91%E5%8A%A9%E6%94%BB"><span class="toc-number">2.2.</span> <span class="toc-text">微软暗中发展，拿里程碑助攻</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS%E7%9A%84%E4%BA%8B%E4%B8%9A%E7%BC%96"><span class="toc-number">2.3.</span> <span class="toc-text">JS的事业编</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ECMAScript"><span class="toc-number">2.4.</span> <span class="toc-text">ECMAScript</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DOM"><span class="toc-number">2.5.</span> <span class="toc-text">DOM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BOM"><span class="toc-number">2.6.</span> <span class="toc-text">BOM</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-number">3.</span> <span class="toc-text">小结</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS-%E8%AF%9E%E7%94%9F%E4%B9%8B%E8%B7%AF"><span class="toc-number">2.</span> <span class="toc-text">JS 诞生之路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JS-%E7%9A%84%E5%87%BA%E7%94%9F"><span class="toc-number">2.1.</span> <span class="toc-text">JS 的出生</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E8%BD%AF%E6%9A%97%E4%B8%AD%E5%8F%91%E5%B1%95%EF%BC%8C%E6%8B%BF%E9%87%8C%E7%A8%8B%E7%A2%91%E5%8A%A9%E6%94%BB"><span class="toc-number">2.2.</span> <span class="toc-text">微软暗中发展，拿里程碑助攻</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS-%E7%9A%84%E4%BA%8B%E4%B8%9A%E7%BC%96"><span class="toc-number">2.3.</span> <span class="toc-text">JS 的事业编</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ECMAScript"><span class="toc-number">2.4.</span> <span class="toc-text">ECMAScript</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DOM"><span class="toc-number">2.5.</span> <span class="toc-text">DOM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BOM"><span class="toc-number">2.6.</span> <span class="toc-text">BOM</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-number">3.</span> <span class="toc-text">小结</span></a></li></ol>
                 </div>
             </div>
             
