@@ -1,0 +1,680 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SOCKET.IO的浅出 - Lee 62&#39;s Site</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="TriDiamond Obsidian,"> 
+    <meta name="description" content="引言SOCKET.IO是一个库，其又分为client客户端库与server服务端库。前者在前端配置使用，后者在后端配置使用。SOCKET.IO可以让我们的浏览器建立实时，双向和基于事件的通信，由此我,"> 
+    <meta name="author" content="Lee 62"> 
+    <link rel="alternative" href="atom.xml" title="Lee 62&#39;s Site" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+    
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Lee 62&#39;s Site</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">SOCKET.IO的浅出</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/保姆级螺旋升天有手就会教程"><b>「
+                    </b>保姆级螺旋升天有手就会教程<b> 」</b></a>
+                
+                February 11, 2021
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/02/11/SOCKET.IO%E7%9A%84%E6%B5%85%E5%87%BA/" title="SOCKET.IO的浅出" class="">SOCKET.IO的浅出</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>Words count</i>
+                    9.4k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                    9 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>Read count</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Express/" rel="tag">Express</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/SOCKET-IO/" rel="tag">SOCKET.IO</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E8%81%8A%E5%A4%A9/" rel="tag">聊天</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>SOCKET.IO是一个库，其又分为client客户端库与server服务端库。前者在前端配置使用，后者在后端配置使用。SOCKET.IO可以让我们的浏览器建立<strong>实时</strong>，<strong>双向</strong>和基于<strong>事件</strong>的通信，由此我们可以基于SOCKET.IO开发聊天APP、点餐APP、快递APP等等一些需要客户端和服务端建立通信连接的APP。</p>
+<h2 id="WebSocket与SOCKET-IO"><a href="#WebSocket与SOCKET-IO" class="headerlink" title="WebSocket与SOCKET.IO"></a>WebSocket与SOCKET.IO</h2><p><strong>WebScoket</strong>：是一种让客户端和服务器之间能进行双向实时通信的技术，是H5的一个协议规范，本质上是个基于TCP的协议，它通过HTTP&#x2F;HTTPS协议发送一条特殊的请求进行握手后创建了一个TCP连接，此后浏览器&#x2F;客户端和服务器之间便可以通过此连接来进行双向实时通信。使用需要浏览器支持，虽然到2020年的统计已有97%的浏览器支持，但是对于一些超古代和冷门浏览器依旧会面临不兼容的问题。</p>
+<p><strong>SOCKET.IO</strong>：SOCKET.IO是将WebSocket，Ajax和其它的通信方式全部封装成了统一的通信接口的库。比起WebScoket，使用起来不用担心兼容性问题，底层会自动选择最佳的通信方式。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>这里用<strong>Express</strong>和<strong>Vue</strong>两种框架演示。本地项目启动后，前端默认占用8080端口，后端默认占用3000端口。</p>
+<h3 id="构建项目"><a href="#构建项目" class="headerlink" title="构建项目"></a>构建项目</h3><p>在目标文件下构建前后端项目。</p>
+<pre><code class="cmd">//创建前端项目
+vue create testApp_frontend
+//创建后端项目
+express testApp_server
+</code></pre>
+<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><p>分别cd进前后端的目录，前端安装socket.io-client，后端安装socket.io，推荐使用cnpm来安装，速度快。后端项目记得要执行cnpm&#x2F;npm install一下，Express构建器默认会把自身所需依赖写入package.json，不会直接安装。</p>
+<pre><code class="cmd">//前端项目目录内
+cnpm/npm install socket.io-client
+//后端项目目录内
+cnpm/npm install socket.io
+</code></pre>
+<h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><h4 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h4><ul>
+<li>在vue的静态文件夹assets下创建一个javascripts的文件夹，再在里面创建socket.io-client.js文件</li>
+<li>引入socket.io-client模块</li>
+<li>与服务器建立连接</li>
+<li>导出socket，之后在其他地方通过<code>import...from...</code>的方式就可以使用了</li>
+</ul>
+<pre><code class="javascript">import io from &#39;socket.io-client&#39;
+
+let socket = io.connect(&#39;http://localhost:3000/&#39;);  //此处会返回一个对象给socket
+
+export default socket
+</code></pre>
+<h4 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h4><ul>
+<li>在Express的public的javascripts下创建socket.io.js文件</li>
+<li>创建一个空对象socketIO，方便之后导出</li>
+<li>创建getSocket函数，参数为服务器实例server<ul>
+<li>引入socket.io模块并调用，参数为上面传入的server和<code>&#123;cors:true&#125;</code>（如果两个URL的protocol，port，host都相同的话，则这两个URL是同源。同源策略是重要的安全策略，浏览器默认会禁止所有跨域请求。此处我们前端的地址为<code>http://localhost:8080/</code>,后端是<code>http://localhost:3000/</code>，两者不是同源因此需要添加<code>&#123;cors:true&#125;</code>来解决跨域问题）</li>
+<li>socketIO.io赋值给io</li>
+<li>监听connection事件</li>
+</ul>
+</li>
+<li>把getSocket函数体给到socketIO.getSocket</li>
+<li>导出socketIO对象</li>
+</ul>
+<pre><code class="javascript">let socketIO = &#123;&#125;;
+
+function getSocket(server)&#123;
+
+    socketIO.io = require(&#39;socket.io&#39;)(server,&#123;cors:true&#125;);//会返回一个对象给到socketIO.io
+
+    let io = socketIO.io;
+
+    io.on(&#39;connection&#39;,function(socket)&#123;
+        console.log(socket)//成功触发默认会有一个socket对象传入
+    &#125;)
+        
+&#125;
+
+socketIO.getSocket = getSocket;
+
+module.exports = socketIO;
+</code></pre>
+<ul>
+<li>在bin目录下的www中引入socketIO（具体位置见代码块）</li>
+<li>调用getSocket，把实例化好的server传入</li>
+</ul>
+<pre><code class="javascript">var server = http.createServer(app);
+
+//------上面是Express自己构建的------
+//------下面是我们要操作的------
+
+var socketIO = require(&quot;../socket.io.js&quot;);
+socketIO.getSocket(server)
+</code></pre>
+<ul>
+<li>如果正常，服务端的终端里会打印出socket对象</li>
+</ul>
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><h4 id="监听与发送"><a href="#监听与发送" class="headerlink" title="监听与发送"></a>监听与发送</h4><pre><code class="javascript">socket.on(&#39;事件名&#39;,callback/Object) //监听
+socket.emit(&#39;事件名&#39;,callback/Object) //发送
+</code></pre>
+<h5 id="前端-1"><a href="#前端-1" class="headerlink" title="前端"></a>前端</h5><pre><code class="Vue">&lt;!-- App.vue --&gt;
+&lt;!-- 前端浏览器的控制台会在点击按钮后打印WorldHello --&gt;
+&lt;template&gt;
+  &lt;div id=&quot;app&quot;&gt;
+    &lt;button @click=&quot;emitEvent&quot;&gt;
+        点我发送事件
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+//导入socket
+import socket from &#39;./assets/javascripts/socket.io&#39;
+
+export default &#123;
+  name: &#39;App&#39;,
+  mounted()&#123;
+      socket.on(&#39;replyMsg&#39;,function(data)&#123;
+        console.log(data)
+    &#125;)
+  &#125;,
+  methods:&#123;
+      emitEvent:function()&#123;
+          socket.emit(&#39;sendMsg&#39;,&#123;
+              content: &#39;HelloWorld&#39;
+          &#125;)
+      &#125;
+  &#125;
+&#125;
+&lt;/script&gt;
+</code></pre>
+<h5 id="后端-1"><a href="#后端-1" class="headerlink" title="后端"></a>后端</h5><pre><code class="javascript">//socket.io.js
+//后端终端会在点击按钮后打印HelloWorld
+let socketIO = &#123;&#125;;
+
+function getSocket(server)&#123;
+
+    socketIO.io = require(&#39;socket.io&#39;)(server,&#123;cors:true&#125;);//会返回一个对象给到socketIO.io
+
+    let io = socketIO.io;
+
+    io.on(&#39;connection&#39;,function(socket)&#123;
+         socket.on(&#39;sendMsg&#39;,function(data)&#123;
+             console.log(data)
+             socket.emit(&#39;replyMsg&#39;,&#123;
+                 content: &#39;WorldHello&#39;
+              &#125;)
+         &#125;)
+    &#125;)    
+&#125;
+
+socketIO.getSocket = getSocket;
+
+module.exports = socketIO;
+</code></pre>
+<h4 id="广播"><a href="#广播" class="headerlink" title="广播"></a>广播</h4><pre><code class="javascript">io.emit(&#39;事件名&#39;,callback/Object) //对所有人广播
+</code></pre>
+<h5 id="前端-2"><a href="#前端-2" class="headerlink" title="前端"></a>前端</h5><pre><code class="Vue">&lt;!-- App.vue --&gt;
+&lt;!-- 前端浏览器的控制台会在点击按钮后打印&#39;全员广播 &#39; --&gt;
+&lt;!-- 可以用多个浏览器来模拟多个连接来测试广播效果 --&gt;
+&lt;template&gt;
+  &lt;div id=&quot;app&quot;&gt;
+    &lt;button @click=&quot;emitEvent&quot;&gt;
+        点我发送事件
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+//导入socket
+import socket from &#39;./assets/javascripts/socket.io&#39;
+
+export default &#123;
+  name: &#39;App&#39;,
+  mounted()&#123;
+      socket.on(&#39;all&#39;,function(data)&#123;
+        console.log(data)
+    &#125;)
+  &#125;,
+  methods:&#123;
+      emitEvent:function()&#123;
+          socket.emit(&#39;sendMsg&#39;,&#123;
+              content: &#39;isAll&#39;
+          &#125;)
+      &#125;
+  &#125;
+&#125;
+&lt;/script&gt;
+</code></pre>
+<h5 id="后端-2"><a href="#后端-2" class="headerlink" title="后端"></a>后端</h5><pre><code class="javascript">//socket.io.js
+let socketIO = &#123;&#125;;
+
+function getSocket(server)&#123;
+
+    socketIO.io = require(&#39;socket.io&#39;)(server,&#123;cors:true&#125;);//会返回一个对象给到socketIO.io
+
+    let io = socketIO.io;
+
+    io.on(&#39;connection&#39;,function(socket)&#123;
+         socket.on(&#39;sendMsg&#39;,function(data)&#123;
+            if(data.content == &quot;isAll&quot;)&#123;
+                io.emit(&#39;all&#39;,&#123;
+                     content: &#39;全员广播&#39;
+                  &#125;)
+             &#125;
+         &#125;)
+    &#125;)
+&#125;
+
+socketIO.getSocket = getSocket;
+
+module.exports = socketIO;
+</code></pre>
+<h4 id="断开"><a href="#断开" class="headerlink" title="断开"></a>断开</h4><p>🚨🚨🚨注意这里演示的前端和后端是<strong>分别演示</strong>的，不是前后端联调🚨🚨🚨</p>
+<pre><code class="javascript">socket.disconnect() //disconnect和connect一样也是可以监听的，事件名为disconnection
+</code></pre>
+<h5 id="前端-3"><a href="#前端-3" class="headerlink" title="前端"></a>前端</h5><pre><code class="Vue">&lt;!-- App.vue --&gt;
+&lt;!-- 点击按钮后当前连接断开 --&gt;
+&lt;template&gt;
+  &lt;div id=&quot;app&quot;&gt;
+    &lt;button @click=&quot;discon&quot;&gt;
+        点我发送事件
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+//导入socket
+import socket from &#39;./assets/javascripts/socket.io&#39;
+
+export default &#123;
+  name: &#39;App&#39;,
+  methods:&#123;
+      discon:function()&#123;
+          socket.disconnect()
+      &#125;
+  &#125;
+&#125;
+&lt;/script&gt;
+</code></pre>
+<h5 id="后端-3"><a href="#后端-3" class="headerlink" title="后端"></a>后端</h5><pre><code class="javascript">//socket.io.js
+//此处建立在前端会发送一个sendMsg事件的基础上
+//点击按钮后触发sendMsg事件，然后当前所有连接断开
+//可以用多个浏览器来模拟多个连接来测试断开
+let socketIO = &#123;&#125;;
+
+function getSocket(server)&#123;
+
+    socketIO.io = require(&#39;socket.io&#39;)(server,&#123;cors:true&#125;);//会返回一个对象给到socketIO.io
+
+    let io = socketIO.io;
+
+    io.on(&#39;connection&#39;,function(socket)&#123;
+         socket.on(&#39;sendMsg&#39;,function()&#123;
+            socket.disconnect()
+         &#125;)
+    &#125;)
+        
+&#125;
+
+socketIO.getSocket = getSocket;
+
+module.exports = socketIO;
+</code></pre>
+<h4 id="to方法"><a href="#to方法" class="headerlink" title="to方法"></a>to方法</h4><p>🚨🚨🚨每个socket对象都会有唯一的id属性，而to()中填写的是对方的socket.id🚨🚨🚨</p>
+<p>🚨🚨🚨操作和发送大体一致，想办法拿到对方socket.id传入to()就行了，发送多人就作链式操作to()🚨🚨🚨</p>
+<pre><code class="javascript">//对socket.id为socketId的连接发送事件
+socket.to(socketID).emit(&#39;事件名&#39;,callback/Object)
+
+//对socket.id为socketID1，socketID2，socketID3的连接发送事件
+socket.to(socketID1).to(socketID2).to(socketID3).emit(&#39;事件名&#39;,callback/Object)
+</code></pre>
+<h4 id="join方法"><a href="#join方法" class="headerlink" title="join方法"></a>join方法</h4><p>🚨🚨🚨当前连接加入一个名字为diyID的空间，此空间与其他空间隔绝，可以向加入了此空间的所有人广播🚨🚨🚨</p>
+<pre><code class="javascript">let diyID = &quot;xxxxx&quot;
+socket.join(diyID,callback/Object)
+</code></pre>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><p>如果上面的内容你消化的差不多了，可以来康康我用Vue+Express+MySQL+SOCKET.IO开发的一个实时聊天项目💖💖。目前实现了单聊，群聊，在线离线状态对消息和用户的处理，以及禁止多端登录。项目整体不难，理清楚逻辑关系就🆗了。如果对你有帮助希望你给一颗✨✨✨希望这篇文章能对你起到抛砖引玉的效果。</p>
+<pre><code class="项目地址">https://github.com/Ashenone-62/chatApp.git
+</code></pre>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            <div class="post-nav">
+                <hr>
+                
+                    <div class="post-nav-item">Previous Post:<a href="/2021/02/12/LeetCode%E2%80%94%E2%80%94%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%922/" rel="prev" 
+                        title="LeetCode——杨辉三角2">LeetCode——杨辉三角2
+                      </a></div>
+                
+                
+                    <div class="post-nav-item">Next Post:<a href="/2021/01/31/%E7%AD%89%E5%AE%BD%E7%80%91%E5%B8%83%E6%B5%81%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%85%B6%E5%8E%9F%E7%A0%81/" rel="next" 
+                        title="等宽瀑布流实现思路及其原码">等宽瀑布流实现思路及其原码</a></div>
+                                
+            </div>   
+                        
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://res.cloudinary.com/tridiamond/image/upload/v1573019751/TriDiamond_logo_ui_xeublz.jpg" height=300 width=300></img>
+                    <p>Lee 62</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        
+                        
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">57 <p>Articles</p></a></li>
+                    <li><a href="/categories">18 <p>Categories</p></a></li>
+                    <li><a href="/tags">36 <p>Tags</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>Contents</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WebSocket%E4%B8%8ESOCKET-IO"><span class="toc-number">2.</span> <span class="toc-text">WebSocket与SOCKET.IO</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-number">3.1.</span> <span class="toc-text">构建项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="toc-number">3.2.</span> <span class="toc-text">安装依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%81%E8%A3%85"><span class="toc-number">3.3.</span> <span class="toc-text">封装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6"><span class="toc-number">3.4.</span> <span class="toc-text">事件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-number">4.</span> <span class="toc-text">实战</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2023
+        <span class="gradient-text">
+            Lee 62
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.7" target="_blank" rel="noopener">v1.4.7</a></small>
+        
+        
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+ 
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+   
+<script src="/js/busuanzi.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    if ($('span[id^="busuanzi_"]').length) {
+      initialBusuanzi();
+    }
+  });
+</script>
+ 
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149874671-1');
+</script>
+ 
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Think like an artist, develop like an artisan', '艺术家思维去思考问题，工匠创造精神去开发'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+
+
+
+
+
+</html>

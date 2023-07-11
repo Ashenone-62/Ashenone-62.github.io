@@ -1,0 +1,567 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>树的最大深度、树的最小深度、判断平衡二叉树、将有序数组转化为二叉搜索树 - Lee 62&#39;s Site</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="TriDiamond Obsidian,"> 
+    <meta name="description" content="前言凑齐一波LeetCode热门Eazy算法儿（再次狐化🦊），这波是关于树深度的题目——最大&amp;#x2F;最小深度、判断平衡二叉树、将有序数组转化为二叉搜索树🎉🎉。
+树的最大深度题目给定一个二叉,"> 
+    <meta name="author" content="Lee 62"> 
+    <link rel="alternative" href="atom.xml" title="Lee 62&#39;s Site" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+    
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Lee 62&#39;s Site</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">树的最大深度、树的最小深度、判断平衡二叉树、将有序数组转化为二叉搜索树</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/LeetCode"><b>「
+                    </b>LEETCODE<b> 」</b></a>
+                
+                November 11, 2021
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/11/11/%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6%E3%80%81%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E6%B7%B1%E5%BA%A6%E3%80%81%E5%88%A4%E6%96%AD%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%E3%80%81%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E5%8C%96%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" title="树的最大深度、树的最小深度、判断平衡二叉树、将有序数组转化为二叉搜索树" class="">树的最大深度、树的最小深度、判断平衡二叉树、将有序数组转化为二叉搜索树</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>Words count</i>
+                    5.6k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                    5 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>Read count</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Easy/" rel="tag">Easy</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>凑齐一波LeetCode热门Eazy算法儿（再次狐化🦊），这波是关于树深度的题目——最大&#x2F;最小深度、判断平衡二叉树、将有序数组转化为二叉搜索树🎉🎉。</p>
+<h2 id="树的最大深度"><a href="#树的最大深度" class="headerlink" title="树的最大深度"></a>树的最大深度</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个二叉树，找出其最大深度。</p>
+<p>二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。</p>
+<p><strong>说明:</strong> 叶子节点是指没有子节点的节点。</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>判断传入的节点是否为空，为空就返回0；不为空就去计算它左子树和右子树的高度，取最大的值返回。</p>
+<p>这里取最大值，是因为如果已经递归到叶子节点了那势必会出现左右为0的局面，这时候累加一进入到父节点上，父节点可能也有其他子树或者没有子树，那么取两棵树的最大值肯定就是最大有效深度了。</p>
+<pre><code class="js">/**
+*				       (max(2,1)+1=3) 4
+*			                   /         \
+*        (max(1,1)+1=2) 2           5 (max(0,0)+1=1)
+*       				       / \           
+*      (max(0,0)+1=1) 1   3 (max(0,0)+1=1)
+* */
+</code></pre>
+<h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><pre><code class="js">/**
+ * @param &#123;TreeNode&#125; root
+ * @return &#123;number&#125;
+ */
+var maxDepth = function(root) &#123;
+  const getDepth = (root) =&gt; &#123;
+    // 判断节点是否存在，不存在就返回0
+    if (!root) return 0;
+    // 计算左子树高度
+    const leftHeight = getDepth(root.left);
+    // 计算右子树高度
+    const rightHeight = getDepth(root.right);
+    // 取最大有效值加一后得到当前深度，并返回该值
+    return Math.max(leftHeight, rightHeight) + 1;
+  &#125;;
+
+  return getDepth(root);
+&#125;;
+</code></pre>
+<h2 id="树的最小深度"><a href="#树的最小深度" class="headerlink" title="树的最小深度"></a>树的最小深度</h2><h3 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h3><p>给定一个二叉树，找出其最小深度。</p>
+<p>最小深度是从根节点到最近叶子节点的最短路径上的节点数量。</p>
+<p><strong>说明：</strong>叶子节点是指没有子节点的节点。</p>
+<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>查找树的最小深度要分为下面四种情况：</p>
+<ol>
+<li>节点为空。</li>
+<li>节点不为空，节点的左右子树同时为空。</li>
+<li>节点不为空，节点的左右子树有一边为空。</li>
+<li>节点不为空，节点的左右子树都不为空。</li>
+</ol>
+<p>针对第一种情况，如果成立说明这棵树为空，返回0；</p>
+<p>针对第二种情况，说明该节点为叶子节点，返回1；</p>
+<p>针对第三种情况，返回左子树的高度+右子树的高度+1，左子树高度+右子树的高度因为有一边为空那么那边返回值肯定为0，因此直接相加不影响结果。</p>
+<p>针对第四种情况，都不为空，我们取左子树和右子树的最小值+1，参考针对第三种情况的逻辑，第四种属于第三种的特殊情况。</p>
+<h3 id="解法-1"><a href="#解法-1" class="headerlink" title="解法"></a>解法</h3><pre><code class="js">/**
+ * @param &#123;TreeNode&#125; root
+ * @return &#123;number&#125;
+ */
+
+var minDepth = function(root) &#123;
+  const getMinDepth = (root) =&gt; &#123;
+    // 节点为空
+    if (!root) return 0;
+    // 左右节点都为空
+    if (!root.left &amp;&amp; !root.right) return 1;
+        // 获取左树高度
+    const leftDepth = getMinDepth(root.left);
+    // 获取右树高度
+    const rightDepth = getMinDepth(root.right);
+        // 左右节点有一边为空
+    if (!root.left || !root.right) return leftDepth + rightDepth + 1;
+        // 左右节点都不为空
+    return Math.min(leftDepth, rightDepth) + 1;
+  &#125;
+
+  return getMinDepth(root);
+&#125;;
+</code></pre>
+<h2 id="判断平衡二叉树"><a href="#判断平衡二叉树" class="headerlink" title="判断平衡二叉树"></a>判断平衡二叉树</h2><h3 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h3><p>给定一个二叉树，判断它是否是高度平衡的二叉树。</p>
+<p>本题中，一棵高度平衡二叉树定义为：一个二叉树<em>每个节点</em> 的左右两个子树的高度差的绝对值不超过 1 。</p>
+<h3 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h3><p>首先会有一个布尔值来标识这棵树是否平衡，如果它不平衡了就不会执行后续的判断逻辑了。</p>
+<p>首先判断节点是否为空或者此树是否已经不平衡；</p>
+<p>再然后获取左右子树的高度；</p>
+<p>将他们相减取绝对值，如果结果大于了1说明已经不平衡，这时候将掌管平衡的变量置为false，退出函数即可。</p>
+<p>如果绝对值没问题那就取左右子树的最大值+1返回，这里取最大值是树的深度泛指最大深度，除非特别说明是取最小或者其他深度。</p>
+<h3 id="解法-2"><a href="#解法-2" class="headerlink" title="解法"></a>解法</h3><p><strong>递归法：</strong></p>
+<pre><code class="js">/**
+ * @param &#123;TreeNode&#125; root
+ * @return &#123;boolean&#125;
+ */
+var isBalanced = function(root) &#123;
+  // 判断是否为空树
+  if (!root) return true;
+  // 定义平衡变量
+  let balanced = true;
+    // 
+  const compareChildrenTreeDepth = (node) =&gt; &#123;
+    // 判断传入节点是否为空
+    if (!node || !balanced) return 0; 
+    // 获取左右子树高度
+    const left = compareChildrenTreeDepth(node.left);
+    const right = compareChildrenTreeDepth(node.right);
+        // 根据左右高度绝对值来判断是否平衡
+    if (Math.abs(left - right) &gt; 1) &#123;
+      balanced = false;
+      return 0;
+    &#125;;
+        // 取左右最大的值+1返回
+    return Math.max(left, right) + 1;
+  &#125;;
+
+  compareChildrenTreeDepth(root);
+
+  return balanced;
+&#125;;
+</code></pre>
+<h2 id="将有序数组转化为二叉搜索树"><a href="#将有序数组转化为二叉搜索树" class="headerlink" title="将有序数组转化为二叉搜索树"></a>将有序数组转化为二叉搜索树</h2><h3 id="题目-3"><a href="#题目-3" class="headerlink" title="题目"></a>题目</h3><p>给你一个整数数组 nums ，其中元素已经按 升序 排列，请你将其转换为一棵 高度平衡 二叉搜索树。</p>
+<p>高度平衡 二叉树是一棵满足「每个节点的左右两个子树的高度差的绝对值不超过 1 」的二叉树。</p>
+<h3 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h3><p>题目提到了升序，那么确定了我们的遍历方式为中序遍历。</p>
+<p>我们每次遍历会传入原始数组、左和右的索引值，选择中间靠左的节点来做根节点；</p>
+<p>如果左的值大于了右就说明到头了，返回null；</p>
+<p>否则就用中心靠左的值创建一个节点；</p>
+<p>然后再设置他的左树和右树，他们的左右索引值值都有中间向两边靠拢，左边是（left， mid - 1），右边（mid + 1， right）；</p>
+<p>最终返回这个节点。</p>
+<h3 id="解法-3"><a href="#解法-3" class="headerlink" title="解法"></a>解法</h3><pre><code class="js">/**
+ * @param &#123;number[]&#125; nums
+ * @return &#123;TreeNode&#125;
+ */
+var sortedArrayToBST = function(nums) &#123;
+      // 封装获取中间的值的函数
+    const getMidIdx = (left, right) =&gt; Math.floor((left + right) / 2);
+    const createTree = (nums, left, right) =&gt; &#123;
+          // 如果左边已经大于右边说明到头了
+        if (left &gt; right) return null;
+                // 获取中间值
+        const mid = getMidIdx(left, right);
+          // 用中间值创建节点
+        const node = new TreeNode(nums[mid]);
+                // 在用mid和left/right的中间值去创建左树右树的节点
+        node.left = createTree(nums, left, mid - 1);
+        node.right = createTree(nums, mid + 1, right);
+                // 最终返回这个节点
+        return node;
+    &#125;
+
+    return createTree(nums, 0, nums.length - 1);
+&#125;;
+</code></pre>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            <div class="post-nav">
+                <hr>
+                
+                    <div class="post-nav-item">Previous Post:<a href="/2021/11/15/%E8%B7%AF%E5%BE%84%E4%B9%8B%E5%92%8C%E3%80%81%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86%E3%80%81%E5%90%8E%E7%BB%AD%E9%81%8D%E5%8E%86/" rel="prev" 
+                        title="路径之和、前序遍历、后续遍历">路径之和、前序遍历、后续遍历
+                      </a></div>
+                
+                
+                    <div class="post-nav-item">Next Post:<a href="/2021/11/10/1-JavaScirpt%E8%80%83%E5%8F%A4-JS%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/" rel="next" 
+                        title="JavaScirpt考古(一)——JS的前世今生">JavaScirpt考古(一)——JS的前世今生</a></div>
+                                
+            </div>   
+                        
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://res.cloudinary.com/tridiamond/image/upload/v1573019751/TriDiamond_logo_ui_xeublz.jpg" height=300 width=300></img>
+                    <p>Lee 62</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        
+                        
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">57 <p>Articles</p></a></li>
+                    <li><a href="/categories">18 <p>Categories</p></a></li>
+                    <li><a href="/tags">36 <p>Tags</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>Contents</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6"><span class="toc-number">2.</span> <span class="toc-text">树的最大深度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">2.2.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95"><span class="toc-number">2.3.</span> <span class="toc-text">解法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E6%B7%B1%E5%BA%A6"><span class="toc-number">3.</span> <span class="toc-text">树的最小深度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="toc-number">3.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF-1"><span class="toc-number">3.2.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95-1"><span class="toc-number">3.3.</span> <span class="toc-text">解法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">4.</span> <span class="toc-text">判断平衡二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-2"><span class="toc-number">4.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF-2"><span class="toc-number">4.2.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95-2"><span class="toc-number">4.3.</span> <span class="toc-text">解法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E5%8C%96%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="toc-number">5.</span> <span class="toc-text">将有序数组转化为二叉搜索树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-3"><span class="toc-number">5.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF-3"><span class="toc-number">5.2.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95-3"><span class="toc-number">5.3.</span> <span class="toc-text">解法</span></a></li></ol></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2023
+        <span class="gradient-text">
+            Lee 62
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.7" target="_blank" rel="noopener">v1.4.7</a></small>
+        
+        
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+ 
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+   
+<script src="/js/busuanzi.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    if ($('span[id^="busuanzi_"]').length) {
+      initialBusuanzi();
+    }
+  });
+</script>
+ 
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149874671-1');
+</script>
+ 
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Think like an artist, develop like an artisan', '艺术家思维去思考问题，工匠创造精神去开发'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+
+
+
+
+
+</html>

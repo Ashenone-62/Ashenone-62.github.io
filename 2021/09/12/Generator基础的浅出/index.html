@@ -1,0 +1,707 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Generator基础的浅出 - Lee 62&#39;s Site</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="TriDiamond Obsidian,"> 
+    <meta name="description" content="前言研究了一段时间Generator，发现它和Promise一个级别的咖位。Generator能给任何数据结构部署Symbol.iterator接口，且不像Iterator那般麻烦，同时也是异步编程,"> 
+    <meta name="author" content="Lee 62"> 
+    <link rel="alternative" href="atom.xml" title="Lee 62&#39;s Site" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+    
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Lee 62&#39;s Site</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">Generator基础的浅出</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/JavaScript"><b>「
+                    </b>JAVASCRIPT<b> 」</b></a>
+                
+                September 12, 2021
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/09/12/Generator%E5%9F%BA%E7%A1%80%E7%9A%84%E6%B5%85%E5%87%BA/" title="Generator基础的浅出" class="">Generator基础的浅出</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>Words count</i>
+                    9.1k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                    8 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>Read count</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/ES6/" rel="tag">ES6</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><del>研究了一段时间Generator，发现它和Promise一个级别的咖位。Generator能给任何数据结构部署Symbol.iterator接口，且不像Iterator那般麻烦，同时也是异步编程同步化的一种解决方案，上一个提到的是谁🤔，不就是Promise吗🤭</del></p>
+<p>时隔一个多月没更新博客了，这段时间实在太忙了，B端需求一出就去支援C端了，本来原定计划的Generator是一口气拉扯完。这回也只好分成两部分来写了。</p>
+<p>这段时间压力时大的有点喘不过气，工作、毕设、秋招多线程运作。顶住！💪💪，当你准备好了，死神就不会找上你💪</p>
+<h2 id="Generator概念"><a href="#Generator概念" class="headerlink" title="Generator概念"></a>Generator概念</h2><p>Generator从形式上来看就是一个普通函数，但是又俩特征，其一是function关键字与函数名之间有一个<code>*</code>连接，其二是函数内部使用<code>yield</code>关键字来定义其成员（或者说状态）；从语法上来看，Generator是一个状态机，在内部用<code>yield</code>封装了多个状态。</p>
+<pre><code class="js">function* myHelloWorldGenerator() &#123;
+  yield &#39;Hello&#39;;
+  yield &#39;World&#39;;
+  return &#39;Hello World&#39;;
+&#125;
+</code></pre>
+<p>执行Generator会返回一个遍历器对象代表Generator内部的指针，可以依次遍历其内部每一个状态。和Iterator对象不同的是，每次调用next()方法时，会从函数头或上一次停止的地方一直执行，直到遇见yield为止，然后回返回一个和Iterator类似的成员（状态）信息对象，value是yield的后面表达式的值，done是一个布尔值表示遍历是否结束。换句话说，yield是Generator的暂停标识，而next是Generator的启动动作。</p>
+<pre><code class="js">function* myHelloWorldGenerator() &#123;
+  yield &#39;Hello&#39;;
+  console.log(&#39;this round is World&#39;);
+  yield &#39;World&#39;;
+  return &#39;Hello World&#39;;
+&#125;
+
+const helloWorldGenerator = myHelloWorldGenerator();
+
+console.log(helloWorldGenerator);
+// Object [Generator] &#123;&#125;
+
+console.log(1, helloWorldGenerator.next());
+// 1 &#123; value: &#39;Hello&#39;, done: false &#125;
+
+console.log(2, helloWorldGenerator.next());
+// this round is World
+// 2 &#123; value: &#39;world&#39;, done: false &#125;
+
+console.log(3, helloWorldGenerator.next());
+// 3 &#123; value: &#39;Hello World&#39;, done: true &#125;
+
+console.log(4, helloWorldGenerator.next());
+// 4 &#123; value: undefined, done: true &#125;
+</code></pre>
+<p>需要注意的是如果没有return，那么上面的第三次的value就会变为undefined，还有ES6没有规定*号的位置，但我们一般会贴着function关键字写，如下：</p>
+<pre><code class="js">function* myGenerator() &#123; ... &#125;
+</code></pre>
+<h2 id="Generator与next"><a href="#Generator与next" class="headerlink" title="Generator与next"></a>Generator与next</h2><p>yield本身是没有返回值的，或者说每次返回的都是undefined，next方法可以带一个参数，这个参数会作为上一个yield返回值返回。由于Generator跑起来之后它的上下文是不会变的，因此我们可以利用这个特性阶段性地注入值来影响其行为。</p>
+<p>下面这个代码是创建了一个无限循环的函数，前面我们说过yield每次返回都是undefined的，因此前两次返回的value是正常累加的0和1。但第三次我们向next传入了true，他是以第二次的yield返回值的身份进入函数，相当于第二次结束的时候i被设置为了-1，第三次经过i++，返回出来的数据就是0了。</p>
+<pre><code class="js">function* f() &#123;
+  for(let i = 0; true; i++) &#123;
+    let reset = yield i;
+    if(reset) &#123; i = -1; &#125;
+  &#125;
+&#125;
+
+const g = f();
+
+const one = g.next();
+const two = g.next();
+const three =  g.next(true);
+
+console.log(one); // 0
+console.log(two); // 1
+console.log(three); // 0
+</code></pre>
+<p>直接打印next传入参数的例子，由此可以看出next参数是yield的返回值，和yield后面的内容并无关系。</p>
+<pre><code class="js">function* LogArgs() &#123;
+    console.log(&#39;Start&#39;);
+    console.log(`$&#123;yield&#125;`);
+    console.log(`$&#123;yield&#125;`);
+  &#125;;
+  
+const logArgs = LogArgs();
+logArgs.next(); // Start
+logArgs.next(&#39;a&#39;); // a
+logArgs.next(&#39;b&#39;); // b 
+</code></pre>
+<p>由于next参数是以上一次yield返回值的身份参与的，所以第一次调用next的时候传参数是无效的，V8引擎也会直接忽略第一次的传参。从语意上看，第一次调用next相当于启动的命令，所以不用待参数。如果想要在第一次调用next就能使用参数，那么需要在next外面在包一层函数，但实际上还是从第二次开始传值的。</p>
+<pre><code class="js">function wapper(generator) &#123;
+    const generatorObj = generator();
+    generatorObj.next(); // 第一次
+    return generatorObj;
+  &#125;
+  
+const getFirstNextByWapper = wapper(function* () &#123;
+  console.log(`$&#123;yield&#125; first`);
+&#125;);
+
+getFirstNextByWapper.next(&#39;I am&#39;);
+</code></pre>
+<h2 id="Generator与for…of…"><a href="#Generator与for…of…" class="headerlink" title="Generator与for…of…"></a>Generator与for…of…</h2><p>前面讲到了，Generator会返回一个Iterator对象，那么我们可以一个next都不用写，使用for…of…运行到天荒地老。需要注意的是，当next方法返回对象的done为true，for…of…就会终止循环，且不会返回该对象（done的对象），所以return的4并不包括在for…of…循环中。</p>
+<pre><code class="js">function* useForOf () &#123;
+  yield 1;
+  yield 2;
+  yield 3;
+  return 4;
+&#125;;
+
+for(let num of useForOf()) &#123;
+  console.log(num);
+&#125;
+
+// 1
+// 2
+// 3
+</code></pre>
+<p>陪波那契函数</p>
+<pre><code class="js">function* fibonacci () &#123;
+  let [prev, cur] = [0, 1];
+  for(;;) &#123;
+    yield cur;
+    [prev, cur] = [cur, prev + cur];
+  &#125;
+&#125;
+
+for (let num of fibonacci()) &#123;
+  if (num &gt; 1000) break;
+  console.log(num);
+&#125; 
+
+// 1....987
+</code></pre>
+<p>Generator和for…of…搭配可以遍历任何Object类型的对象，虽然原理和Iterator一样都是取部署Symbol.iterator接口，但是省去了很多麻烦的事情，更便捷更优雅。还记得Iterator学的东西吗？拓展运算符，解构赋值，Array.from都会调用Symbol.iterator接口，剩下的你懂的😏。</p>
+<pre><code class="js">function* fxxkObj (obj) &#123;
+  const valueKeys = Reflect.ownKeys(obj);
+  
+  for (const key of valueKeys) &#123;
+    yield [key, obj[key]];
+  &#125;
+&#125;
+
+const level = &#123;
+  Lv1: 1,
+  Lv2: 2,
+  Lv3: 3,
+&#125;
+
+for (const [key, value] of fxxkObj(level)) &#123;
+  console.log(key, value);
+&#125;
+
+// Lv1 1
+// Lv2 2
+// Lv3 3
+
+
+console.log(...fxxkObj(level));
+
+// [ &#39;Lv1&#39;, 1 ] [ &#39;Lv2&#39;, 2 ] [ &#39;Lv3&#39;, 3 ]
+
+console.log(Array.from(fxxkObj(level)));
+
+// [ [ &#39;Lv1&#39;, 1 ], [ &#39;Lv2&#39;, 2 ], [ &#39;Lv3&#39;, 3 ] ]
+</code></pre>
+<h2 id="throw"><a href="#throw" class="headerlink" title="throw"></a>throw</h2><p>Generator函数返回的遍历器对象都有一个throw方法，可以在函数体外抛出错误时，在generator内部去捕获这个错误。如果抛出的地方在捕获的范围外就会向外部抛出。譬如下面的代码，第二次抛出的错误就超出了内部捕获的范围，因此打印出来的数据会带上2的标记。如果没有try…catch…代码块来捕获错误，那么程序会报错终止运行，此后在调next会返回一个value为undefined，done为true的信息对象。</p>
+<pre><code class="js">function * g () &#123;
+  try &#123;
+    yield;
+  &#125; catch (e) &#123;
+    console.log(new Error(&#39;1&#39; + e));
+  &#125;
+&#125;;
+
+const generator = g();
+
+generator.next();
+
+try &#123;
+  generator.throw(&#39;出错了&#39;);
+    generator.throw(&#39;出错了&#39;);
+&#125; catch (e) &#123;
+  console.log(&#39;2&#39; + e);
+&#125;
+</code></pre>
+<p>generator要想在内部捕获错误必须要先执行一次，下面的代码会直接被外部捕获。这其实很好理解，之前说过第一次next相当于启动generator，那么”没有启动”这个错误向外抛出就显得理所当然了。</p>
+<pre><code class="js">function * g () &#123;
+  try &#123;
+    yield;
+  &#125; catch (e) &#123;
+    console.log(new Error(&#39;1&#39; + e));
+  &#125;
+&#125;;
+
+const generator = g();
+
+try &#123;
+  generator.throw(&#39;出错了&#39;);
+&#125; catch (e) &#123;
+  console.log(&#39;2&#39; + e);
+&#125;
+</code></pre>
+<p>throw抛出了错误后，会自动执行next方法，这表明了抛出错误并不会阻碍generator执行。</p>
+<pre><code class="js">function * g () &#123;
+  try &#123;
+    yield;
+  &#125; catch (e) &#123;
+    console.log(new Error(&#39;1&#39; + e));
+  &#125;
+  yield console.log(&#39;执行&#39;);
+&#125;;
+
+const generator = g();
+generator.next();
+
+try &#123;
+  generator.throw(&#39;出错了&#39;);
+&#125; catch (e) &#123;
+  console.log(&#39;2&#39; + e);
+&#125;
+
+// 1出错了
+// 执行
+</code></pre>
+<p>全局对象throw和throw方法不会互相影响</p>
+<pre><code class="js">const gen = function* gen()&#123;
+    try &#123;
+    yield console.log(&#39;hello&#39;);
+  &#125; catch (err) &#123;
+    console.log(err);
+  &#125;
+  yield console.log(&#39;world&#39;);
+&#125;
+
+var g = gen();
+g.next();
+
+try &#123;
+  g.throw(&#39;报错了&#39;);
+  throw new Error();
+&#125; catch (err) &#123;
+  console.log(err);
+&#125;
+
+// hello
+// 报错了
+// world
+// Error
+</code></pre>
+<p>小结一下throw相关的内容。throw不会影响整个generator执行，而且得益于这种内部捕获错误的方式，大大方便了对错误的处理，之前用回调来处理的话每条都得去兜一个catch，现在只用一个catch就能兜住多条命令，让你的代码简洁程度指数级上升。</p>
+<h2 id="return"><a href="#return" class="headerlink" title="return"></a>return</h2><p>return的用法和throw方法一样，可以返回具体值并且终结generator。</p>
+<p>下面的代码在执行完第一次next后执行了一遍return，可以看出代码成功返回了我们传入的值，同时返回的done变为了true，再次执行next后得到的值为undefined。如果在return的时候不传值那么返回的value就为undefined。</p>
+<pre><code class="js">const generatorReturn = function* () &#123;
+  yield 1;
+  yield 2;
+&#125;;
+
+const returnFunc = generatorReturn();
+
+console.log(returnFunc.next());
+console.log(returnFunc.return(&#39;I am the end of this World&#39;));
+console.log(returnFunc.next());
+
+// &#123; value: 1, done: false &#125;
+// &#123; value: &#39;I am the end of this World&#39;, done: true &#125;
+// &#123; value: undefined, done: true &#125;
+</code></pre>
+<p>如果generator内部有try…finally…代码块且正好在执行try里的内容，那么这时候return会直接进入finally代码块，然后按照顺序执行完成后结束函数。</p>
+<p>下面的代码在执行到2的时候return，直接进入到4的位置执行完后结束。</p>
+<pre><code class="js">const generatorReturn = function* () &#123;
+  yield 1;
+  try &#123;
+    yield 2;
+    yield 3;
+  &#125; finally &#123;
+    yield 4;
+  &#125;
+  yield 5;
+&#125;;
+
+const genReturn = generatorReturn();
+
+console.log(genReturn.next());
+console.log(genReturn.next());
+console.log(genReturn.return(6));
+console.log(genReturn.next());
+
+// &#123; value: 1, done: false &#125;
+// &#123; value: 2, done: false &#125;
+// &#123; value: 4, done: false &#125;
+// &#123; value: 6, done: true &#125;
+</code></pre>
+<h2 id="next、throw、return的相同点"><a href="#next、throw、return的相同点" class="headerlink" title="next、throw、return的相同点"></a>next、throw、return的相同点</h2><p>至此，next、throw、return三个方法就讲完了，上面的内容覆盖了三者的不同点，这里来小结一下他们的相同点。</p>
+<p>next、throw、return三者拆分到最基本的功能其实是同一个，那就是恢复generator的运行。</p>
+<ul>
+<li>next就是把yield替换成一个值，如果没有值可以替换那就替换为undefined</li>
+<li>throw就是把yield替换为一个throw语句</li>
+<li>return就是把yield替换为一个return语句</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/">ES6标准入门（第三版）———— 阮一峰著</a></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            <div class="post-nav">
+                <hr>
+                
+                    <div class="post-nav-item">Previous Post:<a href="/2021/09/17/ES6%E8%BF%AD%E4%BB%A3%E5%99%A8%E9%AB%98%E7%BA%A7%E4%B8%80%E7%82%B9%E7%9A%84%E6%B5%85%E5%85%A5%E6%B5%85%E5%87%BA/" rel="prev" 
+                        title="Generator高级一点的浅入浅出">Generator高级一点的浅入浅出
+                      </a></div>
+                
+                
+                    <div class="post-nav-item">Next Post:<a href="/2021/08/21/MacBook%E4%B8%80%E6%97%A5%E6%B8%B8/" rel="next" 
+                        title="MacBook一日游">MacBook一日游</a></div>
+                                
+            </div>   
+                        
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://res.cloudinary.com/tridiamond/image/upload/v1573019751/TriDiamond_logo_ui_xeublz.jpg" height=300 width=300></img>
+                    <p>Lee 62</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        
+                        
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">57 <p>Articles</p></a></li>
+                    <li><a href="/categories">18 <p>Categories</p></a></li>
+                    <li><a href="/tags">36 <p>Tags</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>Contents</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Generator%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">Generator概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Generator%E4%B8%8Enext"><span class="toc-number">3.</span> <span class="toc-text">Generator与next</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Generator%E4%B8%8Efor%E2%80%A6of%E2%80%A6"><span class="toc-number">4.</span> <span class="toc-text">Generator与for…of…</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#throw"><span class="toc-number">5.</span> <span class="toc-text">throw</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#return"><span class="toc-number">6.</span> <span class="toc-text">return</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#next%E3%80%81throw%E3%80%81return%E7%9A%84%E7%9B%B8%E5%90%8C%E7%82%B9"><span class="toc-number">7.</span> <span class="toc-text">next、throw、return的相同点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">8.</span> <span class="toc-text">参考</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2023
+        <span class="gradient-text">
+            Lee 62
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.7" target="_blank" rel="noopener">v1.4.7</a></small>
+        
+        
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+ 
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+   
+<script src="/js/busuanzi.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    if ($('span[id^="busuanzi_"]').length) {
+      initialBusuanzi();
+    }
+  });
+</script>
+ 
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149874671-1');
+</script>
+ 
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Think like an artist, develop like an artisan', '艺术家思维去思考问题，工匠创造精神去开发'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+
+
+
+
+
+</html>

@@ -1,0 +1,570 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>解决IMG对象创建过程中的异步问题 - Lee 62&#39;s Site</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="TriDiamond Obsidian,"> 
+    <meta name="description" content="引言该文章是基于我自己用express  + ejs + mysql 搭建的个人博客项目。在开发过程中，图片对象异步创建导致了获取宽高的代码不会立即执行，所以后续的第一次循环（因为请求图片肯定是一组,"> 
+    <meta name="author" content="Lee 62"> 
+    <link rel="alternative" href="atom.xml" title="Lee 62&#39;s Site" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+    
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Lee 62&#39;s Site</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">解决IMG对象创建过程中的异步问题</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/JavaScript"><b>「
+                    </b>JAVASCRIPT<b> 」</b></a>
+                
+                January 27, 2021
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/01/27/%E8%A7%A3%E5%86%B3IMG%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98/" title="解决IMG对象创建过程中的异步问题" class="">解决IMG对象创建过程中的异步问题</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>Words count</i>
+                    5.6k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                    5 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>Read count</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E5%BC%82%E6%AD%A5/" rel="tag">异步</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>该文章是基于我自己用<code>express  + ejs + mysql</code> 搭建的个人博客项目。在开发过程中，图片对象<strong>异步创建</strong>导致了<strong>获取宽高的代码不会立即执行</strong>，所以后续的第一次循环（因为请求图片肯定是一组一组的请求，请求一组图片再循环对每张图片操作）拿不到计算过后的准确<code>top</code>值（此处在实现等宽瀑布流，需要计算图片的<code>top</code>值），直接使首次请求的部分图片渲染失败。现在给出以下两种解决思路。<strong>这里只提供思路，我的代码你不一定能用。</strong></p>
+<h2 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h2><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><ul>
+<li>定义一个获取图片信息的方法<code>getImgInfos()</code><ul>
+<li>(必)参数<code>url</code>，图片通常在数据库中是以链接的形式保存，所以需要传入图片链接<code>url</code></li>
+<li>(非必)参数<code>index</code>，我这里因为要做等宽瀑布流，需要保存每列的index索引值所以要传入</li>
+</ul>
+</li>
+</ul>
+<pre><code class="javascript">function getImgInfos(url, index) &#123;
+    
+&#125;
+</code></pre>
+<ul>
+<li>创建一个<code>image</code>对象，将<code>image</code>对象的<code>src</code>属性改为传入的图片链接<code>url</code></li>
+</ul>
+<pre><code class="javascript">function getImgInfos(url, index) &#123;
+    let imgObj = new Image();
+    imgObj.src = url;
+&#125;
+</code></pre>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>​	由于操作是异步进行的，当你把<code>url</code>给到<code>src</code>属性的时候，图片并不是马上加载完成。如果马上<code>return</code>获取图片的宽高，只能拿到<code>undefined</code>，但是刷新一下就会拿到加载好的值，也证明这是异步的操作</p>
+<pre><code class="javascript">function getImgInfos(url, index) &#123;
+    let imgObj = new Image();
+    imgObj.src = url;
+    
+    return &#123;
+        columnWidth:imgObj.width,
+        columnHight:imgObj.height,
+        index
+    &#125;
+&#125;
+</code></pre>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>用<code>Promise</code>来操作<code>image</code>对象的<code>onload</code>方法获取，<code>onload</code>是<code>Image</code>对象的<code>load</code>事件回调，当图片加载完成后执行<code>onload</code>绑定的函数。</p>
+<ul>
+<li><code>new</code>一个<code>Promise</code>对象</li>
+</ul>
+<pre><code class="javascript">function getImgInfos(url, index) &#123;
+    let imgObj = new Image();
+    imgObj.src = url;
+    
+       return new Promise()
+&#125;
+</code></pre>
+<ul>
+<li>绑定一个函数，参数为<code>resolve</code>方法和<code>reject</code>方法</li>
+</ul>
+<pre><code class="javascript">function getImgInfos(url, index) &#123;
+    let imgObj = new Image();
+    imgObj.src = url;
+    
+       return new Promise(function (resolve,reject) &#123;
+   
+   &#125;)
+&#125;
+</code></pre>
+<ul>
+<li>给<code>image</code>对象的<code>onload</code>绑定函数<ul>
+<li>由于此处我们暂时没有<code>reject</code>的情况，所以就只调用<code>resolve</code>方法</li>
+</ul>
+</li>
+</ul>
+<pre><code class="javascript">function getImgInfos(url, index) &#123;
+    let imgObj = new Image();
+    imgObj.src = url;
+    
+       return new Promise(function (resolve,reject) &#123;
+   
+        imgObj.onload = function () &#123;
+            resolve()
+        &#125;
+   &#125;)
+&#125;
+</code></pre>
+<ul>
+<li>调用<code>resolve</code>方法，将封装好的对象传入</li>
+</ul>
+<pre><code class="javascript">function getImgInfos(url, index) &#123;
+    let imgObj = new Image();
+    imgObj.src = url;
+    
+       return new Promise(function (resolve,reject) &#123;
+   
+        imgObj.onload = function () &#123;
+            resolve(&#123;  
+                columnWidth: imgObj.width,
+                columnHeight: imgObj.height,
+                columnIndex: index
+            &#125;)
+        &#125;
+   &#125;)
+&#125;
+</code></pre>
+<ul>
+<li><p><strong>测试</strong></p>
+</li>
+<li><p>定义一个图片链接</p>
+</li>
+</ul>
+<pre><code class="javascript">let testurl = &quot;./images/pic/1.jpg&quot;;
+</code></pre>
+<ul>
+<li>调用<code>getImgInfos()</code>,由于我们<code>return</code>回来的是一个<code>promise</code>对象，所以我们要拿到我们想要的东西就通过<code>.then()</code><ul>
+<li>上面<code>resolve</code>中传入的内容会直接赋给<code>res</code>（不清楚的同学可以康康promise原理）</li>
+</ul>
+</li>
+</ul>
+<pre><code class="javascript">getImgInfos(testurl, 0).then((res)=&gt;&#123;
+    console.log(res)
+&#125;)
+</code></pre>
+<p><strong>原码</strong></p>
+<pre><code class="javascript">function getImgInfos(url, index) &#123;
+    let imgObj = new Image();
+    imgObj.src = url;
+       return new Promise(function (resolve,reject) &#123;
+        imgObj.onload = function () &#123;
+            resolve(&#123;
+                columnWidth: imgObj.width,
+                columnHeight: imgObj.height,
+                columnIndex: index
+            &#125;)
+        &#125;
+   &#125;)
+&#125;
+
+let testurl = &quot;./images/pic/1.jpg&quot;;
+getImgInfos(testurl, 0).then((res)=&gt;&#123;
+    console.log(res)
+&#125;)
+</code></pre>
+<h2 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h2><h3 id="准备-1"><a href="#准备-1" class="headerlink" title="准备"></a>准备</h3><p>前面提到我们是<code>JavaScript</code>创建一个image对象来进行操作的，这种方案比较消耗性能。现在我们直接把<code>image</code>对应的分辨率以<code>width*height</code>的形式放在数据库，请求的时候一并拿到（请求的过程省略）。</p>
+<h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h3><p>暂无问题</p>
+<h3 id="解决-1"><a href="#解决-1" class="headerlink" title="解决"></a>解决</h3><p>这里直接讲解我的原码（尖括号是<code>ejs模板</code>的语法，直接看里面的内容，你就知道这是一个循环）</p>
+<ul>
+<li>我们拿到一组照片的信息<code>resultsPic</code>，里面的<code>size</code>就是图片的分辨率，对其循环操作</li>
+<li>将每张照片的<code>size</code>给到<code>originSize</code></li>
+<li>用<code>split</code>分割<code>originSize</code>，会得到一个数组，将其解构赋值给width和height<ul>
+<li>封装成对象，将其<code>push</code>进一个<code>data</code>数组(<strong>不用管</strong>，因为我的代码要用到)</li>
+<li><code>realWidthAndHeight</code>这个东西已经在<code>data</code>数组的<code>forEach</code>循环内了(<strong>不用管</strong>，因为我的代码要用到，你只用知道他已经在循环内了，只是我把它拆出来放这儿讲)</li>
+</ul>
+</li>
+<li><code>realWidthAndHeight</code>里用到了<code>parseInt()</code>是因为我们在数据库里分辨率<code>width*height</code>是<code>string</code>类型，所以这里要转换一下数据类型</li>
+</ul>
+<pre><code class="javascript">    &#39;&lt;% for(let i in resultsPic)
+</code></pre>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            <div class="post-nav">
+                <hr>
+                
+                    <div class="post-nav-item">Previous Post:<a href="/2021/01/31/%E7%AD%89%E5%AE%BD%E7%80%91%E5%B8%83%E6%B5%81%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF%E5%8F%8A%E5%85%B6%E5%8E%9F%E7%A0%81/" rel="prev" 
+                        title="等宽瀑布流实现思路及其原码">等宽瀑布流实现思路及其原码
+                      </a></div>
+                
+                
+                    <div class="post-nav-item">Next Post:<a href="/2020/12/27/this%E8%AF%A6%E8%A7%A3/" rel="next" 
+                        title="this详解">this详解</a></div>
+                                
+            </div>   
+                        
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://res.cloudinary.com/tridiamond/image/upload/v1573019751/TriDiamond_logo_ui_xeublz.jpg" height=300 width=300></img>
+                    <p>Lee 62</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        
+                        
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">57 <p>Articles</p></a></li>
+                    <li><a href="/categories">18 <p>Categories</p></a></li>
+                    <li><a href="/tags">36 <p>Tags</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>Contents</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%B8%80"><span class="toc-number">2.</span> <span class="toc-text">方案一</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">2.1.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">2.2.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3"><span class="toc-number">2.3.</span> <span class="toc-text">解决</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%BA%8C"><span class="toc-number">3.</span> <span class="toc-text">方案二</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87-1"><span class="toc-number">3.1.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-1"><span class="toc-number">3.2.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3-1"><span class="toc-number">3.3.</span> <span class="toc-text">解决</span></a></li></ol></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2023
+        <span class="gradient-text">
+            Lee 62
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.7" target="_blank" rel="noopener">v1.4.7</a></small>
+        
+        
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+ 
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+   
+<script src="/js/busuanzi.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    if ($('span[id^="busuanzi_"]').length) {
+      initialBusuanzi();
+    }
+  });
+</script>
+ 
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149874671-1');
+</script>
+ 
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Think like an artist, develop like an artisan', '艺术家思维去思考问题，工匠创造精神去开发'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+
+
+
+
+
+</html>

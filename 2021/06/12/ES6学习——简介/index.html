@@ -1,0 +1,547 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ES6简介 - Lee 62&#39;s Site</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="TriDiamond Obsidian,"> 
+    <meta name="description" content="前言ES6，全名ECMAScript 6.0，是ECMA（European Computer Manufactures Association）组织在2015年6月发布的标准。
+ECMAScript,"> 
+    <meta name="author" content="Lee 62"> 
+    <link rel="alternative" href="atom.xml" title="Lee 62&#39;s Site" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+    
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Lee 62&#39;s Site</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">ES6简介</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/JavaScript"><b>「
+                    </b>JAVASCRIPT<b> 」</b></a>
+                
+                June 12, 2021
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/06/12/ES6%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E7%AE%80%E4%BB%8B/" title="ES6简介" class="">ES6简介</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>Words count</i>
+                    4.5k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                    4 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>Read count</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/ES6/" rel="tag">ES6</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ES6，全名<code>ECMAScript 6.0</code>，是ECMA（European Computer Manufactures Association）组织在2015年6月发布的标准。</p>
+<h2 id="ECMAScript与JavaScript的关系"><a href="#ECMAScript与JavaScript的关系" class="headerlink" title="ECMAScript与JavaScript的关系"></a>ECMAScript与JavaScript的关系</h2><blockquote>
+<p>ECMAScript是怎么来的？</p>
+</blockquote>
+<p>1996年11月JS的创造者网景（NetScape）公司将JS提交给ECMA，希望JS能成为国际标准。次年ECMA发布<code>ECMA-262</code>文件的初版，规定了浏览器脚本语言的标准，并定名位ECMAScript。</p>
+<blockquote>
+<p>为什么要命名为ECMAScript？</p>
+</blockquote>
+<p>这一标准一开始就是为JS量身定制，为什么不叫JavaScript主要有两个原因</p>
+<ul>
+<li>版权问题： Java的版权在SUN公司手里，根据SUN与NetScape公司的授权协议，只有NetScape公司能合法使用JavaScript这个名字。</li>
+<li>保证这门语言的中立性： 制定规范的是ECMA而不是NetScape。</li>
+</ul>
+<p>总而言之，前者是后者是<strong>规范</strong>，后者则是前者的<strong>实现</strong></p>
+<h2 id="Babel（转码器）"><a href="#Babel（转码器）" class="headerlink" title="Babel（转码器）"></a>Babel（转码器）</h2><blockquote>
+<p>简介</p>
+</blockquote>
+<p>Babel是一个广泛使用的ES6转码器，可以将ES6的代码转为ES5的代码，从而在老版本的浏览器（IE）上执行。这意味着你可以使用ES6编程，但不用考虑现有环境是否兼容。</p>
+<pre><code class="js">const testArray = [1,2,3,4];
+// 转码前，ES6支持的箭头函数
+testArray.map((item) =&gt; item + 1)
+// 转码后，普通函数
+testArray.map(function(item) =&gt; &#123;
+    return item + 1              
+&#125;)
+</code></pre>
+<blockquote>
+<p>配置文件</p>
+</blockquote>
+<p>安装Babel</p>
+<pre><code class="shell">npm install --save-dev @babel/core
+</code></pre>
+<p>使用Babel的第一步是先配置他的配置文件<code>.babelrc</code>，这个文件在他的项目根目录下。</p>
+<pre><code class="js">&#123;
+    &quot;presets&quot;: [], // 转码规则
+    &quot;plugins&quot;: [], // 插件   
+&#125;
+</code></pre>
+<p>官方提供了一些规则集，你可以根据需求来进行安装，下面是react转码规则和最新的转码规则</p>
+<pre><code class="shell"># 最新的转码规则
+npm install --save-dev @babel/presets-env
+# react的转码规则
+npm install --save-dev @babel/presets-react
+</code></pre>
+<pre><code>&#123;
+    &quot;presets&quot;: [
+        &quot;@babel/presets-env&quot;,
+        &quot;@babel/presets-react&quot;
+    ],
+    &quot;plugins&quot;: [],   
+&#125;
+</code></pre>
+<blockquote>
+<p>@babel&#x2F;cli模块</p>
+<p>⚠需要先配置.babelrc才能使用</p>
+</blockquote>
+<p>Babel提供了命令行的转码工具<code>@babel/cli</code></p>
+<p>安装</p>
+<pre><code class="shell">npm install --save-dev @babel/cli
+</code></pre>
+<p>基本用法</p>
+<pre><code class="shell"># 转码结果输出到标准输出
+npx babel example.js
+
+# 转码结果写入到一个文件，通过-o或者--out-file来指定输出文件
+npx babel example.js -o compiled.js
+npx babel example.js --out-file compiled.js
+
+# 整个目录进行转码，通过-d或者--out-dir来指定输出文件
+npx babel example.js -d lib
+npx babel example.js --out-dir lib
+
+# -s 参数生成source map文件
+npx babel src -d lib -s
+</code></pre>
+<blockquote>
+<p>@babel&#x2F;node模块</p>
+<p>⚠需要先配置.babelrc才能使用</p>
+</blockquote>
+<p>@babel&#x2F;node的babel-node命令提供一个支持ES6的REPL的环境，可以直接运行ES6的代码，并且支持Node的REPL环境所有的功能。</p>
+<p>安装</p>
+<pre><code class="shell">npm install --save-dev @babel/node
+</code></pre>
+<p>执行babel-node命令就进入REPL环境了，该命令也能直接运行ES6脚本文件</p>
+<pre><code class="shell"># 进入环境
+npx babel-node
+# 直接执行脚本文件
+npx babel-node ES6.js
+</code></pre>
+<blockquote>
+<p>@babel&#x2F;register模块</p>
+<p>⚠需要先配置.babelrc才能使用</p>
+<p>⚠@babel&#x2F;register模块只会对require命令加载的文件进行转码，不会对当前文件进行转码</p>
+<p>⚠转码过程是实时进行的，w’w只是适用于开发环境</p>
+</blockquote>
+<p>@babel&#x2F;register模块给require命令加上了一个Hook，每当require加载后缀为js，jsx，es，es6的文件，会通过调起Hook先用Babel进行转码。</p>
+<p>安装</p>
+<pre><code class="shell">npm install --save-dev @babel/register
+</code></pre>
+<p>引用</p>
+<pre><code class="js">// 必须先加载@babel/register模块
+require(&#39;@babel/register&#39;);
+require(&#39;./es6.js&#39;)
+</code></pre>
+<h2 id="polyfill（垫片）"><a href="#polyfill（垫片）" class="headerlink" title="polyfill（垫片）"></a>polyfill（垫片）</h2><blockquote>
+<p>polyfill我理解还是一个概念性的东西，你可以理解为它是在给未能实现的东西进行一个兜底，让其能正常运行</p>
+</blockquote>
+<p>Babel默认只转码JS的句法，而不会转码新的API，Babel默认不转码的API有很多，具体可以查看<code>babel-plugin-transform-runtime</code>模块的<code>definition.js</code>文件。</p>
+<p>举个例子，Array对象在ES6上新了<code>.from</code>方法，Babel是不会对这个方法进行转码。如果想要这个方法有效，需要<code>core-js</code>与<code>regenerator-runtime</code>这两个模块来为当前环境提供一个垫片。</p>
+<p>安装</p>
+<pre><code class="shell">npm install --save-dev core-js regenerator-runtime
+</code></pre>
+<p>用import或者require引入模块，配置脚本</p>
+<pre><code class="js">import &#39;core-js&#39;;
+import &#39;regenerator-runtime/runtime&#39;;
+
+require(&#39;core-js&#39;);
+require(&#39;regenerator-runtime/runtime);
+</code></pre>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这里简单的讲了一下ES6的由来，阮一峰大佬的书里有更详细的介绍，比如ECMAScript的具体历史，语法提案的流程等等。然后Babel和ployfill这俩前端黑话级别的东西，目前我的开发经历中是几乎没直接使用过，这俩对我来说就相当于一个知识储备。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/">ES6标准入门（第三版）———— 阮一峰著</a></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            <div class="post-nav">
+                <hr>
+                
+                    <div class="post-nav-item">Previous Post:<a href="/2021/06/16/%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/" rel="prev" 
+                        title="解构赋值">解构赋值
+                      </a></div>
+                
+                
+                    <div class="post-nav-item">Next Post:<a href="/2021/05/31/%E5%A6%82%E4%BD%95%E7%94%A8%E5%B7%A5%E7%A8%8B%E6%96%B9%E6%B3%95%E6%9D%A5%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81/" rel="next" 
+                        title="如何工程化你的代码">如何工程化你的代码</a></div>
+                                
+            </div>   
+                        
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://res.cloudinary.com/tridiamond/image/upload/v1573019751/TriDiamond_logo_ui_xeublz.jpg" height=300 width=300></img>
+                    <p>Lee 62</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        
+                        
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">57 <p>Articles</p></a></li>
+                    <li><a href="/categories">18 <p>Categories</p></a></li>
+                    <li><a href="/tags">36 <p>Tags</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>Contents</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ECMAScript%E4%B8%8EJavaScript%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">2.</span> <span class="toc-text">ECMAScript与JavaScript的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Babel%EF%BC%88%E8%BD%AC%E7%A0%81%E5%99%A8%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">Babel（转码器）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#polyfill%EF%BC%88%E5%9E%AB%E7%89%87%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">polyfill（垫片）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">6.</span> <span class="toc-text">参考</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2023
+        <span class="gradient-text">
+            Lee 62
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.7" target="_blank" rel="noopener">v1.4.7</a></small>
+        
+        
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+ 
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+   
+<script src="/js/busuanzi.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    if ($('span[id^="busuanzi_"]').length) {
+      initialBusuanzi();
+    }
+  });
+</script>
+ 
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149874671-1');
+</script>
+ 
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Think like an artist, develop like an artisan', '艺术家思维去思考问题，工匠创造精神去开发'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+
+
+
+
+
+</html>
