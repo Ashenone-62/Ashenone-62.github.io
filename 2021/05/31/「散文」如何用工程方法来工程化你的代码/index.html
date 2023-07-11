@@ -1,0 +1,568 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>「散文」如何工程化你的代码 - Lee 62&#39;s Site</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="TriDiamond Obsidian,"> 
+    <meta name="description" content="前言团队成员代码风格不统一 💩 、BAD CODE被部署上线 💩 、团队编码规范难以落地 💩 、代码质量参差不齐 💩 ，这些问题是协同开发中经常出现的痛点。这篇文章会一步一步教你的配置ESL,"> 
+    <meta name="author" content="Lee 62"> 
+    <link rel="alternative" href="atom.xml" title="Lee 62&#39;s Site" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+    
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Lee 62&#39;s Site</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">「散文」如何工程化你的代码</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/散文"><b>「
+                    </b>散文<b> 」</b></a>
+                
+                May 31, 2021
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/05/31/%E3%80%8C%E6%95%A3%E6%96%87%E3%80%8D%E5%A6%82%E4%BD%95%E7%94%A8%E5%B7%A5%E7%A8%8B%E6%96%B9%E6%B3%95%E6%9D%A5%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81/" title="「散文」如何工程化你的代码" class="">「散文」如何工程化你的代码</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>Words count</i>
+                    6.2k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                    6 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>Read count</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/" rel="tag">工程化</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>团队成员代码风格不统一 💩 、<code>BAD CODE</code>被部署上线 💩 、团队编码规范难以落地 💩 、代码质量参差不齐 💩 ，这些问题是协同开发中经常出现的痛点。这篇文章会一步一步教你的配置<code>ESLint</code>，<code>Prettier</code>，<code>Husky</code>，<code>Lint-Staged</code> (有手就会 🙌)。这些工具会在你开发的时候帮你规避掉一些痛点，同时让你慢慢养成代码”洁癖”😊</p>
+<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><ul>
+<li><code>git add .</code></li>
+<li><code>git commit -m &quot;xxxxxx&quot;</code></li>
+<li><code>husky =&gt; pre-commit =&gt; lint-staged</code></li>
+<li><code>lint-staged =&gt; Prettier/ESLint</code><ul>
+<li><code>格式化代码，规范过关 =&gt; Success</code></li>
+<li><code>格式化代码，规范不过关 =&gt; Error =&gt; 修改代码直到符合规范</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="保姆级教程，有手就行-🙌"><a href="#保姆级教程，有手就行-🙌" class="headerlink" title="保姆级教程，有手就行 🙌"></a>保姆级教程，有手就行 🙌</h2><h3 id="准备工具"><a href="#准备工具" class="headerlink" title="准备工具"></a>准备工具</h3><p>框架：<code>React</code></p>
+<p>工具库：<code>ESLint</code>，<code>Prettier</code>，<code>Husky</code>，<code>Lint-Staged</code></p>
+<p>目的：</p>
+<ul>
+<li>在你提交代码前通过扫描你的代码发现低级错误和潜在错误，必须修改正确后才能推送到仓库</li>
+<li>在提交前会格式化代码，规范化单引号，双引号以及分号的使用</li>
+</ul>
+<h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><pre><code class="shell"># 创建项目
+create-react-app yourprojectname
+# 进入项目目录
+cd yourprojectname
+</code></pre>
+<h3 id="ESLint"><a href="#ESLint" class="headerlink" title="ESLint"></a>ESLint</h3><pre><code class="shell"># 初始化你的 eslintrc.js
+./node_modules/.bin/eslint --init
+
+# 输入上面的命令后，终端会让你填写一份问卷，根据填写情况来生成你的 eslintrc.js
+
+# 你可以根据你的需求填写，也可以参考一下我的
+# 👇👇👇
+# How would you like to use ESLint ? To check syntax, find problems, and enforce code style
+
+# What type of modules does your project use ? JavaScript modules (import/export)
+
+# which framework does your project use ? React
+
+# Does your project use TypeScript ? No
+
+# Where does your code run ? Browser, Node
+
+# How would you like to define a style for your project ? Answer questions about your style
+
+# what format do you want your config file to be in ? JavaScript
+
+# what style of indentation do you use ? Tabs
+
+# what quotes do you use for strings ? Single
+
+# what line endings do you use ? Windows
+
+# Do you require semicolons ？Yes
+</code></pre>
+<pre><code class="js">// 生成的eslintrc.js
+
+module.exports = &#123;
+  env: &#123;
+    browser: true,
+    es2021: true,
+    node: true,
+  &#125;,
+  extends: [&quot;eslint:recommended&quot;, &quot;plugin:react/recommended&quot;],
+  parserOptions: &#123;
+    ecmaFeatures: &#123;
+      jsx: true,
+    &#125;,
+    ecmaVersion: 12,
+    sourceType: &quot;module&quot;,
+  &#125;,
+  plugins: [&quot;react&quot;],
+  rules: &#123;
+    indent: [&quot;error&quot;, &quot;tab&quot;],
+    &quot;linebreak-style&quot;: [&quot;error&quot;, &quot;windows&quot;],
+    quotes: [&quot;error&quot;, &quot;single&quot;],
+    semi: [&quot;error&quot;, &quot;always&quot;],
+  &#125;,
+&#125;;
+</code></pre>
+<h3 id="Preitter"><a href="#Preitter" class="headerlink" title="Preitter"></a>Preitter</h3><p>安装<code>Prettier</code>，<code>Husky</code>，<code>Lint-Staged</code>三个库</p>
+<blockquote>
+<p>⚠ <code>cnpm</code>是配置了淘宝源的<code>npm</code>，没配置就用<code>npm</code>或者<code>yarn</code></p>
+<p>⚠ 一定要加 <code>--save-dev</code>，确保这三个依赖是开发环境的依赖</p>
+</blockquote>
+<pre><code class="shell"># 规范代码风格
+cnpm install --save-dev --save-exact prettier
+# 让开发者更方便的设置git hook
+cnpm install --save-dev husky
+# 在提交代码时通过 ESLint 和 Prettier 依次检查有改动的代码，卡住不合规范的代码
+cnpm install --save-dev lint-staged
+</code></pre>
+<p>在你的根目录下建立 <code>.prettierrc.js</code> 进行初始化配置</p>
+<blockquote>
+<p>✨<a target="_blank" rel="noopener" href="https://blog.csdn.net/hbiao68/article/details/107176795/">更多配置在这儿</a></p>
+</blockquote>
+<pre><code class="js">module.exports = &#123;
+  trailingComma: &quot;all&quot;, // 函数最后不需要逗号
+  printWidth: 80, // 超过最大值换行
+  tabWidth: 2, // 缩进字节数
+  semi: true, // 格式化在句尾添加分号
+  singleQuote: true, // 使用单引号替换双引号
+  jsxBracketSameLine: true, // 把 &gt; 单独放一行
+  jsxSingleQuote: true, // 在jsx中使用单引号替换双引号
+  arrowParens: &quot;always&quot;, // 箭头函数参数只有一个是否要小括号
+&#125;;
+</code></pre>
+<h3 id="Lint-Staged"><a href="#Lint-Staged" class="headerlink" title="Lint-Staged"></a>Lint-Staged</h3><p>初始化<code>Lint-Staged</code>的配置</p>
+<pre><code class="shell">npx mrm lint-staged
+</code></pre>
+<blockquote>
+<p>⚠ 可能会报错 Cannot find module ‘ …省…略…\node_modules\mrm-task-lint-staged’</p>
+</blockquote>
+<pre><code class="shell"># 降低mrm版本
+npx mrm@2 lint-staged
+</code></pre>
+<p>执行完成后会在你的<code>package.json</code>中生成<code>husky</code>和<code>lint-staged</code>的相关配置，你也可以进行手动配置</p>
+<pre><code class="json">  &quot;husky&quot;: &#123;
+    &quot;hooks&quot;: &#123;
+      &quot;pre-commit&quot;: &quot;npm run lint-staged&quot;
+    &#125;
+  &#125;,
+  &quot;lint-staged&quot;: &#123;
+    &quot;**/*.&#123;js,jsx,ts,tsx&#125;&quot;: &quot;npm run lint-staged:js&quot;,
+    &quot;**/*.&#123;js,jsx,tsx,ts,less,md,json&#125;&quot;: [
+      &quot;prettier --write&quot;,
+      &quot;git add&quot;
+    ]
+  &#125;
+</code></pre>
+<p>最后配置一下 scripts 中的脚本命令</p>
+<pre><code class="json">&quot;lint&quot;: &quot;npm run lint:js &amp;&amp; npm run lint:style &amp;&amp; npm run lint:prettier&quot;,
+&quot;lint-staged&quot;: &quot;lint-staged&quot;,
+&quot;lint-staged:js&quot;: &quot;eslint --ext .js,.jsx,.ts,.tsx &quot;,
+&quot;lint:fix&quot;: &quot;eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src &amp;&amp; npm run lint:style&quot;,
+&quot;lint:js&quot;: &quot;eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src&quot;,
+&quot;lint:prettier&quot;: &quot;check-prettier lint&quot;,
+&quot;lint:style&quot;: &quot;stylelint --fix \&quot;src/**/*.less\&quot; --syntax less&quot;,
+&quot;prettier&quot;: &quot;prettier -c --write \&quot;**/*\&quot;&quot;
+</code></pre>
+<p>大功告成 👌👌👌 现在来尝试改动一些东西然后推送到你的远端仓库，康康是什么效果 🕵️‍♂️</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>工具虽然有作用，但上限也就仅仅是解决工程上的问题，工程的问题一定会有工程的方法来解决。真正降低开发效率的还是人写的生涩难懂、逻辑混乱的<code>Bad Code</code>，如何去提升自己代码的可读性，可复用性，可重构性才是大家要去思考的问题。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://prettier.io/docs/en/index.html">Prettier 官方文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/alivebao/clean-code-js">JS 的代码整洁之道</a></p>
+<p><a target="_blank" rel="noopener" href="https://book.douban.com/subject/4199741/">代码整洁之道</a></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            <div class="post-nav">
+                <hr>
+                
+                    <div class="post-nav-item">Previous Post:<a href="/2021/06/12/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8DES6%E5%AD%A6%E4%B9%A0%E5%BC%80%E7%AF%87/" rel="prev" 
+                        title="「ES6朝圣」ES6简介">「ES6朝圣」ES6简介
+                      </a></div>
+                
+                
+                    <div class="post-nav-item">Next Post:<a href="/2021/05/27/%E3%80%8C%E6%95%A3%E6%96%87%E3%80%8D%E5%8F%97%E6%8E%A7%E7%BB%84%E4%BB%B6%E4%B8%8E%E9%9D%9E%E5%8F%97%E6%8E%A7%E7%BB%84%E4%BB%B6%E6%B5%85%E5%87%BA/" rel="next" 
+                        title="「散文」受控组件与非受控组件浅出">「散文」受控组件与非受控组件浅出</a></div>
+                                
+            </div>   
+                        
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://res.cloudinary.com/tridiamond/image/upload/v1573019751/TriDiamond_logo_ui_xeublz.jpg" height=300 width=300></img>
+                    <p>Lee 62</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        
+                        
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">57 <p>Articles</p></a></li>
+                    <li><a href="/categories">12 <p>Categories</p></a></li>
+                    <li><a href="/tags">36 <p>Tags</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>Contents</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B%EF%BC%8C%E6%9C%89%E6%89%8B%E5%B0%B1%E8%A1%8C-%F0%9F%99%8C"><span class="toc-number">3.</span> <span class="toc-text">保姆级教程，有手就行 🙌</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E5%85%B7"><span class="toc-number">3.1.</span> <span class="toc-text">准备工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-number">3.2.</span> <span class="toc-text">创建项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ESLint"><span class="toc-number">3.3.</span> <span class="toc-text">ESLint</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Preitter"><span class="toc-number">3.4.</span> <span class="toc-text">Preitter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lint-Staged"><span class="toc-number">3.5.</span> <span class="toc-text">Lint-Staged</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2020
+        <!-- <span class="gradient-text">
+            Lee 62
+        </span>. -->
+        Powered by <span class="gradient-text">Lee 62</span>
+        <!-- <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.7" target="_blank" rel="noopener">v1.4.7</a></small>
+        
+         -->
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+ 
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+   
+<script src="/js/busuanzi.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    if ($('span[id^="busuanzi_"]').length) {
+      initialBusuanzi();
+    }
+  });
+</script>
+ 
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149874671-1');
+</script>
+ 
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Think like an artist, develop like an artisan', '艺术家思维去思考问题，工匠创造精神去开发'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+
+
+
+
+
+</html>

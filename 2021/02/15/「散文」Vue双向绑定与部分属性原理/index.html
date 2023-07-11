@@ -1,0 +1,872 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>「散文」Vue双向绑定与部分属性原理 - Lee 62&#39;s Site</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="TriDiamond Obsidian,"> 
+    <meta name="description" content="引言之前写过一篇文章是关于使用 ES6 的 proxy 来实现一个快速创造 Dom 的简单框架。这篇文章算是一个进阶，用原生 JS 实现 Vue 视图层和数据层的双向绑定。
+准备在你的根目录创建一个,"> 
+    <meta name="author" content="Lee 62"> 
+    <link rel="alternative" href="atom.xml" title="Lee 62&#39;s Site" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+    
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Lee 62&#39;s Site</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">「散文」Vue双向绑定与部分属性原理</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/散文"><b>「
+                    </b>散文<b> 」</b></a>
+                
+                February 15, 2021
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/02/15/%E3%80%8C%E6%95%A3%E6%96%87%E3%80%8DVue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E4%B8%8E%E9%83%A8%E5%88%86%E5%B1%9E%E6%80%A7%E5%8E%9F%E7%90%86/" title="「散文」Vue双向绑定与部分属性原理" class="">「散文」Vue双向绑定与部分属性原理</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>Words count</i>
+                    18k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                    16 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>Read count</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Vue%E5%8E%9F%E7%90%86/" rel="tag">Vue原理</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/" rel="tag">双向绑定</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>之前写过一篇文章是关于使用 ES6 的 proxy 来实现一个快速创造 Dom 的简单框架。这篇文章算是一个进阶，用原生 JS 实现 Vue 视图层和数据层的双向绑定。</p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>在你的根目录创建一个<code>js</code>文件和<code>html</code>文件。<code>js</code>用于封装我们的<code>Vue</code>对象，<code>html</code>则是我们完成了<code>js</code>的编写后在里面测试。</p>
+<h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2><p>创建一个<code>Vue</code>类，之后我们通过里面构造器来实例化<code>Vue</code>对象。在使用<code>Vue</code>框架（正房）的时候通常会在里面传入一个含有 el,data,methods 等属性的对象，因此再构造器上传入一个<code>options</code>。</p>
+<ul>
+<li><code>this.$el</code>——通过<code>querySelector</code>选择器来搜索根节点。</li>
+<li><code>this.$options</code>——将传入的参数单独在<code>Vue</code>对象内部保存一下。</li>
+<li>去<code>html</code>里将<code>js</code>文件引入，然后将<code>Vue</code>对象实例化成 app，<code>console.log()</code>来看一看。</li>
+</ul>
+<pre><code class="javascript">class Vue &#123;
+  constructor(options) &#123;
+    this.$el = document.querySelector(options.el);
+    this.$options = options;
+  &#125;
+&#125;
+</code></pre>
+<pre><code class="html">-----前面省略-----
+&lt;body&gt;
+  &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
+&lt;/body&gt;
+
+&lt;script src=&quot;./vueOrigin.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+  let options = &#123;
+    el: &quot;#app&quot;,
+  &#125;;
+  let app = new Vue(options);
+  console.log(app);
+&lt;/script&gt;
+-----后面省略-----
+</code></pre>
+<h2 id="代理数据"><a href="#代理数据" class="headerlink" title="代理数据"></a>代理数据</h2><p>创建<code>proxyData()</code>函数，并在构造器内调用在构建对象的时候初始化。</p>
+<ul>
+<li>循环<code>this.$options</code>的<code>data</code>，用<code>key</code>来保存里面的属性。</li>
+<li>使用<code>Object.defineProperty</code>将<code>key</code>代理到当前对象<code>this（Vue）</code>上，然后配置参数。<ul>
+<li><code>configurable</code>，可否修改，默认为<code>false</code>。需要设置为<code>false</code>,因为一旦框架架构好，架构者希望使用者按照自己的逻辑来使用，不然可能会造成很多意外发生。</li>
+<li><code>enumerable</code>，可否迭代，默认为<code>false</code>。需要设置为<code>true</code>,保留一个循环迭代的功能。</li>
+<li><code>get()</code>，当我们获取<code>this（Vue）</code>中的某个<code>key</code>，就直接返回<code>this.$options.data[key]</code>对应的内容。</li>
+<li><code>set()</code>，当我们修改更新<code>this（Vue）</code>中的某个<code>key</code>的时候，就将修改的内容赋值给<code>this.$options.data[key]</code>对应的内容（因为<code>Vue</code>中的<code>key</code>是我们将<code>this.$options.data[key]</code>代理得到了）。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="javascript">proxyData()&#123;
+        for (let key in this.$options.data) &#123;
+            Object.defineProperty(this,key,&#123;
+                configurable:false,
+                enumerable:true,
+                get()&#123;
+                    return this.$options.data[key]
+                &#125;,
+                set(changeVal)&#123;
+                    this.$options.data[key] = changeVal
+                &#125;
+            &#125;)
+         &#125;
+    &#125;
+</code></pre>
+<h2 id="数据劫持–双向绑定之始"><a href="#数据劫持–双向绑定之始" class="headerlink" title="数据劫持–双向绑定之始"></a>数据劫持–双向绑定之始</h2><p><code>data</code>中的属性(<code>key</code>)代理到<code>Vue</code>中，但使用并不灵活，比如将这个<code>key</code>同时绑定多个对象，绑定的对象内部会有一个属性来保存<code>key</code>，此时我们如果修改<code>data</code>中的<code>key</code>，本质是修改<code>this.$options.data[key]</code>，但是我们绑定此<code>key</code>的对象并不会发生修改。操作数据的时候能触发事件，引发一系列连锁反应。比如当有<code>set()</code>修改时，我们希望会有一个对象来保存所有绑定此<code>key</code>的对象，我们通过对其循环迭代然后执行里面<code>update()</code>函数，来实现所有对象都发生修改。</p>
+<ul>
+<li>创建<code>observe()</code>函数</li>
+<li>在<code>Vue</code>的构造器内设置<code>this.$watchEvents</code>对象专门来保存各个绑定了<code>key</code>的对象，里面有绑定的根对象，视图节点，绑定的属性和绑定的<code>key</code>，还有一些事件。（接下来会提到）</li>
+</ul>
+<pre><code class="javascript">class Vue &#123;
+  constructor(options) &#123;
+    this.$el = document.querySelector(options.el);
+    this.$options = options;
+
+    this.$watchEvents = &#123;&#125;;
+  &#125;
+&#125;
+</code></pre>
+<ul>
+<li><p>通过循环将<code>key</code>对应的内容保存在<code>value</code>，并定义一个<code>that</code>来保存指向<code>Vue</code>的<code>this</code></p>
+</li>
+<li><p>然后梅开二度使用<code>Object.defineProperty</code>，绑定<code>this.$options.data</code>对象（<strong>注意这是一个对象</strong>），内容为<code>key</code>（其实就<code>key</code>本<code>key</code>），然后配置参数。</p>
+<ul>
+<li><code>configurable，false</code>。</li>
+<li><code>enumerable，true</code>。</li>
+<li><code>get()</code>，当我们获取<code>key</code>的时候，就直接返回对应的<code>value</code>。</li>
+<li><code>set()</code>，当我们设置修改的时候，先将修改的内容给到<code>value</code>，然后判断有没有绑定此<code>key</code>的对象，存在就直接循环调用对象的<code>update()</code>函数实现更新。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="javascript">observe()&#123;
+        for (let key in this.$options.data) &#123;
+            let value = this.$options.data[key];
+            let that = this;
+
+            Object.defineProperty(this.$options.data,key,&#123;
+                configurable:false,
+                enumerable:true,
+                get()&#123;
+                    return value
+                &#125;,
+                set(changeVal)&#123;
+                    value = changeVal;
+                    if(that.$watchEvents[key])&#123;
+                        that.$watchEvents[key].forEach((item,i)=&gt;&#123;
+                            item.update();
+                        &#125;)
+                    &#125;
+                &#125;
+            &#125;)
+         &#125;
+    &#125;
+</code></pre>
+<h2 id="观察者–双向绑定之中"><a href="#观察者–双向绑定之中" class="headerlink" title="观察者–双向绑定之中"></a>观察者–双向绑定之中</h2><p>上面提到了绑定<code>key</code>的对象还有其中的<code>update()</code>，这些东西我们都还没有，就先来造包含这些东西的<code>Watcher</code>类。</p>
+<ul>
+<li>创建<code>Watcher</code>类，构造器传入<code>vm、key、node、attr</code>。这个类字如其名，用途就是监察所有绑定了<code>key</code>的对象，如上面提到的一旦<code>this.$options.data[key]</code>的内容发生了修改，数据劫持的时候就会调用<code>update()</code>将所有绑定<code>key</code>的对象的内容变更为相应的内容。<ul>
+<li><code>vm</code>，绑定的根对象，如<code>Vue</code>对象。</li>
+<li><code>key</code>，绑定<code>key</code>，此处为属性值，如<code>v-model=&quot;msg&quot;</code>中的<code>msg</code>。</li>
+<li><code>node</code>，绑定视图上的节点对象，如<code>div</code>。</li>
+<li><code>attr</code>，绑定节点对应的属性，如<code>innerHTML</code>。</li>
+</ul>
+</li>
+<li>创建<code>update()</code>函数<ul>
+<li>将<code>Vue</code>内代理的<code>key</code>赋值给<code>node</code>对象对应的属性。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="javascript">class Watcher &#123;
+  constructor(vm, key, node, attr) &#123;
+    this.vm = vm;
+    this.key = key;
+    this.node = node;
+    this.attr = attr;
+  &#125;
+  update() &#123;
+    this.node[this.attr] = this.vm[this.key];
+  &#125;
+&#125;
+</code></pre>
+<h2 id="编译视图–双向绑定之末"><a href="#编译视图–双向绑定之末" class="headerlink" title="编译视图–双向绑定之末"></a>编译视图–双向绑定之末</h2><p>上面的操作都还停留在数据层上，我们最终要实现数据层和视图层的双向绑定，一变都变。所以这里要将数据处理一下，拿到上面题到的<code>vm、key、node、attr</code>，然后实例化<code>Watcher</code>对象（这是我们提到过的绑定了<code>key</code>的对象），然后将其添加到<code>this.$watchEvents</code>。</p>
+<ul>
+<li>创建<code>compile()</code>函数，传入根节点，此处根节点为<code>this.$el</code>。</li>
+</ul>
+<pre><code class="javascript">compile(rootNode)&#123;
+
+&#125;
+</code></pre>
+<ul>
+<li><p>循环根节点下面的子节点，判断一下<code>nodeType</code>。</p>
+<ul>
+<li>1 为元素节点</li>
+<li>2 为属性节点</li>
+<li>3 为文本节点</li>
+</ul>
+</li>
+</ul>
+<pre><code class="javascript">rootNode.childNodes.forEach((node, i) =&gt; &#123;&#125;);
+</code></pre>
+<ul>
+<li><p>此处以<strong>元素节点</strong>和<strong>文本节点</strong>举例</p>
+<ul>
+<li><p>如果是元素节点，我们判断节点的<code>v-html</code>和<code>v-model</code>， <code>@click</code>属性是否存在。</p>
+<ul>
+<li><p>存在我们将属性值保存为<code>vmKey</code>，然后判断一下<code>Vue</code>对象里面有没有<code>vmKey</code>。<code>@click</code>不用判断因为他是绑定<code>methods</code>里的函数，这个内容没有代理到<code>Vue</code>上。</p>
+</li>
+<li><p>在<code>v-html</code>中如果有，我们将<code>Vue</code>里的<code>key</code>的内容给到节点的<code>innerHTML</code>属性。然后实例化一个观察者对象，然后判断一下<code>this.$watchEvents</code>中没有这个<code>vmKey</code>，如果有，我们就直接把观察者放进去，追加一个绑定了此<code>vmKey</code>的对象。没有我们则将其初始化为数组，然后把观察者放入。最后删除这个属性（因为我们已经完成了绑定，后续更新则是触发<code>update()</code>）</p>
+</li>
+</ul>
+<pre><code class="javascript">if (node.hasAttribute(&quot;v-html&quot;)) &#123;
+  let vmKey = node.getAttribute(&quot;v-html&quot;).trim();
+  if (this.hasOwnProperty(vmKey)) &#123;
+    node.innerHTML = this[vmKey];
+    let watcher = new Watcher(this, vmKey, node, &quot;innerHTML&quot;);
+    if (this.$watchEvents[vmKey]) &#123;
+      this.$watchEvents[vmKey].push(watcher);
+    &#125; else &#123;
+      this.$watchEvents[vmKey] = [];
+      this.$watchEvents[vmKey].push(watcher);
+    &#125;
+    node.removeAttribute(&quot;v-html&quot;);
+  &#125;
+&#125;
+</code></pre>
+</li>
+</ul>
+<pre><code>
+- 在`v-model`中如果有，我们将`Vue`里的`vmkey`给到节点的`value`属性上。然后实例化一个观察者对象，重复上面的操作。然后监听`input`事件，触发时我们将`Vue`对象里的`vmkey`的值修改为`value`属性的值。然后删除这个属性，理由同上。
+
+
+  ```javascript
+  if (node.hasAttribute(&#39;v-model&#39;)) &#123;
+                      let vmKey = node.getAttribute(&#39;v-model&#39;).trim();
+                      if (this.hasOwnProperty(vmKey)) &#123;
+                          node.value = this[vmKey];
+                          let watcher = new Watcher(this,vmKey,node,&#39;value&#39;);
+                          if (this.$watchEvents[vmKey]) &#123;
+                              this.$watchEvents[vmKey].push(watcher);
+                          &#125;else&#123;
+                              this.$watchEvents[vmKey] = [];
+                              this.$watchEvents[vmKey].push(watcher);
+                          &#125;
+                          node.addEventListener(&#39;input&#39;,()=&gt;&#123;
+                              this[vmKey] = node.value
+                          &#125;)
+                          node.removeAttribute(&#39;v-model&#39;)
+                      &#125;
+                  &#125;
+</code></pre>
+<ul>
+<li>在<code>@click</code>中，我们监听点击事件，触发时我们将<code>this.$options.methods</code>对应的函数绑定<code>Vue</code>对象的同时调用，传入<code>input</code>事件对象。</li>
+</ul>
+<pre><code class="javascript">if (node.hasAttribute(&quot;@click&quot;)) &#123;
+  let vmKey = node.getAttribute(&quot;@click&quot;).trim();
+  node.addEventListener(&quot;click&quot;, (event) =&gt; &#123;
+    this.$options.methods[vmKey].bind(this)(event);
+  &#125;);
+&#125;
+</code></pre>
+<ul>
+<li><p>最后我们判断一下当前节点下面还有没有子节点。如果有，我们将本节点当作根节点传入再执行<code>compile()</code>，直到没有子节点为止。</p>
+<pre><code class="javascript">if (node.childNodes.length &gt; 0) &#123;
+  this.compile(node);
+&#125;
+</code></pre>
+</li>
+<li><p>如果是文本节点</p>
+<ul>
+<li>使用正则来匹配<code>&#123;&#123;&#125;&#125;</code>中的内容，然后把节点的<code>textContent</code>保存在<code>text</code>里方便后面使用。</li>
+</ul>
+<pre><code class="javascript">if (node.nodeType == 3) &#123;
+  let reg = /\&#123;\&#123;(.*?)\&#125;\&#125;/g;
+  let text = node.textContent;
+&#125;
+</code></pre>
+<ul>
+<li><p><code>replace</code>和正则搭配使用，将绑定的内容替换给节点的<code>textContent</code>。</p>
+<ul>
+<li>回调内第一个参数是<strong>整个文本</strong>，第二个参数是<strong>匹配到的内容</strong>，将匹配到的内容作为<code>vmKey</code></li>
+<li>然后就是重复之前的操作了，将其绑定<code>textContent</code>，传入观察者，巴拉巴拉啦。。。。</li>
+<li>最终记得返回结果<code>this[vmKey]</code>，因为<code>replace</code>默认是返回<code>int</code>类型的值来表示成功失败</li>
+</ul>
+</li>
+</ul>
+<pre><code class="javascript">node.textContent = text.replace(reg, (regContent, vmKey) =&gt; &#123;
+  vmKey = vmKey.trim();
+  if (this.hasOwnProperty(vmKey)) &#123;
+    node.textContent = this[vmKey];
+    let watcher = new Watcher(this, vmKey, node, &quot;textContent&quot;);
+    if (this.$watchEvents[vmKey]) &#123;
+      this.$watchEvents[vmKey].push(watcher);
+    &#125; else &#123;
+      this.$watchEvents[vmKey] = [];
+      this.$watchEvents[vmKey].push(watcher);
+    &#125;
+  &#125;
+  return this[vmKey];
+&#125;);
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Vue-初始化"><a href="#Vue-初始化" class="headerlink" title="Vue 初始化"></a>Vue 初始化</h2><p>在<code>Vue</code>的构造器中调用数据代理<code>proxyData()</code>，数据劫持<code>observe ()</code>，编译视图<code>compile()</code></p>
+<pre><code class="javascript">    constructor(options)&#123;
+        this.$el = document.querySelector(options.el);
+        this.$options = options;
+        this.$watchEvents = &#123;&#125;;
+        this.proxyData();
+        this.observe ();
+        this.compile(this.$el)
+    &#125;
+</code></pre>
+<h2 id="原码"><a href="#原码" class="headerlink" title="原码"></a>原码</h2><pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;div id=&quot;app&quot;&gt;
+      &lt;input type=&quot;text&quot; v-model=&quot;msg&quot; /&gt;
+      &lt;h1&gt;&#123;&#123;msg&#125;&#125;&lt;/h1&gt;
+      &lt;h1 v-html=&quot;msg&quot;&gt;&lt;/h1&gt;
+      &lt;button @click=&quot;changeModel&quot;&gt;修改msg&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+
+  &lt;script src=&quot;./vueOrigin.js&quot;&gt;&lt;/script&gt;
+  &lt;script&gt;
+    let options = &#123;
+      el: &quot;#app&quot;,
+      data: &#123;
+        msg: &quot;HelloWorld&quot;,
+        currentFrame: &quot;Vue&quot;,
+      &#125;,
+      methods: &#123;
+        changeModel: function () &#123;
+          this.msg = &quot;Hello Vue&quot;;
+        &#125;,
+      &#125;,
+      beforeUpdate() &#123;
+        console.log(&quot;更新前&quot;);
+      &#125;,
+      updated() &#123;
+        console.log(&quot;更新后&quot;);
+      &#125;,
+    &#125;;
+    let app = new Vue(options);
+
+    console.log(app);
+  &lt;/script&gt;
+&lt;/html&gt;
+</code></pre>
+<pre><code class="javascript">class Vue &#123;
+  constructor(options) &#123;
+    this.$el = document.querySelector(options.el);
+    this.$options = options;
+    this.$watchEvents = &#123;&#125;;
+    this.proxyData();
+    this.observe();
+    this.compile(this.$el);
+  &#125;
+
+  proxyData() &#123;
+    for (let key in this.$options.data) &#123;
+      Object.defineProperty(this, key, &#123;
+        configurable: false,
+        enumerable: true,
+        get() &#123;
+          return this.$options.data[key];
+        &#125;,
+        set(changeVal) &#123;
+          this.$options.data[key] = changeVal;
+        &#125;,
+      &#125;);
+    &#125;
+  &#125;
+
+  observe() &#123;
+    for (let key in this.$options.data) &#123;
+      let value = this.$options.data[key];
+      let that = this;
+
+      Object.defineProperty(this.$options.data, key, &#123;
+        configurable: false,
+        enumerable: true,
+        get() &#123;
+          return value;
+        &#125;,
+        set(changeVal) &#123;
+          value = changeVal;
+          if (that.$watchEvents[key]) &#123;
+            if (typeof that.$options.beforeUpdate == &quot;function&quot;) &#123;
+              that.$options.beforeUpdate.bind(this)();
+            &#125;
+
+            that.$watchEvents[key].forEach((item, i) =&gt; &#123;
+              item.update();
+            &#125;);
+
+            if (typeof that.$options.updated == &quot;function&quot;) &#123;
+              that.$options.updated.bind(this)();
+            &#125;
+          &#125;
+        &#125;,
+      &#125;);
+    &#125;
+  &#125;
+
+  compile(rootNode) &#123;
+    rootNode.childNodes.forEach((node, i) =&gt; &#123;
+      if (node.nodeType == 1) &#123;
+        if (node.hasAttribute(&quot;v-html&quot;)) &#123;
+          let vmKey = node.getAttribute(&quot;v-html&quot;).trim();
+          if (this.hasOwnProperty(vmKey)) &#123;
+            node.innerHTML = this[vmKey];
+            let watcher = new Watcher(this, vmKey, node, &quot;innerHTML&quot;);
+            if (this.$watchEvents[vmKey]) &#123;
+              this.$watchEvents[vmKey].push(watcher);
+            &#125; else &#123;
+              this.$watchEvents[vmKey] = [];
+              this.$watchEvents[vmKey].push(watcher);
+            &#125;
+            node.removeAttribute(&quot;v-html&quot;);
+          &#125;
+        &#125;
+
+        if (node.hasAttribute(&quot;v-model&quot;)) &#123;
+          let vmKey = node.getAttribute(&quot;v-model&quot;).trim();
+          if (this.hasOwnProperty(vmKey)) &#123;
+            node.value = this[vmKey];
+            let watcher = new Watcher(this, vmKey, node, &quot;value&quot;);
+            if (this.$watchEvents[vmKey]) &#123;
+              this.$watchEvents[vmKey].push(watcher);
+            &#125; else &#123;
+              this.$watchEvents[vmKey] = [];
+              this.$watchEvents[vmKey].push(watcher);
+            &#125;
+            node.addEventListener(&quot;input&quot;, () =&gt; &#123;
+              this[vmKey] = node.value;
+            &#125;);
+            node.removeAttribute(&quot;v-model&quot;);
+          &#125;
+        &#125;
+
+        if (node.hasAttribute(&quot;@click&quot;)) &#123;
+          let vmKey = node.getAttribute(&quot;@click&quot;).trim();
+          node.addEventListener(&quot;click&quot;, (event) =&gt; &#123;
+            this.$options.methods[vmKey].bind(this)(event);
+          &#125;);
+        &#125;
+
+        if (node.childNodes.length &gt; 0) &#123;
+          this.compile(node);
+        &#125;
+      &#125;
+      if (node.nodeType == 3) &#123;
+        let reg = /\&#123;\&#123;(.*?)\&#125;\&#125;/g;
+        let text = node.textContent;
+        node.textContent = text.replace(reg, (regContent, vmKey) =&gt; &#123;
+          vmKey = vmKey.trim();
+          if (this.hasOwnProperty(vmKey)) &#123;
+            node.textContent = this[vmKey];
+            let watcher = new Watcher(this, vmKey, node, &quot;textContent&quot;);
+            if (this.$watchEvents[vmKey]) &#123;
+              this.$watchEvents[vmKey].push(watcher);
+            &#125; else &#123;
+              this.$watchEvents[vmKey] = [];
+              this.$watchEvents[vmKey].push(watcher);
+            &#125;
+          &#125;
+          return this[vmKey];
+        &#125;);
+      &#125;
+    &#125;);
+  &#125;
+&#125;
+
+class Watcher &#123;
+  constructor(vm, key, node, attr) &#123;
+    this.vm = vm;
+    this.key = key;
+    this.node = node;
+    this.attr = attr;
+  &#125;
+  update() &#123;
+    this.node[this.attr] = this.vm[this.key];
+  &#125;
+&#125;
+</code></pre>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            <div class="post-nav">
+                <hr>
+                
+                    <div class="post-nav-item">Previous Post:<a href="/2021/02/17/%E3%80%8CLeetCode%E3%80%8D%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" rel="prev" 
+                        title="「LeetCode」重塑矩阵">「LeetCode」重塑矩阵
+                      </a></div>
+                
+                
+                    <div class="post-nav-item">Next Post:<a href="/2021/02/14/%E3%80%8CLeetCode%E3%80%8D%E6%83%85%E4%BE%A3%E7%89%B5%E6%89%8B/" rel="next" 
+                        title="「LeetCode」情侣牵手">「LeetCode」情侣牵手</a></div>
+                                
+            </div>   
+                        
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://res.cloudinary.com/tridiamond/image/upload/v1573019751/TriDiamond_logo_ui_xeublz.jpg" height=300 width=300></img>
+                    <p>Lee 62</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        
+                        
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">57 <p>Articles</p></a></li>
+                    <li><a href="/categories">12 <p>Categories</p></a></li>
+                    <li><a href="/tags">36 <p>Tags</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>Contents</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.</span> <span class="toc-text">创建对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E6%95%B0%E6%8D%AE"><span class="toc-number">4.</span> <span class="toc-text">代理数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%8A%AB%E6%8C%81%E2%80%93%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E4%B9%8B%E5%A7%8B"><span class="toc-number">5.</span> <span class="toc-text">数据劫持–双向绑定之始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%82%E5%AF%9F%E8%80%85%E2%80%93%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E4%B9%8B%E4%B8%AD"><span class="toc-number">6.</span> <span class="toc-text">观察者–双向绑定之中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E8%A7%86%E5%9B%BE%E2%80%93%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E4%B9%8B%E6%9C%AB"><span class="toc-number">7.</span> <span class="toc-text">编译视图–双向绑定之末</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue-%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">8.</span> <span class="toc-text">Vue 初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%A0%81"><span class="toc-number">9.</span> <span class="toc-text">原码</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2020
+        <!-- <span class="gradient-text">
+            Lee 62
+        </span>. -->
+        Powered by <span class="gradient-text">Lee 62</span>
+        <!-- <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.7" target="_blank" rel="noopener">v1.4.7</a></small>
+        
+         -->
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+ 
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+   
+<script src="/js/busuanzi.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    if ($('span[id^="busuanzi_"]').length) {
+      initialBusuanzi();
+    }
+  });
+</script>
+ 
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149874671-1');
+</script>
+ 
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Think like an artist, develop like an artisan', '艺术家思维去思考问题，工匠创造精神去开发'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+
+
+
+
+
+</html>

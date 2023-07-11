@@ -138,19 +138,19 @@
     <div id="post0" class="else">
         <p class="animated fadeInDown">
             
-            <a href="/categories/面经"><b>「
-                </b>面经<b> 」</b></a>
+            <a href="/categories/散文"><b>「
+                </b>散文<b> 」</b></a>
             
             April 26, 2021
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/2021/04/26/%E7%99%BE%E8%AF%8D%E6%96%A9%E5%89%8D%E7%AB%AF%E5%AE%9E%E4%B9%A0%E9%9D%A2%E7%BB%8F%E2%80%94%E2%80%94%E7%AC%94%E8%AF%95/" title="百词斩前端实习面经——笔试" class="posttitle">百词斩前端实习面经——笔试</a></h3>
+            <a href="/2021/04/26/%E3%80%8C%E6%95%A3%E6%96%87%E3%80%8D%E7%99%BE%E8%AF%8D%E6%96%A9%E5%89%8D%E7%AB%AF%E5%AE%9E%E4%B9%A0%E9%9D%A2%E7%BB%8F%E2%80%94%E2%80%94%E7%AC%94%E8%AF%95/" title="「散文」百词斩前端实习面经——笔试" class="posttitle">「散文」百词斩前端实习面经——笔试</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>Words count</i>
-                964
+                938
             </span>
             
             
@@ -167,10 +167,10 @@
         
         <div class="md-content animated fadeIn">
             
-            <p>要求写一个函数，传入一个带有数字的字符串，经过处理后输出字符串里最大的数字，要求字符串长度不能超过1024，数字的大小不能超过21xxxxxx（反正很大的一个数）</p>
+            <p>要求写一个函数，传入一个带有数字的字符串，经过处理后输出字符串里最大的数字，要求字符串长度不能超过 1024，数字的大小不能超过 21xxxxxx（反正很大的一个数）</p>
 <pre><code class="js">function getMaxInString...</code></pre>
             
-            <span class="read-more"><a href="/2021/04/26/%E7%99%BE%E8%AF%8D%E6%96%A9%E5%89%8D%E7%AB%AF%E5%AE%9E%E4%B9%A0%E9%9D%A2%E7%BB%8F%E2%80%94%E2%80%94%E7%AC%94%E8%AF%95/" title="Read article" class="posttitle">Read article</a>
+            <span class="read-more"><a href="/2021/04/26/%E3%80%8C%E6%95%A3%E6%96%87%E3%80%8D%E7%99%BE%E8%AF%8D%E6%96%A9%E5%89%8D%E7%AB%AF%E5%AE%9E%E4%B9%A0%E9%9D%A2%E7%BB%8F%E2%80%94%E2%80%94%E7%AC%94%E8%AF%95/" title="Read article" class="posttitle">Read article</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -200,19 +200,19 @@
     <div class="else">
         <p class="animated fadeInDown">
             
-                <a href="/categories/面经">
-                  <b>「 </b>面经<b> 」</b>
+                <a href="/categories/散文">
+                  <b>「 </b>散文<b> 」</b>
                 </a>
             
             April 26, 2021
         </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2021/04/26/%E7%99%BE%E8%AF%8D%E6%96%A9%E5%89%8D%E7%AB%AF%E5%AE%9E%E4%B9%A0%E9%9D%A2%E7%BB%8F%E2%80%94%E2%80%94%E7%AC%94%E8%AF%95/" title="百词斩前端实习面经——笔试" class="posttitle">百词斩前端实习面经——笔试</a></h3>
+        <h3 class="post-title animated fadeInDown"><a href="/2021/04/26/%E3%80%8C%E6%95%A3%E6%96%87%E3%80%8D%E7%99%BE%E8%AF%8D%E6%96%A9%E5%89%8D%E7%AB%AF%E5%AE%9E%E4%B9%A0%E9%9D%A2%E7%BB%8F%E2%80%94%E2%80%94%E7%AC%94%E8%AF%95/" title="「散文」百词斩前端实习面经——笔试" class="posttitle">「散文」百词斩前端实习面经——笔试</a></h3>
         
             <p class="post-count animated fadeInDown">
                 
                     <span>
                         <b class="iconfont icon-text2"></b> <i>Words count</i>
-                        964
+                        938
                     </span>
                 
                 
@@ -229,21 +229,19 @@
         
         <div class="md-content animated fadeIn">
             
-                <p>要求写一个函数，传入一个带有数字的字符串，经过处理后输出字符串里最大的数字，要求字符串长度不能超过1024，数字的大小不能超过21xxxxxx（反正很大的一个数）</p>
+                <p>要求写一个函数，传入一个带有数字的字符串，经过处理后输出字符串里最大的数字，要求字符串长度不能超过 1024，数字的大小不能超过 21xxxxxx（反正很大的一个数）</p>
 <pre><code class="js">function getMaxInString(str) &#123;
-    if(str.length &gt; 1024) return
+  if (str.length &gt; 1024) return;
 
-    let maxNum = 0;
-    /** 
-    * 正则全局匹配字符串中的多个数字
-    * d 表示匹配数字
-    * + 表示1次或多次匹配
-    **/
-    let numArr = str.match(/\d+/g);
-    
-    /...</code></pre>
+  let maxNum = 0;
+  /**
+   * 正则全局匹配字符串中的多个数字
+   * d 表示匹配数字
+   * + 表示1次或多次匹配
+   **/
+  let numArr = str.match(/\d+/g...</code></pre>
             
-            <span class="read-more"><a href="/2021/04/26/%E7%99%BE%E8%AF%8D%E6%96%A9%E5%89%8D%E7%AB%AF%E5%AE%9E%E4%B9%A0%E9%9D%A2%E7%BB%8F%E2%80%94%E2%80%94%E7%AC%94%E8%AF%95/" title="Read article" class="posttitle">Read article</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+            <span class="read-more"><a href="/2021/04/26/%E3%80%8C%E6%95%A3%E6%96%87%E3%80%8D%E7%99%BE%E8%AF%8D%E6%96%A9%E5%89%8D%E7%AB%AF%E5%AE%9E%E4%B9%A0%E9%9D%A2%E7%BB%8F%E2%80%94%E2%80%94%E7%AC%94%E8%AF%95/" title="Read article" class="posttitle">Read article</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -258,13 +256,13 @@
     <div class="else">
         <p class="animated fadeInDown">
             
-                <a href="/categories/保姆级螺旋升天有手就会教程">
-                  <b>「 </b>保姆级螺旋升天有手就会教程<b> 」</b>
+                <a href="/categories/散文">
+                  <b>「 </b>散文<b> 」</b>
                 </a>
             
             April 08, 2021
         </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2021/04/08/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/" title="响应式布局" class="posttitle">响应式布局</a></h3>
+        <h3 class="post-title animated fadeInDown"><a href="/2021/04/08/%E3%80%8C%E6%95%A3%E6%96%87%E3%80%8D%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/" title="「散文」响应式布局" class="posttitle">「散文」响应式布局</a></h3>
         
             <p class="post-count animated fadeInDown">
                 
@@ -287,13 +285,13 @@
         
         <div class="md-content animated fadeIn">
             
-                <p>在智能移动设备刚开始发展的时候，人们访问 Web 网页的时候只能看到占满视窗大小的 PC 页面，可以通过缩放来浏览。如今移动设备在日程生活的比重已然到 TOP1 , Web 网页针对移动设备的体验也有了质的飞跃。在布局结构不那么复杂的网站通常会使用响应式布局（ Responsive Layout ）；而较为复杂的页面，会选择做双栈，通过JS来获取设备信息来进行跳转。</p>
+                <p>在智能移动设备刚开始发展的时候，人们访问 Web 网页的时候只能看到占满视窗大小的 PC 页面，可以通过缩放来浏览。如今移动设备在日程生活的比重已然到 TOP1 , Web 网页针对移动设备的体验也有了质的飞跃。在布局结构不那么复杂的网站通常会使用响应式布局（ Responsive Layout ）；而较为复杂的页面，会选择做双栈，通过 JS 来获取设备信息来进行跳转。</p>
 <p>我们会在 HTML 的头标签中经常看到下面代码块中的标签</p>
 <ul>
 <li>name<ul>
-<li>viewport –&gt;  在移动设备上设置原始大小显示和...</li></ul></li></ul>
+<li>viewport –&gt; 在移动设备上设置原始大小显...</li></ul></li></ul>
             
-            <span class="read-more"><a href="/2021/04/08/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/" title="Read article" class="posttitle">Read article</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+            <span class="read-more"><a href="/2021/04/08/%E3%80%8C%E6%95%A3%E6%96%87%E3%80%8D%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/" title="Read article" class="posttitle">Read article</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
