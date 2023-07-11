@@ -1,0 +1,561 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>「ES6朝圣」this详解 - Lee 62&#39;s Site</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="TriDiamond Obsidian,"> 
+    <meta name="description" content="概念解析器在调用函数的时候，每次都会向函数内部传入两个隐含参数，其中一个是 this。this 的指向是一个对象，这个对象称为函数执行时的 上下文对象 。
+this 的指向根据函数的调用方式不同，t,"> 
+    <meta name="author" content="Lee 62"> 
+    <link rel="alternative" href="atom.xml" title="Lee 62&#39;s Site" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+    
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Lee 62&#39;s Site</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">「ES6朝圣」this详解</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/系列"><b>「
+                    </b>系列<b> 」</b></a>
+                
+                December 27, 2020
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2020/12/27/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8Dthis%E8%AF%A6%E8%A7%A3/" title="「ES6朝圣」this详解" class="">「ES6朝圣」this详解</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>Words count</i>
+                    3.6k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                    3 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>Read count</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/ES6/" rel="tag">ES6</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/this/" rel="tag">this</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>解析器在调用函数的时候，每次都会向函数内部传入两个隐含参数，其中一个是 this。this 的指向是一个对象，这个对象称为函数执行时的 上下文对象 。</p>
+<h2 id="this-的指向"><a href="#this-的指向" class="headerlink" title="this 的指向"></a>this 的指向</h2><p>根据函数的调用方式不同，this 的指向也会不同。</p>
+<ul>
+<li>以函数<code>fuction()</code>来调用，this 永远指向 window。</li>
+<li>以方法来调用，this 指向调用方法的对象。</li>
+</ul>
+<pre><code class="javascript">var user = &#123;
+    name: &quot;张三&quot;,
+    major: fuction()&#123;
+        console.log(this.name + &quot;要敲代码&quot;);
+    &#125;
+&#125;
+
+var userFuction = user.major
+
+//this指向user
+user.major()
+//this指向window，相当于window.userFuction()
+userFuction()
+</code></pre>
+<ul>
+<li>以构造函数来调用，this 指向新创建的那个对象。</li>
+</ul>
+<pre><code class="javascript">fuction user(name,age)&#123;
+    this.name = name;
+    this.age = age;
+&#125;
+
+//jojo的this指向jojo
+var jojo = new user(&#39;乔尼&#39;,33);
+//diog的this指向dio
+var diog = new user(&#39;迪亚哥&#39;,22);
+</code></pre>
+<ul>
+<li>使用<code>call()</code>，<code>apply()</code>，<code>bind()</code>调用，this 指向指定的那个对象。</li>
+</ul>
+<pre><code class="javascript">//使用call()，apply()改变this的指向
+//无参数情况下
+
+var user = &#123;
+    name: &quot;张三&quot;,
+    major: fuction()&#123;
+        console.log(this.name + &quot;要敲代码&quot;);
+    &#125;
+&#125;
+
+var newUser = &#123;
+    name: &quot;李四&quot;
+&#125;
+
+//将user中this指向newUser
+user.major.call(newUser);
+user.major.apply(newUser);
+</code></pre>
+<pre><code class="javascript">//使用call()，apply()改变this的指向
+//有参数情况下
+
+var user = &#123;
+    name: &quot;张三&quot;,
+    hobbies: fuction()&#123;
+        for(i = 0;i &lt; arguments.length;i++)&#123;
+            console.log(this.name + &quot;爱好&quot; + arguments[i]);
+        &#125;
+    &#125;
+&#125;
+
+var newUser = &#123;
+    name: &quot;李四&quot;
+&#125;
+
+//将user中this指向newUser
+user.major.call(newUser,&quot;唱歌&quot;,&quot;跳舞&quot;,&quot;打游戏&quot;);
+user.major.apply(newUser,[&quot;唱歌&quot;,&quot;跳舞&quot;,&quot;打游戏&quot;]);
+</code></pre>
+<pre><code class="javascript">//使用bind()改变this的指向
+var dio = &#123;
+    name: &quot;迪奥&quot;;
+&#125;
+
+var jojo = &#123;
+    name: &quot;承太郎&quot;;
+    doing: fuction()&#123;
+        console.log(this.name + &quot;喜欢吃面包&quot;);
+    &#125;.bind(dio)
+&#125;
+
+jojo.doing()
+</code></pre>
+<ul>
+<li>箭头函数中的 this 会继承外层函数调用的 this(无论 this 绑定了什么)</li>
+</ul>
+<pre><code class="javascript">var name = &quot;李四&quot;;
+
+var user = &#123;
+  name: &quot;张三&quot;,
+  major: () =&gt; &#123;
+    console.log(this.name + &quot;要敲代码&quot;);
+  &#125;,
+&#125;;
+
+//此处的this指向window
+user.major();
+</code></pre>
+<h2 id="arguments-知识拓展"><a href="#arguments-知识拓展" class="headerlink" title="arguments 知识拓展"></a>arguments 知识拓展</h2><p>arguments 是调用函数时传入的另外一个隐含参数，是一个类数组对象，我们所传递的实参都会在 arguments 中保存，arguments 只能在函数中使用。</p>
+<ul>
+<li>返回函数实参个数</li>
+</ul>
+<pre><code class="javascript">arguments.length;
+</code></pre>
+<ul>
+<li>返回正在执行的函数</li>
+</ul>
+<pre><code class="javascript">arguments.callee;
+</code></pre>
+<ul>
+<li>修改 value 值(不能修改 arguments 的长度)</li>
+</ul>
+<pre><code class="javascript">fuction(&quot;张三&quot;,&quot;李四&quot;,&quot;王五&quot;)&#123;
+    //可行——将索引值为0的参数改为赵六
+    arguments[0] = &quot;赵六&quot;;
+    //不可行，不能修改arguments的长度，所以push失败
+    arguments.push(&quot;孙十三&quot;);
+&#125;
+</code></pre>
+<h2 id="bind-call-apply-区别"><a href="#bind-call-apply-区别" class="headerlink" title="bind(),call(),apply()区别"></a>bind(),call(),apply()区别</h2><ul>
+<li>相同点</li>
+</ul>
+<p>都能改变 this 的指向</p>
+<ul>
+<li>不同点</li>
+</ul>
+<p><code>call()</code>,<code>apply()</code>是立即调用函数</p>
+<p><code>bind()</code>不会立即调用，是先绑定 this，然后将函数返回，要加上()才能调用</p>
+<p>【应用场景:在回调中使用<code>bind()</code>改变 this】</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            <div class="post-nav">
+                <hr>
+                
+                    <div class="post-nav-item">Previous Post:<a href="/2021/01/27/%E8%A7%A3%E5%86%B3IMG%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98/" rel="prev" 
+                        title="解决IMG对象创建过程中的异步问题">解决IMG对象创建过程中的异步问题
+                      </a></div>
+                
+                
+                    <div class="post-nav-item">Next Post:<a href="/2020/11/14/Proxy%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93%E6%A1%86%E6%9E%B6/" rel="next" 
+                        title="Proxy实现简易框架">Proxy实现简易框架</a></div>
+                                
+            </div>   
+                        
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://res.cloudinary.com/tridiamond/image/upload/v1573019751/TriDiamond_logo_ui_xeublz.jpg" height=300 width=300></img>
+                    <p>Lee 62</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        
+                        
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">57 <p>Articles</p></a></li>
+                    <li><a href="/categories">17 <p>Categories</p></a></li>
+                    <li><a href="/tags">36 <p>Tags</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>Contents</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#this-%E7%9A%84%E6%8C%87%E5%90%91"><span class="toc-number">2.</span> <span class="toc-text">this 的指向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#arguments-%E7%9F%A5%E8%AF%86%E6%8B%93%E5%B1%95"><span class="toc-number">3.</span> <span class="toc-text">arguments 知识拓展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bind-call-apply-%E5%8C%BA%E5%88%AB"><span class="toc-number">4.</span> <span class="toc-text">bind(),call(),apply()区别</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2020
+        <!-- <span class="gradient-text">
+            Lee 62
+        </span>. -->
+        Powered by <span class="gradient-text">Lee 62</span>
+        <!-- <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.7" target="_blank" rel="noopener">v1.4.7</a></small>
+        
+         -->
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+ 
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+   
+<script src="/js/busuanzi.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    if ($('span[id^="busuanzi_"]').length) {
+      initialBusuanzi();
+    }
+  });
+</script>
+ 
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149874671-1');
+</script>
+ 
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Think like an artist, develop like an artisan', '艺术家思维去思考问题，工匠创造精神去开发'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+
+
+
+
+
+</html>

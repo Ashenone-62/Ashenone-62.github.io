@@ -5,12 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>LeetCode——132模式 - Lee 62&#39;s Site</title>
+    <title>「LeetCode」132模式 - Lee 62&#39;s Site</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="TriDiamond Obsidian,"> 
-    <meta name="description" content="给定一个整数序列：a1, a2, …, an，一个132模式的子序列 ai, aj, ak 被定义为：当 i &amp;lt; j &amp;lt; k 时，ai &amp;lt; ak &amp;lt; aj。设计一个算法，当给,"> 
+    <meta name="description" content="给定一个整数序列：a1, a2, …, an，一个 132 模式的子序列 ai, aj, ak 被定义为：当 i &amp;lt; j &amp;lt; k 时，ai &amp;lt; ak &amp;lt; aj。设计一个算法，,"> 
     <meta name="author" content="Lee 62"> 
     <link rel="alternative" href="atom.xml" title="Lee 62&#39;s Site" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -60,7 +60,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">LeetCode——132模式</h3>
+        <h3 class="subtitle">「LeetCode」132模式</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -92,20 +92,20 @@
                 
                 March 24, 2021
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2021/03/24/%E3%80%8CLeetCode%E3%80%8D132%E6%A8%A1%E5%BC%8F/" title="LeetCode——132模式" class="">LeetCode——132模式</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/03/24/%E3%80%8CLeetCode%E3%80%8D132%E6%A8%A1%E5%BC%8F/" title="「LeetCode」132模式" class="">「LeetCode」132模式</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    5k
+                    4.4k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    5 mins.
+                    4 mins.
                 </span>
                 
                 
@@ -139,120 +139,127 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <p>给定一个整数序列：a1, a2, …, an，一个132模式的子序列 ai, aj, ak 被定义为：当 i &lt; j &lt; k 时，ai &lt; ak &lt; aj。设计一个算法，当给定有 n 个数字的序列时，验证这个序列中是否含有132模式的子序列。</p>
-<h2 id="我的思路"><a href="#我的思路" class="headerlink" title="我的思路"></a>我的思路</h2><p>思路是枚举三个数，妥妥的超时。定义一个函数每次放入三个数来比较，如果不符合132模式且数组还有剩余，就把栈顶弹出放入一个新的在比较，如此反复操作完还没符合132模式，就弹出第二位的数，然后反复操作，如果还没有符合的，就将上回未修改的的数组的第一个数删掉（也就是12345——&gt;123,124,125,134,134,145,所有情况枚举完了，下一轮就是2345开始了），再把上面操作如此重复循环，直到有结果为止。</p>
+            <p>给定一个整数序列：a1, a2, …, an，一个 132 模式的子序列 ai, aj, ak 被定义为：当 i &lt; j &lt; k 时，ai &lt; ak &lt; aj。设计一个算法，当给定有 n 个数字的序列时，验证这个序列中是否含有 132 模式的子序列。</p>
+<h2 id="我的思路"><a href="#我的思路" class="headerlink" title="我的思路"></a>我的思路</h2><p>思路是枚举三个数，妥妥的超时。定义一个函数每次放入三个数来比较，如果不符合 132 模式且数组还有剩余，就把栈顶弹出放入一个新的在比较，如此反复操作完还没符合 132 模式，就弹出第二位的数，然后反复操作，如果还没有符合的，就将上回未修改的的数组的第一个数删掉（也就是 12345——&gt;123,124,125,134,134,145,所有情况枚举完了，下一轮就是 2345 开始了），再把上面操作如此重复循环，直到有结果为止。</p>
 <h2 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h2><pre><code class="javascript">var find132pattern = function (nums) &#123;
-    //初始化一个数组保存上轮循环的数组，如12345，第一轮是1....开始，第二轮是2.....
-    let lastArr = []
-    //初始化目标值
-    let is132Model = false;
-    //定义一个比较数组
-    let compareArr = []
-    //循环计数器
-    let counter = 0
-    //定义一个函数处理数组
-    const doing = function (currentArr) &#123;
-        //初始化一下循环数组与计数器
-        compareArr = []
-        counter = compareArr.length
-        //循环当前的数组
-        currentArr.forEach((item,index) =&gt; &#123;
-            //当比较数组长度等于3的时候
-            if (counter == 3) &#123;
-                //是
-                
-                //判断一下比较数组是否满足132模式
-                if (compareArr[0]&lt;compareArr[2] &amp;&amp; compareArr[2]&lt;compareArr[1]) &#123;
-                    //满足就置目标值为true
-                    is132Model = true;
-                    return
-                &#125;else&#123;
-                    //不满足就把栈顶元素弹出
-                    //放入当前数组后面的数
-                    //更新计数器
-                    compareArr.pop()
-                    compareArr.push(item)
-                    counter = compareArr.length
-                    //操作完后，再次判断一下符不符合132模式
-                    if (compareArr[0]&lt;compareArr[2] &amp;&amp; compareArr[2]&lt;compareArr[1]) &#123;
-                        is132Model = true;
-                        return
-                    &#125;
-                    //还不满足132模式
-                    //当此时是最后一个数，且当前的数组不是最后三个数组成的数组的时候（如原始数组是12345已经枚举到145已经是最后一次枚举了，就不满足此时的条件了）
-                    if (index+1 == currentArr.length &amp;&amp; currentArr.length &gt; 3) &#123;
-                        //将第一个数后移
-                        //然后删掉第一个数（如12345——&gt;123,124,125后，肯定下次就是134了，相当于下次遍历的数组是1345）
-                        currentArr[1] = currentArr[0]
-                        currentArr.shift();
-                        //将操作完的数组传给doing
-                        doing(currentArr)
-                        
-                        //当此时是最后一个数，且当前的数组是最后三个数组成的数组的时候（如原始数组是12345已经枚举到145已经是最后一次枚举了，就满足此时的条件了，那么下一次肯定就是循环2345——&gt;234,245）
-                    &#125;else if (index+1 == currentArr.length &amp;&amp; currentArr.length &lt;= 3)&#123;
-                        lastArr.shift()
-                        //同样是深拷贝，不然修改会联动，导致结果错误
-                        doing(lastArr.concat())
-                    &#125;
-                &#125;
-            &#125;else&#123;
-                //否
-                
-                //如果比较数组还没有3个，就放入数
-                compareArr.push(item)
-                counter = compareArr.length
-                //当放入的数是最后一个的时候，上面的判断是否符合132模式的代码就不管用了，需要在这儿额外判断
-                if (compareArr[0]&lt;compareArr[2] &amp;&amp; compareArr[2]&lt;compareArr[1] &amp;&amp; compareArr.length == 3) &#123;
-                    is132Model = true;
-                    return
-                &#125;
-                //此时必然是最后一个数，那最后一个数必然是最后一种结果（如12345的145），把保存上一次循环第一个数删掉（这里操上一次的数组可以省去操作当前数组完还要更新上一次数组的操作，因为已经是当轮的最后一次了嘛），开启新循环
-                if (index+1 == currentArr.length &amp;&amp; currentArr.length == 3) &#123;
-                    lastArr.shift()
-                    doing(lastArr.concat())
-                &#125;else &#123;
-                    return
-                &#125;
-            &#125;
-        &#125;);
-    &#125;
-    //去重，如果只有两个数必然是不符合132模式的
-    if (new Set(nums).size &gt; 2) &#123;
-        let aimArr = [];
-        //如果符合再次去重，如122344445，相当于12345，这里ti&#39;qian
-        for (let index = 0; index &lt; nums.length; index++) &#123;
-            if (nums[index] != nums[index+1]) &#123;
-                aimArr.push(nums[index])
-            &#125;
+  //初始化一个数组保存上轮循环的数组，如12345，第一轮是1....开始，第二轮是2.....
+  let lastArr = [];
+  //初始化目标值
+  let is132Model = false;
+  //定义一个比较数组
+  let compareArr = [];
+  //循环计数器
+  let counter = 0;
+  //定义一个函数处理数组
+  const doing = function (currentArr) &#123;
+    //初始化一下循环数组与计数器
+    compareArr = [];
+    counter = compareArr.length;
+    //循环当前的数组
+    currentArr.forEach((item, index) =&gt; &#123;
+      //当比较数组长度等于3的时候
+      if (counter == 3) &#123;
+        //是
+
+        //判断一下比较数组是否满足132模式
+        if (compareArr[0] &lt; compareArr[2] &amp;&amp; compareArr[2] &lt; compareArr[1]) &#123;
+          //满足就置目标值为true
+          is132Model = true;
+          return;
+        &#125; else &#123;
+          //不满足就把栈顶元素弹出
+          //放入当前数组后面的数
+          //更新计数器
+          compareArr.pop();
+          compareArr.push(item);
+          counter = compareArr.length;
+          //操作完后，再次判断一下符不符合132模式
+          if (compareArr[0] &lt; compareArr[2] &amp;&amp; compareArr[2] &lt; compareArr[1]) &#123;
+            is132Model = true;
+            return;
+          &#125;
+          //还不满足132模式
+          //当此时是最后一个数，且当前的数组不是最后三个数组成的数组的时候（如原始数组是12345已经枚举到145已经是最后一次枚举了，就不满足此时的条件了）
+          if (index + 1 == currentArr.length &amp;&amp; currentArr.length &gt; 3) &#123;
+            //将第一个数后移
+            //然后删掉第一个数（如12345——&gt;123,124,125后，肯定下次就是134了，相当于下次遍历的数组是1345）
+            currentArr[1] = currentArr[0];
+            currentArr.shift();
+            //将操作完的数组传给doing
+            doing(currentArr);
+
+            //当此时是最后一个数，且当前的数组是最后三个数组成的数组的时候（如原始数组是12345已经枚举到145已经是最后一次枚举了，就满足此时的条件了，那么下一次肯定就是循环2345——&gt;234,245）
+          &#125; else if (index + 1 == currentArr.length &amp;&amp; currentArr.length &lt;= 3) &#123;
+            lastArr.shift();
+            //同样是深拷贝，不然修改会联动，导致结果错误
+            doing(lastArr.concat());
+          &#125;
         &#125;
-        //将处理好的数组深拷贝给保存上一次的数组
-        lastArr = aimArr.concat()
-        //调用doing
-        doing(aimArr)
+      &#125; else &#123;
+        //否
+
+        //如果比较数组还没有3个，就放入数
+        compareArr.push(item);
+        counter = compareArr.length;
+        //当放入的数是最后一个的时候，上面的判断是否符合132模式的代码就不管用了，需要在这儿额外判断
+        if (
+          compareArr[0] &lt; compareArr[2] &amp;&amp;
+          compareArr[2] &lt; compareArr[1] &amp;&amp;
+          compareArr.length == 3
+        ) &#123;
+          is132Model = true;
+          return;
+        &#125;
+        //此时必然是最后一个数，那最后一个数必然是最后一种结果（如12345的145），把保存上一次循环第一个数删掉（这里操上一次的数组可以省去操作当前数组完还要更新上一次数组的操作，因为已经是当轮的最后一次了嘛），开启新循环
+        if (index + 1 == currentArr.length &amp;&amp; currentArr.length == 3) &#123;
+          lastArr.shift();
+          doing(lastArr.concat());
+        &#125; else &#123;
+          return;
+        &#125;
+      &#125;
+    &#125;);
+  &#125;;
+  //去重，如果只有两个数必然是不符合132模式的
+  if (new Set(nums).size &gt; 2) &#123;
+    let aimArr = [];
+    //如果符合再次去重，如122344445，相当于12345，这里ti&#39;qian
+    for (let index = 0; index &lt; nums.length; index++) &#123;
+      if (nums[index] != nums[index + 1]) &#123;
+        aimArr.push(nums[index]);
+      &#125;
     &#125;
-    //返回目标值
-    return is132Model
+    //将处理好的数组深拷贝给保存上一次的数组
+    lastArr = aimArr.concat();
+    //调用doing
+    doing(aimArr);
+  &#125;
+  //返回目标值
+  return is132Model;
 &#125;;
 </code></pre>
-<h2 id="官答"><a href="#官答" class="headerlink" title="官答"></a>官答</h2><p>单调栈——枚举1或者2或者3（对应i，j，k），此处是枚举1</p>
-<pre><code class="javascript">var find132pattern = function(nums) &#123;
-    const n = nums.length;
-    const candidate_k = [nums[n - 1]];
-    let max_k = -Number.MAX_SAFE_INTEGER;
+<h2 id="官答"><a href="#官答" class="headerlink" title="官答"></a>官答</h2><p>单调栈——枚举 1 或者 2 或者 3（对应 i，j，k），此处是枚举 1</p>
+<pre><code class="javascript">var find132pattern = function (nums) &#123;
+  const n = nums.length;
+  const candidate_k = [nums[n - 1]];
+  let max_k = -Number.MAX_SAFE_INTEGER;
 
-    for (let i = n - 2; i &gt;= 0; --i) &#123;
-        if (nums[i] &lt; max_k) &#123;
-            return true;
-        &#125;
-        while (candidate_k.length &amp;&amp; nums[i] &gt; candidate_k[candidate_k.length - 1]) &#123;
-            max_k = candidate_k[candidate_k.length - 1];
-            candidate_k.pop();
-        &#125;
-        if (nums[i] &gt; max_k) &#123;
-            candidate_k.push(nums[i]);
-        &#125;
+  for (let i = n - 2; i &gt;= 0; --i) &#123;
+    if (nums[i] &lt; max_k) &#123;
+      return true;
     &#125;
-    return false;
+    while (
+      candidate_k.length &amp;&amp;
+      nums[i] &gt; candidate_k[candidate_k.length - 1]
+    ) &#123;
+      max_k = candidate_k[candidate_k.length - 1];
+      candidate_k.pop();
+    &#125;
+    if (nums[i] &gt; max_k) &#123;
+      candidate_k.push(nums[i]);
+    &#125;
+  &#125;
+  return false;
 &#125;;
 </code></pre>
 
@@ -274,13 +281,13 @@
             <div class="post-nav">
                 <hr>
                 
-                    <div class="post-nav-item">Previous Post:<a href="/2021/03/28/React-Hooks%E2%80%94%E2%80%94useState%E5%9F%BA%E7%A1%80%E5%88%B0%E8%BF%9B%E9%98%B6/" rel="prev" 
-                        title="React Hooks——useState基础到进阶">React Hooks——useState基础到进阶
+                    <div class="post-nav-item">Previous Post:<a href="/2021/03/28/%E3%80%8CReactHooks%E3%80%8DuseState%E5%9F%BA%E7%A1%80%E5%88%B0%E8%BF%9B%E9%98%B6/" rel="prev" 
+                        title="「ReactHooks」useState基础到进阶">「ReactHooks」useState基础到进阶
                       </a></div>
                 
                 
                     <div class="post-nav-item">Next Post:<a href="/2021/03/23/%E3%80%8CLeetCode%E3%80%8D%E6%89%81%E5%B9%B3%E5%8C%96%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8%E8%BF%AD%E4%BB%A3%E5%99%A8/" rel="next" 
-                        title="LeetCode——扁平化嵌套列表迭代器">LeetCode——扁平化嵌套列表迭代器</a></div>
+                        title="「LeetCode」扁平化嵌套列表迭代器">「LeetCode」扁平化嵌套列表迭代器</a></div>
                                 
             </div>   
                         
@@ -300,7 +307,7 @@
                 </div>
                 <ul>
                     <li><a href="/">57 <p>Articles</p></a></li>
-                    <li><a href="/categories">18 <p>Categories</p></a></li>
+                    <li><a href="/categories">17 <p>Categories</p></a></li>
                     <li><a href="/tags">36 <p>Tags</p></a></li>
                 </ul>
             </div>
@@ -329,18 +336,19 @@
 </body>
 <footer>
     <p class="copyright" id="copyright">
-        &copy; 2023
-        <span class="gradient-text">
+        &copy; 2020
+        <!-- <span class="gradient-text">
             Lee 62
-        </span>.
-        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        </span>. -->
+        Powered by <span class="gradient-text">Lee 62</span>
+        <!-- <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
         Theme
         <span class="gradient-text">
             <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
         </span>
         <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.7" target="_blank" rel="noopener">v1.4.7</a></small>
         
-        
+         -->
     </p>
 </footer>
 

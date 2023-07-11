@@ -144,7 +144,7 @@
             March 22, 2021
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/2021/03/22/%E3%80%8CLeetCode%E3%80%8D%E4%BD%8D1%E7%9A%84%E4%B8%AA%E6%95%B0/" title="LeetCode——位1的个数" class="posttitle">LeetCode——位1的个数</a></h3>
+            <a href="/2021/03/22/%E3%80%8CLeetCode%E3%80%8D%E4%BD%8D1%E7%9A%84%E4%B8%AA%E6%95%B0/" title="「LeetCode」位1的个数" class="posttitle">「LeetCode」位1的个数</a></h3>
         
         <p class="post-count animated fadeInDown">
             
@@ -168,7 +168,7 @@
         <div class="md-content animated fadeIn">
             
             <p>编写一个函数，输入是一个无符号整数（以二进制串的形式），返回其二进制表达式中数字位数为 ‘1’ 的个数。</p>
-<p>这道题没有解出来，归根于对JavaScript处理二进制参数的机制不熟悉，现在已经搞懂。官方的...</p>
+<p>这道题没有解出来，归根于对 JavaScript 处理二进制参数的机制不熟悉，现在已经搞懂。官...</p>
             
             <span class="read-more"><a href="/2021/03/22/%E3%80%8CLeetCode%E3%80%8D%E4%BD%8D1%E7%9A%84%E4%B8%AA%E6%95%B0/" title="Read article" class="posttitle">Read article</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
@@ -206,7 +206,7 @@
             
             March 22, 2021
         </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2021/03/22/%E3%80%8CLeetCode%E3%80%8D%E4%BD%8D1%E7%9A%84%E4%B8%AA%E6%95%B0/" title="LeetCode——位1的个数" class="posttitle">LeetCode——位1的个数</a></h3>
+        <h3 class="post-title animated fadeInDown"><a href="/2021/03/22/%E3%80%8CLeetCode%E3%80%8D%E4%BD%8D1%E7%9A%84%E4%B8%AA%E6%95%B0/" title="「LeetCode」位1的个数" class="posttitle">「LeetCode」位1的个数</a></h3>
         
             <p class="post-count animated fadeInDown">
                 
@@ -230,8 +230,8 @@
         <div class="md-content animated fadeIn">
             
                 <p>编写一个函数，输入是一个无符号整数（以二进制串的形式），返回其二进制表达式中数字位数为 ‘1’ 的个数。</p>
-<p>这道题没有解出来，归根于对JavaScript处理二进制参数的机制不熟悉，现在已经搞懂。官方的思路是：定义一个ret变量管理1出现的次数，由于给的二进制数据是32位定长的，所以循环32次，每次让1向左偏移1位后与传入的二进制数据比较，比对成功就ret加一。</p>
-<p>JavaScript处理二进制会直接将其转化为整形，官方代码中 <code>&amp;</code> 会进行进制之间的比较，而评论区的需要把整形转换为二进制字符串...</p>
+<p>这道题没有解出来，归根于对 JavaScript 处理二进制参数的机制不熟悉，现在已经搞懂。官方的思路是：定义一个 ret 变量管理 1 出现的次数，由于给的二进制数据是 32 位定长的，所以循环 32 次，每次让 1 向左偏移 1 位后与传入的二进制数据比较，比对成功就 ret 加一。</p>
+<p>JavaScript 处理二进制会直接将其转化为整形，官方代码中 <code>&amp;</code> 会进行进制之间的比较，而评...</p>
             
             <span class="read-more"><a href="/2021/03/22/%E3%80%8CLeetCode%E3%80%8D%E4%BD%8D1%E7%9A%84%E4%B8%AA%E6%95%B0/" title="Read article" class="posttitle">Read article</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
@@ -254,13 +254,13 @@
             
             February 17, 2021
         </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2021/02/17/%E3%80%8CLeetCode%E3%80%8D%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" title="LeetCode——重塑矩阵" class="posttitle">LeetCode——重塑矩阵</a></h3>
+        <h3 class="post-title animated fadeInDown"><a href="/2021/02/17/%E3%80%8CLeetCode%E3%80%8D%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" title="「LeetCode」重塑矩阵" class="posttitle">「LeetCode」重塑矩阵</a></h3>
         
             <p class="post-count animated fadeInDown">
                 
                     <span>
                         <b class="iconfont icon-text2"></b> <i>Words count</i>
-                        3k
+                        2.8k
                     </span>
                 
                 
@@ -277,8 +277,8 @@
         
         <div class="md-content animated fadeIn">
             
-                <p>在MATLAB中，有一个非常有用的函数 reshape，它可以将一个矩阵重塑为另一个大小不同的新矩阵，但保留其原始数据。给出一个由二维数组表示的矩阵，以及两个正整数r和c，分别表示想要的重构的矩阵的行数和列数。重构后的矩阵需要将原始矩阵的所有元素以相同的行遍历顺序填充。如果具有给定参数的reshape操作是可行且合理的，则输出新的重塑矩阵；否则，输出原始矩阵。</p>
-<p>把要处理的矩阵全部遍历传入一个预处理的数组，然后判断一下能不能处理，不能处理就等于它本身然后返回出去，能处理循环添加r行c列的数组，中间...</p>
+                <p>在 MATLAB 中，有一个非常有用的函数 reshape，它可以将一个矩阵重塑为另一个大小不同的新矩阵，但保留其原始数据。给出一个由二维数组表示的矩阵，以及两个正整数 r 和 c，分别表示想要的重构的矩阵的行数和列数。重构后的矩阵需要将原始矩阵的所有元素以相同的行遍历顺序填充。如果具有给定参数的 reshape 操作是可行且合理的，则输出新的重塑矩阵；否则，输出原始矩阵。</p>
+<p>把要处理的矩阵全部遍历传入一个预处理的数组，然后判断一下能不能处理，不能处理就等于它本身然后返回出去，能处理循环添加 r ...</p>
             
             <span class="read-more"><a href="/2021/02/17/%E3%80%8CLeetCode%E3%80%8D%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" title="Read article" class="posttitle">Read article</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
@@ -301,13 +301,13 @@
             
             February 13, 2021
         </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2021/02/13/%E3%80%8CLeetCode%E3%80%8D%E6%89%BE%E5%88%B0%E6%89%80%E6%9C%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0/" title="LeetCode——找到所有数组中消失的数" class="posttitle">LeetCode——找到所有数组中消失的数</a></h3>
+        <h3 class="post-title animated fadeInDown"><a href="/2021/02/13/%E3%80%8CLeetCode%E3%80%8D%E6%89%BE%E5%88%B0%E6%89%80%E6%9C%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0/" title="「LeetCode」找到所有数组中消失的数" class="posttitle">「LeetCode」找到所有数组中消失的数</a></h3>
         
             <p class="post-count animated fadeInDown">
                 
                     <span>
                         <b class="iconfont icon-text2"></b> <i>Words count</i>
-                        3.3k
+                        3.2k
                     </span>
                 
                 
@@ -324,8 +324,8 @@
         
         <div class="md-content animated fadeIn">
             
-                <p>给定一个范围在  1 ≤ a[i] ≤ n ( n &#x3D; 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。找到所有在 [1, n] 范围之间没有出现在数组中的数字。</p>
-<p>拿到 [1, n]所有数，判断其在不在输入的nums数组中，然后对其作相应的操作</p>
+                <p>给定一个范围在 1 ≤ a[i] ≤ n ( n &#x3D; 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。找到所有在 [1, n] 范围之间没有出现在数组中的数字。</p>
+<p>拿到 [1, n]所有数，判断其在不在输入的 nums 数组中，然后对其作相应的操作</p>
 <pre><code class="javascript">/**
  * @param &#123;number[]&#125; nums
  * @return &#123;number[]&#125;
@@ -353,13 +353,13 @@ var findDisappearedNumbers = function...</code></pre>
             
             February 12, 2021
         </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2021/02/12/%E3%80%8CLeetCode%E3%80%8D%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%922/" title="LeetCode——杨辉三角2" class="posttitle">LeetCode——杨辉三角2</a></h3>
+        <h3 class="post-title animated fadeInDown"><a href="/2021/02/12/%E3%80%8CLeetCode%E3%80%8D%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%922/" title="「LeetCode」杨辉三角2" class="posttitle">「LeetCode」杨辉三角2</a></h3>
         
             <p class="post-count animated fadeInDown">
                 
                     <span>
                         <b class="iconfont icon-text2"></b> <i>Words count</i>
-                        2.5k
+                        2.2k
                     </span>
                 
                 
@@ -376,17 +376,16 @@ var findDisappearedNumbers = function...</code></pre>
         
         <div class="md-content animated fadeIn">
             
-                <p>给定一个非负索引 <em>k</em>，其中 <em>k</em> ≤ 33，返回杨辉三角的第 <em>k</em> 行。</p>
+                <p>给定一个非负索引 _k_，其中 <em>k</em> ≤ 33，返回杨辉三角的第 <em>k</em> 行。</p>
 <p></p>
 <p>先按层处理，然后操作层内。已知层数，推出每层数的个数为层数+1。通过层层计算我们只需要保存上一层(父亲层)就能计算出下一层(儿子层</p>
 <pre><code class="javascript">/**
  * @param &#123;number&#125; rowIndex
  * @return &#123;number[]&#125;
  */
-var getRow = function(rowIndex) &#123;
-        //定义儿子层，父亲层
-        let pastRowArr = [];
-        let...</code></pre>
+var getRow = function (rowIndex) &#123;
+  //定义儿子层，父亲层
+  let pastRowArr = []...</code></pre>
             
             <span class="read-more"><a href="/2021/02/12/%E3%80%8CLeetCode%E3%80%8D%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%922/" title="Read article" class="posttitle">Read article</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
@@ -407,18 +406,19 @@ var getRow = function(rowIndex) &#123;
 </body>
 <footer>
     <p class="copyright" id="copyright">
-        &copy; 2023
-        <span class="gradient-text">
+        &copy; 2020
+        <!-- <span class="gradient-text">
             Lee 62
-        </span>.
-        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        </span>. -->
+        Powered by <span class="gradient-text">Lee 62</span>
+        <!-- <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
         Theme
         <span class="gradient-text">
             <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
         </span>
         <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.7" target="_blank" rel="noopener">v1.4.7</a></small>
         
-        
+         -->
     </p>
 </footer>
 

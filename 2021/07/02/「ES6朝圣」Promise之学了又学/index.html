@@ -1,0 +1,739 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>「ES6朝圣」Promise2.0之学了又学 - Lee 62&#39;s Site</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="TriDiamond Obsidian,"> 
+    <meta name="description" content="前言
+Promise-1.0
+
+同解构赋值一样，ES6 最出名的特性之一。你在接触 ES6 之前或多或少都听说 Promise，或者在一些工具库里也体验过了 Promise。
+Promise 的概念,"> 
+    <meta name="author" content="Lee 62"> 
+    <link rel="alternative" href="atom.xml" title="Lee 62&#39;s Site" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+    
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Lee 62&#39;s Site</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">「ES6朝圣」Promise2.0之学了又学</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/系列"><b>「
+                    </b>系列<b> 」</b></a>
+                
+                July 02, 2021
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/07/02/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8DPromise%E4%B9%8B%E5%AD%A6%E4%BA%86%E5%8F%88%E5%AD%A6/" title="「ES6朝圣」Promise2.0之学了又学" class="">「ES6朝圣」Promise2.0之学了又学</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>Words count</i>
+                    13k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                    12 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>Read count</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/ES6/" rel="tag">ES6</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.ashenone62.ltd/_posts/Async%E4%B8%8EPromise%E6%80%BB%E7%BB%93.html">Promise-1.0</a></p>
+</blockquote>
+<p>同解构赋值一样，ES6 最出名的特性之一。你在接触 ES6 之前或多或少都听说 Promise，或者在一些工具库里也体验过了 Promise。</p>
+<h2 id="Promise-的概念"><a href="#Promise-的概念" class="headerlink" title="Promise 的概念"></a>Promise 的概念</h2><blockquote>
+<p>概念</p>
+</blockquote>
+<p>Promise 最早是由 JS 社区提出和实现的，在 ES6 中被写入规范大纲。Promise 是一种同步处理异步问题的解决方案，其本身相当于一个容器与它的上下文是同步的关系，内部放入一个未来才会结束的事件（异步事件）。</p>
+<blockquote>
+<p>特点</p>
+</blockquote>
+<ul>
+<li>Promsie 的状态不受外界的影响，其状态值有三个：<code>pending</code>，<code>fulfilled</code>，<code>rejected</code>。Promise 对象的状态改变只能由异步操作来决定，且只有两种结果，<code>pending-&gt;fulfilled</code>或者是<code>pending-&gt;rejected</code>。</li>
+<li>只要 Promise 的异步操作决定了一种状态，状态就不会再发生改变了，如果你在对当前的 Promsie 对象添加回调也会直接得到结果（不像事件，只要错过了再监听就拿不到结果了），这时就被称为已定型（<code>resolved</code>），这里要留意区分之后讲的 resolve 和 reject 函数。</li>
+</ul>
+<blockquote>
+<p>优缺点（&#x3D;&#x3D;&#x3D;之后会调换位置&#x3D;&#x3D;&#x3D;）</p>
+</blockquote>
+<ul>
+<li>优点<ul>
+<li>Promise 能让我们以同步操作的流程去表达异步操作，搭配 async 和 await 等修饰符能比较完美的解决回调地狱。</li>
+<li>Promise 已经写入了 JS 规范，使用成本和学习成本都很低，其提供统一的 API 能让我们更容易更规范的控制异步事件。</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>Promise 一旦执行无法被取消。</li>
+<li>如果 Promsie 内部不设置回调，抛出的错误不会直接反映到 Promise 的上下文。一般我们使用<code>.then</code>就会使用<code>.catch</code>去捕获错误；使用<code>await</code>修饰符就使用<code>try...catch...</code>去捕获错误。</li>
+<li>Promise 处于<code>pending</code>状态的时是没法得知它的进度到底是刚开始还是刚结束的。</li>
+</ul>
+</li>
+</ul>
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>Promise 是一个构造函数，使用 new 来创建实例</p>
+<pre><code class="js">const promise = new Promise();
+</code></pre>
+<p>Promise 接收一个函数作为参数，这个函数有两个函数参数，分别是<code>resolve</code>和<code>reject</code>。这两个函数由 JS 引擎提供，resolve 的作用是将 Promise 状态从<code>pending</code>变为<code>fulfilled</code>，并将成功的结果传入到 Promise 所在上下文。reject 的作用是将 Promise 的状态从<code>pending</code>变为<code>rejected</code>，并将失败的结果传入到 Promise 所在的上下文。Promise 实例化后，then 方法中接收两个参数，第一个是成功状态的回调函数，第二个是失败的回调函数，但是我们通常不会传第二参数，是通过 catch 方法来捕获错误。</p>
+<pre><code class="js">const promise = new Promise(function (resolve, reject) &#123;
+  setTimeout(() =&gt; &#123;
+    const booleanNum = 1;
+    if (booleanNum) &#123;
+      resolve(&quot;成功&quot;);
+    &#125; else &#123;
+      resolve(&quot;失败&quot;);
+    &#125;
+  &#125;, 1000);
+&#125;);
+
+// 理想
+promise.then(
+  (res) =&gt; &#123;
+    console.log(res);
+  &#125;,
+  (err) =&gt; &#123;
+    console.log(err);
+  &#125;
+);
+
+// 现实
+promise
+  .then((res) =&gt; &#123;
+    console.log(res);
+  &#125;)
+  .catch((err) =&gt; &#123;
+    console.log(err);
+  &#125;);
+</code></pre>
+<p>还有一种情况————有两个 Promise，p1 和 p2，p2 的<code>resolve</code>接收的参数是 p1。p1 在三秒后改变状态为<code>rejected</code>，p2 与 p1 的关系是同步的，p2 在 1 秒后改变状态为<code>fulfilled</code>，但是由于其传入的是一个 Promise 对象，所以导致其自身状态无效，后面的 then 回调指向 p1，两秒后 p1 的状态变为<code>rejected</code>被 catch 捕获。</p>
+<pre><code class="js">// p1 pending ===&gt; 1 ===&gt; 2 ===&gt; 3 ===&gt; rejected
+// p2 pending ===&gt; (p1 running =&gt; fulfilled GG) ===&gt; 2 ===&gt; (p1 =&gt; rejected =&gt; p2)
+
+const p1 = new Promise(function (resolve, reject) &#123;
+  setTimeout(reject(new Error(&quot;failed&quot;)), 3000);
+&#125;);
+
+const p2 = new Promise(function (resolve, reject) &#123;
+  setTimeout(resolve(p1), 1000);
+&#125;);
+
+p2.then((res) =&gt; &#123;
+  console.log(res);
+&#125;).catch((err) =&gt; &#123;
+  console.log(err);
+&#125;);
+</code></pre>
+<p>值得注意的是，当 Promise 里执行了 resolve 或者 reject 函数后并不会终止运行，但是执行了 resolve 或者 reject 后 Promise 的任务也可以说是结束了，后续的逻辑应该划分给回调，所以我们通常会将 resolve，reject 返回出去，来避免一些意外。</p>
+<pre><code class="js">// 2会被打印的
+const p1 = new Promise(function (resolve, reject) &#123;
+  resolve(1);
+  cosnole.log(2);
+&#125;);
+
+// 2不会被打印的
+const p2 = new Promise(function (resolve, reject) &#123;
+  return resolve(1);
+  cosnole.log(2);
+&#125;);
+</code></pre>
+<h2 id="Promsie-prototype-then"><a href="#Promsie-prototype-then" class="headerlink" title="Promsie.prototype.then()"></a>Promsie.prototype.then()</h2><p>Promise 的原型上定义了 then 方法，它的作用是当 Promsie 实例的状态改变的时添加回调函数。接收两个可选参数，第一个是成功时的回调，第二个时失败时的回调函数。then 会返回一个全的 Promise 实例，因此可以无限链式下去，上个 then 的结果会作为参数流入下一个 then 中去。</p>
+<pre><code class="js">const p1 = new Promise(function (resolve, reject) &#123;
+  setTimeout(() =&gt; &#123;
+    resolve(1);
+  &#125;, 3000);
+&#125;);
+
+p1.then((res) =&gt; res + 1).then((res) =&gt; &#123;
+  console.log(res);
+&#125;);
+</code></pre>
+<p>如果上一个 then 返回的是一个 Promise 对象，那下一个 then 就会等到这个返回的 Promise 发生变化后才调用回调。下面这个例子，p2 在一秒后状态变为成功，但是返回 p1，p1 在三秒后失败，因此打印得到<code>成功？ko no 失败哒！</code>。</p>
+<pre><code class="js">const p1 = new Promise(function (resolve, reject) &#123;
+  setTimeout(() =&gt; &#123;
+    reject(&quot;ko no 失败哒！&quot;);
+  &#125;, 3000);
+&#125;);
+
+const p2 = new Promise(function (resolve, reject) &#123;
+  setTimeout(() =&gt; &#123;
+    resolve(&quot;成功？&quot;);
+  &#125;, 1000);
+&#125;);
+
+p2.then((res) =&gt; &#123;
+  console.log(res);
+  return p1;
+&#125;).then(
+  (res) =&gt; &#123;
+    console.log(res);
+  &#125;,
+  (err) =&gt; &#123;
+    console.log(err);
+  &#125;
+);
+</code></pre>
+<h2 id="Promise-prototype-catch"><a href="#Promise-prototype-catch" class="headerlink" title="Promise.prototype.catch()"></a>Promise.prototype.catch()</h2><p>Promise 原型上定义了 catch 这个方法，是用于指定发生错误时的回调的。是<code>.then(null, rejection)</code>或<code>.then(undefined, rejection)</code>的别名。<code>.catch</code>不仅可以捕获 rejected 时的错误还能捕获回调运行时候的错误。</p>
+<pre><code class="js">// 捕获rejected时的错误
+const p1 = new Promise(function (resolve, reject) &#123;
+  setTimeout(() =&gt; &#123;
+    reject(&quot;ko no 失败哒！&quot;);
+  &#125;, 3000);
+&#125;);
+
+p1.catch((err) =&gt; console.log(err));
+
+// 捕获回调运行时的错误
+const p2 = new Promise(function (resolve, reject) &#123;
+  setTimeout(() =&gt; &#123;
+    resolve(&quot;成功！&quot;);
+  &#125;, 3000);
+&#125;);
+
+p1.then((res) =&gt; console.log(undefinedTest)).catch((err) =&gt; console.log(err));
+</code></pre>
+<p>当 Promise 执行了 resolve 之后再抛出错误就无用了，因为这时候 Promise 的状态已经改变了，虽然 resolve 之后的代码还会执行，但 Promise 只会记录状态改变时的结果，后面的内容回调是感知不到的</p>
+<pre><code class="js">const p1 = new Promise(function (resolve, reject) &#123;
+  resolve(&quot;ok&quot;);
+  setTimeout(function () &#123;
+    throw new Error(&quot;test&quot;);
+  &#125;);
+&#125;);
+p1.then((res) =&gt; console.log(res)).catch((err) =&gt; console.log(err));
+</code></pre>
+<h2 id="Promise-prototype-finally"><a href="#Promise-prototype-finally" class="headerlink" title="Promise.prototype.finally()"></a>Promise.prototype.finally()</h2><p>同 then 和 catch 一样，finally 也是定义在 Promise 原型上的方法。它的作用是不管 Promise 的状态如何都会执行最后的操作，这个方法是在 ES2018 引入的（ES6 &#x3D; ES2015）。finally 回调不接受任何参数，所以它里面不应该存在有依赖于 Promise 执行结果的逻辑。</p>
+<pre><code class="js">const p1 = new Promise(function (resolve, reject) &#123;
+  resolve(&quot;成功&quot;);
+&#125;);
+
+const p2 = new Promise(function (resolve, reject) &#123;
+  reject(&quot;失败&quot;);
+&#125;);
+
+p1.finally(() =&gt; &#123;
+  return console.log(&quot;好耶&quot;);
+&#125;);
+
+p2.finally(() =&gt; &#123;
+  return console.log(&quot;好耶&quot;);
+&#125;);
+</code></pre>
+<h2 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all()"></a>Promise.all()</h2><p>Promise.all()可以将多个 Promise 重新组装成一个新的 Promise，all()方法接收一个具备 Iterator 接口的对象作为参数，参数里的成员都得是 Promise，如果不是会先调用 resolve 将其转换成 Promise 再做处理。</p>
+<pre><code class="js">const [p1, p2, p3] = [new Promise(function(resolve, reject) &#123; ... &#125;), new Promise(function(resolve, reject) &#123; ... &#125;), new Promise(function(resolve, reject) &#123; ... &#125;)];
+
+const P = Promise.all([p1, p2, p3]);
+</code></pre>
+<p>由 p1，p2，p3 组成的 P 的状态由 p1，p2，p3 的状态决定，具体要分为两种情况。</p>
+<ul>
+<li>p1，p2，p3 的状态全部变为 fulfilled 后，P 的状态才变为 fulfilled。p1，p2，p3 的结果合并为数组传给 P 的回调。</li>
+<li>p1，p2，p3 中有一个的状态变为 rejected，P 的状态就变为 rejected。p1，p2，p3 中第一个变为 rejected 的 Promise 的错误信息流入 P 的回调。</li>
+</ul>
+<p>all()错误信息处理有一种特殊的情况，传入的 Promise 成员如果自己有 catch 把错误兜住了，不会触发合并后 Promise 的 catch， 如果没有兜住就会被 P 的 catch 兜住。究其原因是因为 catch 会返回一个新的 Promise，这时出错的 Promise 的状态就指向这个新的 Promise 了，在 catch 执行完新的 Promise 也会变成 fulfilled，最终虽然这个 Promise 炸了但是错误的信息会和成功信息组成数组流入成功的回调函数。</p>
+<pre><code class="js">const p1 = new Promise(function (resolve, reject) &#123;
+  resolve(&quot;成功&quot;);
+&#125;)
+  .then((res) =&gt; res)
+  .catch((err) =&gt; err);
+
+const p2 = new Promise(function (resolve, reject) &#123;
+  reject(&quot;失败！&quot;);
+&#125;)
+  .then((res) =&gt; res)
+  .catch((err) =&gt; err);
+
+const p3 = new Promise(function (resolve, reject) &#123;
+  reject(&quot;失败！！&quot;);
+&#125;).then((res) =&gt; res);
+
+const P1 = Promise.all([p1, p2])
+  .then((res) =&gt; console.log(res))
+  .catch((err) =&gt; console.log(err));
+// then =&gt; [&#39;成功&#39;, &#39;失败！&#39;]
+
+const P2 = Promise.all([p1, p3])
+  .then((res) =&gt; console.log(res))
+  .catch((err) =&gt; console.log(err));
+
+// catch =&gt; 失败！！
+</code></pre>
+<h2 id="Promise-race"><a href="#Promise-race" class="headerlink" title="Promise.race()"></a>Promise.race()</h2><p>race()方法和 all()入参完全一样。区别是状态变化上，当 Promise 成员有一个的状态率先发生变化，P 就会跟着发生变化。</p>
+<p>可以使用 race 方法给 fetch 添加超时时间，设置一个 setTimeout，将它和 fetch 的 Promise 放入 race 看谁先跑完。</p>
+<pre><code class="js">const fetchPromise = new Promise(function(resolve, reject) &#123;
+    fetch(....)...
+&#125;)
+
+const timeout = new Promise(function(resolve, reject) &#123;
+    setTimeout(() =&gt; &#123;
+        reject(&#39;超时了&#39;)
+    &#125;, 5000)
+&#125;)
+
+Promise.race([fetchPromise, timeout])
+    .then(res =&gt; console.log(res))
+    .catch(err =&gt; console.log(err));
+</code></pre>
+<h2 id="Promise-allSettled"><a href="#Promise-allSettled" class="headerlink" title="Promise.allSettled()"></a>Promise.allSettled()</h2><p>allSettled 这个方法是 ES2020 引入的，入参和之前一样，效果是所有成员 Promise 都返回了结果（不管是 fulfilled 还是 rejected）才结束包装，两个 Promise 的结果会合并成数组作为参数传入回调。值得注意的是，成功时有 value 来记保存结果，失败时有 reason 来保存结果，不管是成功还是失败都会有 status 来记录状态。</p>
+<pre><code class="js">const resolved = Promise.resolve(42);
+const rejected = Promise.reject(-1);
+
+Promise.allSettled([resolved, rejected]).then((res) =&gt; console.log(res));
+
+// [
+//   &#123; status: &#39;fulfilled&#39;, value: 42 &#125;,
+//   &#123; status: &#39;rejected&#39;, reason: -1 &#125;
+// ]
+</code></pre>
+<p>有些时候我们并不关心异步操作的结果，只关心这个操作结束没有，allSettled 就派上用场了，直接把工作量缩短到直线距离级别。</p>
+<h2 id="了解即可——Promise-any"><a href="#了解即可——Promise-any" class="headerlink" title="了解即可——Promise.any()"></a>了解即可——Promise.any()</h2><p>any 是 ES2021 引入的，现在仍旧处于实验性阶段，浏览器还没有完全支持。all 的入参和之前的相同，效果是它的一个 Promise 成员状态变为 fulfilled，那 P 就变为 fulfilled；所有的状态全为 rejected，P 才变为 rejected。成功的结果会作为参数流入成功回调函数，而抛出的错误会合并成数组作为参数传入失败的回调函数。</p>
+<pre><code class="js">const [p1, p2, p3] = [
+  Promise.resolve(&quot;成功&quot;),
+  Promise.reject(&quot;失败！&quot;),
+  Promise.reject(&quot;失败！!&quot;),
+];
+
+Promise.any([p1, p2, p3])
+  .then((res) =&gt; console.log(res))
+  .catch((err) =&gt; console.log(err));
+
+Promise.any([p2, p3])
+  .then((res) =&gt; console.log(res))
+  .catch((err) =&gt; console.log(err));
+</code></pre>
+<h2 id="Promise-resolve"><a href="#Promise-resolve" class="headerlink" title="Promise.resolve()"></a>Promise.resolve()</h2><p>resolve 方法可以将现有对象转化为 Promise 对象</p>
+<pre><code class="js">const stringToPromise = Promise.resolve(&quot;test&quot;);
+
+console.log(stringToPromise);
+</code></pre>
+<p>resolve 的返回值根据参数的类型来划分有四种情况。</p>
+<ul>
+<li>参数为 Promise 实例：resolve 不做任何修改，原封不动的返回这个 Promise 实例。</li>
+<li>参数为 thenable 的对象：resolve 会先将其转换为 Promise 对象然后执行它的 then 方法</li>
+</ul>
+<pre><code class="js">const thenable = &#123;
+  then: (resolve, reject) =&gt; &#123;
+    resolve(&quot;成功&quot;);
+  &#125;,
+&#125;;
+
+const thenableToPromise = Promise.resolve(thenable);
+
+thenableToPromise.then((res) =&gt; console.log(res));
+</code></pre>
+<ul>
+<li>参数为与 thenable 毫无关系的值（可能不是对象）： resolve 会直接将其转化为 Promise 且新的 Promise 一生成状态就是 fulfilled，所以回调函数会立刻执行，resolve 的参数也会作为参数流入回调函数。</li>
+</ul>
+<pre><code class="js">const anythingToPromise = Promise.resolve(&quot;Hello World&quot;);
+
+anythingToPromise.then((res) =&gt; console.log(res));
+</code></pre>
+<ul>
+<li>无参数： resovle 会直接返回一个状态为 fulfilled 的 Promise，需要注意的是 resolve 是在当前循环的末尾执行。</li>
+</ul>
+<pre><code class="js">setTimeout(function () &#123;
+  console.log(&quot;three&quot;);
+&#125;, 0);
+
+Promise.resolve().then(function () &#123;
+  console.log(&quot;two&quot;);
+&#125;);
+
+console.log(&quot;one&quot;);
+
+// one
+// two
+// three
+</code></pre>
+<h2 id="Promise-reject"><a href="#Promise-reject" class="headerlink" title="Promise.reject()"></a>Promise.reject()</h2><p>reject 会返回一个状态为 rejected 的 Promise 对象，回调会立即执行，reject 方法的参数也会作为参数流入回调函数。</p>
+<pre><code class="js">Promise.reject(&quot;failed&quot;).catch((err) =&gt; console.log(err));
+</code></pre>
+<h2 id="了解即可——Promise-try"><a href="#了解即可——Promise-try" class="headerlink" title="了解即可——Promise.try()"></a>了解即可——Promise.try()</h2><p>直接说结论，Promise.try()就是模拟 try 代码块，Promise.catch()就是模拟 catch 代码块。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/">ES6 标准入门（第三版）———— 阮一峰著</a></p>
+</blockquote>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            <div class="post-nav">
+                <hr>
+                
+                    <div class="post-nav-item">Previous Post:<a href="/2021/07/12/Nginx%E7%9A%84%E6%B5%85%E5%87%BA/" rel="prev" 
+                        title="Nginx的浅出">Nginx的浅出
+                      </a></div>
+                
+                
+                    <div class="post-nav-item">Next Post:<a href="/2021/06/28/%E3%80%8C%E6%B3%A5%E6%BD%AD%E6%89%93%E6%BB%9A%E3%80%8DAntd%E7%9A%84Tag%E7%BB%84%E4%BB%B6%E8%B8%A9%E5%9D%91/" rel="next" 
+                        title="「泥潭打滚」Antd的Tag组件踩坑">「泥潭打滚」Antd的Tag组件踩坑</a></div>
+                                
+            </div>   
+                        
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://res.cloudinary.com/tridiamond/image/upload/v1573019751/TriDiamond_logo_ui_xeublz.jpg" height=300 width=300></img>
+                    <p>Lee 62</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        
+                        
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">57 <p>Articles</p></a></li>
+                    <li><a href="/categories">17 <p>Categories</p></a></li>
+                    <li><a href="/tags">36 <p>Tags</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>Contents</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise-%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">Promise 的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promsie-prototype-then"><span class="toc-number">4.</span> <span class="toc-text">Promsie.prototype.then()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise-prototype-catch"><span class="toc-number">5.</span> <span class="toc-text">Promise.prototype.catch()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise-prototype-finally"><span class="toc-number">6.</span> <span class="toc-text">Promise.prototype.finally()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise-all"><span class="toc-number">7.</span> <span class="toc-text">Promise.all()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise-race"><span class="toc-number">8.</span> <span class="toc-text">Promise.race()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise-allSettled"><span class="toc-number">9.</span> <span class="toc-text">Promise.allSettled()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E5%8D%B3%E5%8F%AF%E2%80%94%E2%80%94Promise-any"><span class="toc-number">10.</span> <span class="toc-text">了解即可——Promise.any()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise-resolve"><span class="toc-number">11.</span> <span class="toc-text">Promise.resolve()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise-reject"><span class="toc-number">12.</span> <span class="toc-text">Promise.reject()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E5%8D%B3%E5%8F%AF%E2%80%94%E2%80%94Promise-try"><span class="toc-number">13.</span> <span class="toc-text">了解即可——Promise.try()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">14.</span> <span class="toc-text">参考</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2020
+        <!-- <span class="gradient-text">
+            Lee 62
+        </span>. -->
+        Powered by <span class="gradient-text">Lee 62</span>
+        <!-- <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.7" target="_blank" rel="noopener">v1.4.7</a></small>
+        
+         -->
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+ 
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+   
+<script src="/js/busuanzi.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    if ($('span[id^="busuanzi_"]').length) {
+      initialBusuanzi();
+    }
+  });
+</script>
+ 
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149874671-1');
+</script>
+ 
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Think like an artist, develop like an artisan', '艺术家思维去思考问题，工匠创造精神去开发'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+
+
+
+
+
+</html>

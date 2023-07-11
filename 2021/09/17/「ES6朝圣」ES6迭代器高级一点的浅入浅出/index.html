@@ -1,0 +1,741 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>「ES6朝圣」Generator高级一点的浅入浅出 - Lee 62&#39;s Site</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="TriDiamond Obsidian,"> 
+    <meta name="description" content="前言时过境迁，C 端魔鬼迭代迎来一小段 🈳️ 闲时间，趁这会儿赶紧把 Generator 剩余的内容更了。
+yield*一般情况，在 generator 中调用另外一个 generator 需要手,"> 
+    <meta name="author" content="Lee 62"> 
+    <link rel="alternative" href="atom.xml" title="Lee 62&#39;s Site" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+    
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Lee 62&#39;s Site</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">「ES6朝圣」Generator高级一点的浅入浅出</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/系列"><b>「
+                    </b>系列<b> 」</b></a>
+                
+                September 17, 2021
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/09/17/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8DES6%E8%BF%AD%E4%BB%A3%E5%99%A8%E9%AB%98%E7%BA%A7%E4%B8%80%E7%82%B9%E7%9A%84%E6%B5%85%E5%85%A5%E6%B5%85%E5%87%BA/" title="「ES6朝圣」Generator高级一点的浅入浅出" class="">「ES6朝圣」Generator高级一点的浅入浅出</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>Words count</i>
+                    8.6k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                    8 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>Read count</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/ES6/" rel="tag">ES6</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>时过境迁，C 端魔鬼迭代迎来一小段 🈳️ 闲时间，趁这会儿赶紧把 Generator 剩余的内容更了。</p>
+<h2 id="yield"><a href="#yield" class="headerlink" title="yield*"></a>yield*</h2><p>一般情况，在 generator 中调用另外一个 generator 需要手动遍历。ES6 中提供了一种更简洁的方式在 generator 内部执行另一个 generator。其实使用过后不难看出<code>yield*</code>是 for…of…的一种简写形式，这里存在一个问题，如果<code>yield*</code>后面跟的迭代器有 return 语句是执行不到的，需要定一个一个变量来接 return 的值，如<code>const res = yield* gen();</code>。</p>
+<pre><code class="js">/**
+ * 常规
+ * */
+function* gen1() &#123;
+  yield 3;
+  yield 4;
+&#125;
+
+function* gen2() &#123;
+  yield 1;
+  yield 2;
+  for (const g1 of gen1()) &#123;
+    console.log(g1);
+  &#125;
+&#125;
+
+for (const g2 of gen2()) &#123;
+  console.log(g2);
+&#125;
+
+// 1
+// 2
+// 3
+// 4
+
+/**
+ * ES6
+ * */
+
+function* gen1() &#123;
+  yield 3;
+  yield 4;
+&#125;
+
+function* gen2() &#123;
+  yield 1;
+  yield 2;
+  yield* gen1();
+&#125;
+
+for (const g2 of gen2()) &#123;
+  console.log(g2);
+&#125;
+
+// 1
+// 2
+// 3
+// 4
+</code></pre>
+<p>既然<code>yield*</code>是 for…of…的简写，又可以推出凡事带有 Symbol.iterator 接口的数据都可以使用<code>yield*</code>来遍历，那么对于遍历数组这种原生具备 Symbol.iterator 的数据的成员的时候就显得异常方便了。</p>
+<pre><code class="js">const tree = [1, [2, 3, [4, 5], 6]];
+
+function* getItem(tree) &#123;
+  for (const item of tree) &#123;
+    if (Array.isArray(item)) &#123;
+      yield* getItem(item);
+    &#125; else &#123;
+      yield item;
+    &#125;
+  &#125;
+&#125;
+
+console.log(...getItem(tree));
+
+// 1 2 3 4 5 6
+</code></pre>
+<p><code>yield*</code> 中序遍历完全二叉树。前序，后续</p>
+<pre><code class="js">// 🌲节点
+function Tree(left, label, right) &#123;
+  this.left = left;
+  this.label = label;
+  this.right = right;
+&#125;
+// 中序遍历函数，前序、后续作相应调整
+function* order(tree) &#123;
+  if (tree) &#123;
+    yield* order(tree.left);
+    yield tree.label;
+    yield* order(tree.right);
+  &#125;
+&#125;
+// 创建🌲函数
+const createTree = (nodeList) =&gt; &#123;
+  if (nodeList.length === 1) return new Tree(null, nodeList[0], null);
+  return new Tree(
+    createTree(nodeList[0]),
+    nodeList[1],
+    createTree(nodeList[2])
+  );
+&#125;;
+// 🌲实例
+const tree = createTree([[[1], 2, [3]], 4, [[5], 6, [7]]]);
+
+// 遍历🌲
+for (const leave of order(tree)) &#123;
+  console.log(leave);
+&#125;
+
+// 结果： 1, 2, 3, 4, 5, 6, 7
+</code></pre>
+<h2 id="this-及其巧用"><a href="#this-及其巧用" class="headerlink" title="this 及其巧用"></a>this 及其巧用</h2><p>Generator 函数总是返回一个遍历器，是 Generator 函数的实例，继承了 prototype 对象上的方法。但是并不能把定义的<code>function*&#123;&#125;</code>当作构造函数，因为它总是返回 Iterator 对象，并非 this 实例。</p>
+<p>那么要如何获取迭代器的 this 呢？</p>
+<ul>
+<li>定义一个空对象，然后对齐使用 call 方法绑定 generator 内部的 this<ul>
+<li>下面的的代码在执行了 yield 后才会给实例设置属性 a，b，所以需要执行两次 next。</li>
+</ul>
+</li>
+<li>把上面方法的空对象换成 generator 实例的 prototype<ul>
+<li>第一种，执行的对象上 genThis，生成的对象上 target 二者事分离。这种方式则把对象统一了，我愿称其为追根溯源绑定祖宗法。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="js">/**
+ * 第一种
+ * */
+function* gen() &#123;
+  yield (this.a = 1);
+  yield (this.b = 2);
+&#125;
+
+console.log(gen.a, gen.b);
+// undefined, undefined
+
+const target = &#123;&#125;;
+const genThis = gen.call(target);
+
+genThis.next();
+genThis.next();
+
+console.log(target.a, target.b);
+// 1, 2
+
+/**
+ * 第二种
+ * */
+function* gen() &#123;
+  yield (this.a = 1);
+  yield (this.b = 2);
+&#125;
+
+console.log(gen.a, gen.b);
+// undefined, undefined
+
+const genThis = gen.call(gen.prototype);
+
+genThis.next();
+genThis.next();
+
+console.log(genThis.a, genThis.b);
+// 1, 2
+</code></pre>
+<p>上面第二种方法稍微改造一下成构造函数，甚至能用 new 命令</p>
+<pre><code class="js">function* gen() &#123;
+  yield (this.a = 1);
+  yield (this.b = 2);
+&#125;
+
+console.log(gen.a, gen.b);
+// undefined, undefined
+
+function Gen() &#123;
+  return gen.call(gen.prototype);
+&#125;
+
+const genThis = new Gen();
+
+genThis.next();
+genThis.next();
+
+console.log(genThis.a, genThis.b);
+// 1, 2
+</code></pre>
+<h2 id="Generator-出现得意义"><a href="#Generator-出现得意义" class="headerlink" title="Generator 出现得意义"></a>Generator 出现得意义</h2><p><del>Generator 的出现有重大意义，省略 10w 字……</del></p>
+<h3 id="状态机"><a href="#状态机" class="headerlink" title="状态机"></a>状态机</h3><p>Generator，状态机，SUPER BEST MATCH！YEAH！Generator 是状态机的最佳实现结构——Generator 本身就管理了一个状态信息，即这个状态是否暂停。</p>
+<p>下面的代码是 ES5 和 ES6 实现状态机的方式，可以看出 ES6 的写法中不用去定义保存状态的外部变量，且代码更加简洁，更符合函数式编程的思维。由于不用去管理外部变量，被非法传改的机会大大减少，提升了代码的安全性。</p>
+<pre><code class="js">// ES5
+var isTicking = true;
+
+const clock = function (isTicking) &#123;
+  this.next = function () &#123;
+    if (isTicking) &#123;
+      console.log(&quot;tic&quot;);
+    &#125; else &#123;
+      console.log(&quot;toc&quot;);
+    &#125;
+
+    isTicking = !isTicking;
+  &#125;;
+&#125;;
+
+const CLOCK = new clock(isTicking);
+
+CLOCK.next();
+CLOCK.next();
+CLOCK.next();
+
+// tic toc tic
+</code></pre>
+<pre><code class="js">// ES6
+
+function* Clock() &#123;
+  while (true) &#123;
+    yield &quot;tic&quot;;
+    yield &quot;toc&quot;;
+  &#125;
+&#125;
+
+const clock = Clock();
+
+console.log(clock.next());
+console.log(clock.next());
+console.log(clock.next());
+
+// &#123; value: &#39;tic&#39;, done: false &#125;
+// &#123; value: &#39;toc&#39;, done: false &#125;
+// &#123; value: &#39;tic&#39;, done: false &#125;
+</code></pre>
+<h3 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h3><blockquote>
+<p>协程是一种程序的运行方式，可以理解为协作的线程&#x2F;协作的函数。可以用单线程实现，也可以用多线程实现，前者是一种特殊的子例程，后者是一种特殊的线程。</p>
+</blockquote>
+<p>传统子例程采用堆栈先进后出的执行方式，只有全部的子程序执行完了，才会执行父程序。而协程可以并行跑多个线程，但是只有一个线程是运行的状态，其他都是暂停的状态，这些线程之间可以互相交换执行权，也就是说一个程序可以执行到一半把执行权交出去暂停执行，之后回收执行权后再恢复执行。这种并行线程且可以交换执行权的特殊线程被称为协程。</p>
+<p>相较于普通线程，协程也拥有执行上下文和共享全局变量，但是同一时间内运行的协程只有一个，普通线程则可以有多个。普通线程执行的时候属于抢占式，完全依托于环境；协程则可以自由分配执行权。</p>
+<p>从实际上来看，一个线程维护了一个栈，而协程是跑并行的线程，则维护了多个栈，随之而来的就是内存开销变高。也就是说协程是以内存开销提升为代价实现的多任务的并行。</p>
+<p>😮‍💨 看完前面一大堆内容，想必肯定已经充分理解了 💪</p>
+<p>Generator 如果要实现协程，可以将需要互相协助的任务封装进 Generator 函数里，通过 yield 来分配执行权。但是！Generator 是 ES6 对协程的不完全实现，是半协程！因为真正的协程，任何函数都可以重启暂停的协程，但是 Generator 函数如果要重启，只能由函数调用者来分配执行权。</p>
+<h3 id="上下文"><a href="#上下文" class="headerlink" title="上下文"></a>上下文</h3><p>JS 运行的时候会产生一个上下文包含了所有的变量和对象，即运行环境。在执行函数或块级作用域的时候，会产生一新的上下文来作为当前的上下文，最终形成一个堆栈的结构。在执行的时候遵循先进后出的原则，后压入的先执行，直到所有代码执行完成后堆栈清空。</p>
+<p>而对 Generator 来说，一遇到 yield 命令就会暂时退出它的堆栈，但是堆栈并不消失，里面所有的内容都处于一个冻结的状态，在碰见的 next 的时候则重新回到堆栈中，将 generator 的冻结状态的上下文变为当前的上下文继续执行。</p>
+<h2 id="Generator-应用场景"><a href="#Generator-应用场景" class="headerlink" title="Generator 应用场景"></a>Generator 应用场景</h2><h3 id="异步问题同步式表达"><a href="#异步问题同步式表达" class="headerlink" title="异步问题同步式表达"></a>异步问题同步式表达</h3><pre><code class="js">function* load() &#123;
+  while (true) &#123;
+    modalopen();
+    yield getModalData();
+    yield modalClose();
+  &#125;
+&#125;
+
+const modalLoad = load();
+
+// 打开modal并且加载数据
+modalLoad.next();
+// 关闭modal
+modalLoad.next();
+</code></pre>
+<h3 id="控制流管理"><a href="#控制流管理" class="headerlink" title="控制流管理"></a>控制流管理</h3><p>如果一个操作跟老太婆的裹脚布一样又臭又长，要层层回调，直接进到十八层回调地狱。</p>
+<pre><code class="js">const step = funciton(val1) &#123;
+  return function step2(val2) &#123;
+      return function step3(val3) &#123;
+        // ....
+    &#125;
+  &#125;
+&#125;;
+</code></pre>
+<p>使用 Promise 可以简化一下代码。</p>
+<pre><code class="js">const PromiseStep = Promise.resolve(() =&gt; step1)
+  .then(() =&gt; step2)
+  .then(() =&gt; step3)
+  .then(() =&gt; step4);
+// ....;
+</code></pre>
+<p>上面的代码，看起来已经很简洁了 8⃣️，但是！但是啊，我们希望是对流程的一个管理，Promise 一旦执行后就无法停止，只有执行结束或者报错才会停止。Generator 能进一步满足我们的需求。</p>
+<pre><code class="js">function* genSteps(value1) &#123;
+  try &#123;
+    const value2 = yield step1(value1);
+    const value3 = yield step1(value2);
+    const value4 = yield step1(value3);
+    // ...
+  &#125; catch (e) &#123;
+    console.log(e);
+  &#125;
+&#125;
+
+// 任务维度
+const tasks = [func1, func2, func3];
+function* doTask() &#123;
+  for (const task of tasks) &#123;
+    yield task();
+  &#125;
+&#125;
+
+// 任务集维度
+const tasks1 = [func1, func2, func3];
+const tasks2 = [func4, func5, func6];
+const tasks3 = [func7, func8, func9];
+const jobs = [tasks1, tasks2, tasks3];
+
+function* doTask(jobs) &#123;
+  for (const job of jobs) &#123;
+    yield* doTask(job);
+  &#125;
+&#125;
+</code></pre>
+<h3 id="部署-Symbol-Iterator-接口"><a href="#部署-Symbol-Iterator-接口" class="headerlink" title="部署 Symbol.Iterator 接口"></a>部署 Symbol.Iterator 接口</h3><p>Generator 可以给任意对象部署 Symbol.Iterator 接口，及其方便 😏</p>
+<pre><code class="js">function* setObjIterator(obj) &#123;
+  const keys = Object.keys(obj);
+  for (const index in keys) &#123;
+    const realKey = keys[index];
+    yield [realKey, obj[realKey]];
+  &#125;
+&#125;
+
+const objIterator = setObjIterator(&#123;
+  username: &quot;张三&quot;,
+  age: 12,
+&#125;);
+
+for (const [key, value] of objIterator) &#123;
+  console.log(key, value);
+&#125;
+
+// username 张三
+// age 12
+</code></pre>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/">ES6 标准入门（第三版）———— 阮一峰著</a></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            <div class="post-nav">
+                <hr>
+                
+                    <div class="post-nav-item">Previous Post:<a href="/2021/09/19/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8DGenerator%E4%B8%8E%E5%BC%82%E6%AD%A5%E4%B8%8EJS/" rel="prev" 
+                        title="「ES6朝圣」Generator与异步与JS">「ES6朝圣」Generator与异步与JS
+                      </a></div>
+                
+                
+                    <div class="post-nav-item">Next Post:<a href="/2021/09/12/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8DGenerator%E5%9F%BA%E7%A1%80%E7%9A%84%E6%B5%85%E5%87%BA/" rel="next" 
+                        title="「ES6朝圣」Generator基础的浅出">「ES6朝圣」Generator基础的浅出</a></div>
+                                
+            </div>   
+                        
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://res.cloudinary.com/tridiamond/image/upload/v1573019751/TriDiamond_logo_ui_xeublz.jpg" height=300 width=300></img>
+                    <p>Lee 62</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        
+                        
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">57 <p>Articles</p></a></li>
+                    <li><a href="/categories">17 <p>Categories</p></a></li>
+                    <li><a href="/tags">36 <p>Tags</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>Contents</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#yield"><span class="toc-number">2.</span> <span class="toc-text">yield*</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#this-%E5%8F%8A%E5%85%B6%E5%B7%A7%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">this 及其巧用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Generator-%E5%87%BA%E7%8E%B0%E5%BE%97%E6%84%8F%E4%B9%89"><span class="toc-number">4.</span> <span class="toc-text">Generator 出现得意义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E6%9C%BA"><span class="toc-number">4.1.</span> <span class="toc-text">状态机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%8F%E7%A8%8B"><span class="toc-number">4.2.</span> <span class="toc-text">协程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="toc-number">4.3.</span> <span class="toc-text">上下文</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Generator-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">5.</span> <span class="toc-text">Generator 应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98%E5%90%8C%E6%AD%A5%E5%BC%8F%E8%A1%A8%E8%BE%BE"><span class="toc-number">5.1.</span> <span class="toc-text">异步问题同步式表达</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E6%B5%81%E7%AE%A1%E7%90%86"><span class="toc-number">5.2.</span> <span class="toc-text">控制流管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2-Symbol-Iterator-%E6%8E%A5%E5%8F%A3"><span class="toc-number">5.3.</span> <span class="toc-text">部署 Symbol.Iterator 接口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">6.</span> <span class="toc-text">参考</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2020
+        <!-- <span class="gradient-text">
+            Lee 62
+        </span>. -->
+        Powered by <span class="gradient-text">Lee 62</span>
+        <!-- <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.7" target="_blank" rel="noopener">v1.4.7</a></small>
+        
+         -->
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+ 
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+   
+<script src="/js/busuanzi.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    if ($('span[id^="busuanzi_"]').length) {
+      initialBusuanzi();
+    }
+  });
+</script>
+ 
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149874671-1');
+</script>
+ 
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Think like an artist, develop like an artisan', '艺术家思维去思考问题，工匠创造精神去开发'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+
+
+
+
+
+</html>

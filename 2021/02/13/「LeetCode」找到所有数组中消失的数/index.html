@@ -5,12 +5,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>LeetCode——找到所有数组中消失的数 - Lee 62&#39;s Site</title>
+    <title>「LeetCode」找到所有数组中消失的数 - Lee 62&#39;s Site</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="TriDiamond Obsidian,"> 
-    <meta name="description" content="给定一个范围在  1 ≤ a[i] ≤ n ( n &amp;#x3D; 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。找到所有在 [1, n] 范围之间没有出现在数组中的数字。,"> 
+    <meta name="description" content="给定一个范围在 1 ≤ a[i] ≤ n ( n &amp;#x3D; 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。找到所有在 [1, n] 范围之间没有出现在数组中的数字。
+,"> 
     <meta name="author" content="Lee 62"> 
     <link rel="alternative" href="atom.xml" title="Lee 62&#39;s Site" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -60,7 +61,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">LeetCode——找到所有数组中消失的数</h3>
+        <h3 class="subtitle">「LeetCode」找到所有数组中消失的数</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -92,14 +93,14 @@
                 
                 February 13, 2021
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2021/02/13/%E3%80%8CLeetCode%E3%80%8D%E6%89%BE%E5%88%B0%E6%89%80%E6%9C%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0/" title="LeetCode——找到所有数组中消失的数" class="">LeetCode——找到所有数组中消失的数</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/02/13/%E3%80%8CLeetCode%E3%80%8D%E6%89%BE%E5%88%B0%E6%89%80%E6%9C%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0/" title="「LeetCode」找到所有数组中消失的数" class="">「LeetCode」找到所有数组中消失的数</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    3.3k
+                    3.2k
                 </span>
                 
                 
@@ -139,49 +140,49 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <p>给定一个范围在  1 ≤ a[i] ≤ n ( n &#x3D; 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。找到所有在 [1, n] 范围之间没有出现在数组中的数字。</p>
-<h2 id="我的思路"><a href="#我的思路" class="headerlink" title="我的思路"></a>我的思路</h2><p>拿到 [1, n]所有数，判断其在不在输入的nums数组中，然后对其作相应的操作</p>
+            <p>给定一个范围在 1 ≤ a[i] ≤ n ( n &#x3D; 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。找到所有在 [1, n] 范围之间没有出现在数组中的数字。</p>
+<h2 id="我的思路"><a href="#我的思路" class="headerlink" title="我的思路"></a>我的思路</h2><p>拿到 [1, n]所有数，判断其在不在输入的 nums 数组中，然后对其作相应的操作</p>
 <h2 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h2><pre><code class="javascript">/**
  * @param &#123;number[]&#125; nums
  * @return &#123;number[]&#125;
  */
-var findDisappearedNumbers = function(nums) &#123;
-    //初始化
-    let res = &#123;&#125;;
-    let JSONArr = [];
-    let key = [];
-    //将[1, n]作为对象保存
-    for(let index = 1;index &lt;= nums.length;index++)&#123;
-        res[index] = index;
-    &#125;
-    //循环输入的数组，判断在不在对象里，如果在就删掉这个属性，如果不在就等于本身
-    nums.forEach((item,i) =&gt; &#123;
-        res.hasOwnProperty(item.toString())?delete res[item.toString()]:res;
+var findDisappearedNumbers = function (nums) &#123;
+  //初始化
+  let res = &#123;&#125;;
+  let JSONArr = [];
+  let key = [];
+  //将[1, n]作为对象保存
+  for (let index = 1; index &lt;= nums.length; index++) &#123;
+    res[index] = index;
+  &#125;
+  //循环输入的数组，判断在不在对象里，如果在就删掉这个属性，如果不在就等于本身
+  nums.forEach((item, i) =&gt; &#123;
+    res.hasOwnProperty(item.toString()) ? delete res[item.toString()] : res;
+  &#125;);
+  //将处理好的对象JSON格式化
+  res = JSON.stringify(res);
+  //如果不是特殊情况我们就继续后续操作
+  //特殊情况:只输入[1]，他会把自己删掉
+  if (res.length &gt; 2) &#123;
+    //截取&#123;&#125;内的内容
+    res = res.substring(1, res.length - 1);
+    //按逗号分割拿到数组
+    JSONArr = res.split(&quot;,&quot;);
+    //循环上面的数组，在按:分割，拿到键和值，我们只取值，所以要索引值为1的内容
+    JSONArr.forEach((item, i) =&gt; &#123;
+      key.push(parseInt(item.split(&quot;:&quot;)[1]));
     &#125;);
-    //将处理好的对象JSON格式化
-    res = JSON.stringify(res);
-    //如果不是特殊情况我们就继续后续操作
-    //特殊情况:只输入[1]，他会把自己删掉
-    if (res.length &gt; 2) &#123;
-        //截取&#123;&#125;内的内容
-        res = res.substring(1,res.length-1);
-        //按逗号分割拿到数组
-        JSONArr = res.split(&quot;,&quot;);
-        //循环上面的数组，在按:分割，拿到键和值，我们只取值，所以要索引值为1的内容
-        JSONArr.forEach((item,i) =&gt; &#123;
-            key.push(parseInt(item.split(&quot;:&quot;)[1]));
-        &#125;)
-    &#125;
-    //返回数组
-    return key
+  &#125;
+  //返回数组
+  return key;
 &#125;;
 </code></pre>
-<h2 id="LC时间第一名"><a href="#LC时间第一名" class="headerlink" title="LC时间第一名"></a>LC时间第一名</h2><pre><code class="javascript">/**
+<h2 id="LC-时间第一名"><a href="#LC-时间第一名" class="headerlink" title="LC 时间第一名"></a>LC 时间第一名</h2><pre><code class="javascript">/**
  * @param &#123;number[]&#125; nums
  * @return &#123;number[]&#125;
  */
-var findDisappearedNumbers = function(nums) &#123;
-    /*
+var findDisappearedNumbers = function (nums) &#123;
+  /*
     //方法1：哈希表
     let map=new Map();
     //先遍历数组，统计每个元素出现的次数
@@ -209,49 +210,45 @@ var findDisappearedNumbers = function(nums) &#123;
     return result;
     */
 
-    //方法2：标记法
-    //先将下标为abs(nums[i])-1的元素置为负数
-    for(let i=0;i&lt;nums.length;i++)
-    &#123;
-        if(nums[Math.abs(nums[i])-1]&gt;0)
-        &#123;
-            nums[Math.abs(nums[i])-1]=-nums[Math.abs(nums[i])-1];
-        &#125;
+  //方法2：标记法
+  //先将下标为abs(nums[i])-1的元素置为负数
+  for (let i = 0; i &lt; nums.length; i++) &#123;
+    if (nums[Math.abs(nums[i]) - 1] &gt; 0) &#123;
+      nums[Math.abs(nums[i]) - 1] = -nums[Math.abs(nums[i]) - 1];
     &#125;
-    //再判断下标为 i 的元素的符号，代表着值为 i + 1 的元素是否出现过，
-    //负号是出现过，正号是没出现过
-    let result=[];
-    for(let i=0;i&lt;nums.length;i++)
-    &#123;
-        if(nums[i]&gt;0)
-        &#123;
-            result.push(i+1);
-        &#125;
+  &#125;
+  //再判断下标为 i 的元素的符号，代表着值为 i + 1 的元素是否出现过，
+  //负号是出现过，正号是没出现过
+  let result = [];
+  for (let i = 0; i &lt; nums.length; i++) &#123;
+    if (nums[i] &gt; 0) &#123;
+      result.push(i + 1);
     &#125;
-    return result;
+  &#125;
+  return result;
 &#125;;
 </code></pre>
-<h2 id="LC空间第一名"><a href="#LC空间第一名" class="headerlink" title="LC空间第一名"></a>LC空间第一名</h2><pre><code class="javascript">/**
+<h2 id="LC-空间第一名"><a href="#LC-空间第一名" class="headerlink" title="LC 空间第一名"></a>LC 空间第一名</h2><pre><code class="javascript">/**
  * @param &#123;number[]&#125; nums
  * @return &#123;number[]&#125;
  */
-var findDisappearedNumbers = function(nums) &#123;
-    const res = []
-    const len = nums.length
+var findDisappearedNumbers = function (nums) &#123;
+  const res = [];
+  const len = nums.length;
 
-    for (let i = 0; i &lt; len; i++) &#123;
-        if (nums[Math.abs(nums[i]) - 1] &gt; 0) &#123;
-            nums[Math.abs(nums[i]) - 1] = -nums[Math.abs(nums[i]) - 1]
-        &#125;
+  for (let i = 0; i &lt; len; i++) &#123;
+    if (nums[Math.abs(nums[i]) - 1] &gt; 0) &#123;
+      nums[Math.abs(nums[i]) - 1] = -nums[Math.abs(nums[i]) - 1];
     &#125;
+  &#125;
 
-    for (let i = 0; i &lt; len; i++) &#123;
-        if (nums[i] &gt; 0) &#123;
-            res.push(i + 1)
-        &#125;
+  for (let i = 0; i &lt; len; i++) &#123;
+    if (nums[i] &gt; 0) &#123;
+      res.push(i + 1);
     &#125;
+  &#125;
 
-    return res
+  return res;
 &#125;;
 </code></pre>
 
@@ -274,12 +271,12 @@ var findDisappearedNumbers = function(nums) &#123;
                 <hr>
                 
                     <div class="post-nav-item">Previous Post:<a href="/2021/02/14/%E3%80%8CLeetCode%E3%80%8D%E6%83%85%E4%BE%A3%E7%89%B5%E6%89%8B/" rel="prev" 
-                        title="LeetCode——情侣牵手">LeetCode——情侣牵手
+                        title="「LeetCode」情侣牵手">「LeetCode」情侣牵手
                       </a></div>
                 
                 
                     <div class="post-nav-item">Next Post:<a href="/2021/02/12/%E3%80%8CLeetCode%E3%80%8D%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%922/" rel="next" 
-                        title="LeetCode——杨辉三角2">LeetCode——杨辉三角2</a></div>
+                        title="「LeetCode」杨辉三角2">「LeetCode」杨辉三角2</a></div>
                                 
             </div>   
                         
@@ -299,7 +296,7 @@ var findDisappearedNumbers = function(nums) &#123;
                 </div>
                 <ul>
                     <li><a href="/">57 <p>Articles</p></a></li>
-                    <li><a href="/categories">18 <p>Categories</p></a></li>
+                    <li><a href="/categories">17 <p>Categories</p></a></li>
                     <li><a href="/tags">36 <p>Tags</p></a></li>
                 </ul>
             </div>
@@ -309,7 +306,7 @@ var findDisappearedNumbers = function(nums) &#123;
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>Contents</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="toc-number">1.</span> <span class="toc-text">我的思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">我的代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LC%E6%97%B6%E9%97%B4%E7%AC%AC%E4%B8%80%E5%90%8D"><span class="toc-number">3.</span> <span class="toc-text">LC时间第一名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LC%E7%A9%BA%E9%97%B4%E7%AC%AC%E4%B8%80%E5%90%8D"><span class="toc-number">4.</span> <span class="toc-text">LC空间第一名</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="toc-number">1.</span> <span class="toc-text">我的思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">我的代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LC-%E6%97%B6%E9%97%B4%E7%AC%AC%E4%B8%80%E5%90%8D"><span class="toc-number">3.</span> <span class="toc-text">LC 时间第一名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LC-%E7%A9%BA%E9%97%B4%E7%AC%AC%E4%B8%80%E5%90%8D"><span class="toc-number">4.</span> <span class="toc-text">LC 空间第一名</span></a></li></ol>
                 </div>
             </div>
             
@@ -328,18 +325,19 @@ var findDisappearedNumbers = function(nums) &#123;
 </body>
 <footer>
     <p class="copyright" id="copyright">
-        &copy; 2023
-        <span class="gradient-text">
+        &copy; 2020
+        <!-- <span class="gradient-text">
             Lee 62
-        </span>.
-        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        </span>. -->
+        Powered by <span class="gradient-text">Lee 62</span>
+        <!-- <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
         Theme
         <span class="gradient-text">
             <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
         </span>
         <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.7" target="_blank" rel="noopener">v1.4.7</a></small>
         
-        
+         -->
     </p>
 </footer>
 

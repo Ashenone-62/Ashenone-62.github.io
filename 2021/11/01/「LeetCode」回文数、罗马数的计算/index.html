@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>回文数、罗马数的计算 - Lee 62&#39;s Site</title>
+    <title>「LeetCode」回文数、罗马数的计算 - Lee 62&#39;s Site</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
@@ -61,7 +61,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">回文数、罗马数的计算</h3>
+        <h3 class="subtitle">「LeetCode」回文数、罗马数的计算</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -93,7 +93,7 @@
                 
                 November 01, 2021
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2021/11/01/%E3%80%8CLeetCode%E3%80%8D%E5%9B%9E%E6%96%87%E6%95%B0%E3%80%81%E7%BD%97%E9%A9%AC%E6%95%B0%E7%9A%84%E8%AE%A1%E7%AE%97/" title="回文数、罗马数的计算" class="">回文数、罗马数的计算</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/11/01/%E3%80%8CLeetCode%E3%80%8D%E5%9B%9E%E6%96%87%E6%95%B0%E3%80%81%E7%BD%97%E9%A9%AC%E6%95%B0%E7%9A%84%E8%AE%A1%E7%AE%97/" title="「LeetCode」回文数、罗马数的计算" class="">「LeetCode」回文数、罗马数的计算</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
@@ -145,13 +145,13 @@
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><blockquote>
 <p>可以理解为回文数是数的反转中的一种极端情况</p>
 </blockquote>
-<p><strong>字符串反转法：</strong>将传入的number转化为string，然后将其反转后直接比对新的字符串和原始字符串是否相同。</p>
-<p><strong>计算法：</strong>通过对原始值取模然后除以10退位，然后将退位的值累加，每次操作乘以10来进位。</p>
+<p><strong>字符串反转法：</strong>将传入的 number 转化为 string，然后将其反转后直接比对新的字符串和原始字符串是否相同。</p>
+<p><strong>计算法：</strong>通过对原始值取模然后除以 10 退位，然后将退位的值累加，每次操作乘以 10 来进位。</p>
 <h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><h4 id="字符串反转法"><a href="#字符串反转法" class="headerlink" title="字符串反转法"></a>字符串反转法</h4><pre><code class="js">const isPalindrome_toString = (num) =&gt; &#123;
   // 将number转化为string
-  const str = num + &#39;&#39;;
+  const str = num + &quot;&quot;;
   // 将string序列化然后反转再合并
-  const strReverse = [...str].reverse().join(&#39;&#39;);
+  const strReverse = [...str].reverse().join(&quot;&quot;);
   // 最后判断反转后的结果是否和原来相同
   return str === strReverse;
 &#125;;
@@ -161,16 +161,16 @@
   let originValue = num &lt; 0 ? Math.abs(num) : num;
   // 初始化结果
   let result = 0;
-  
-  while(originValue !== 0) &#123;
+
+  while (originValue !== 0) &#123;
     // 原始值取模推出值
     const push = originValue % 10;
     // 除以10取整退位
     originValue = parseInt(originValue / 10);
-        // 结果乘以10累加退位的数来进位
+    // 结果乘以10累加退位的数来进位
     result = result * 10 + push;
   &#125;
-    // 判断反转后的数是否等于原始值
+  // 判断反转后的数是否等于原始值
   return num === result;
 &#125;;
 </code></pre>
@@ -211,10 +211,10 @@
 <td align="center">1000</td>
 </tr>
 </tbody></table>
-<p>例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做  XXVII, 即为 XX + V + II 。</p>
+<p>例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做 XXVII, 即为 XX + V + II 。</p>
 <p>通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 IX。这个特殊的规则只适用于以下六种情况：</p>
 <p>I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。<br>X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。<br>C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。<br>给定一个罗马数字，将其转换成整数。输入确保在 1 到 3999 的范围内。</p>
-<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p><strong>计算法：</strong>首先建立一张映射表，对应了罗马字符串和它的值，然后我们将传入的罗马字符串序列化转成数组，初始化结果为0；直接对罗马字符串进行forEach循环，如果判断前面字符串比后面的小就累减，反之就累加（类似IV &#x3D; 5 - 1 &#x3D; 4）；最后返回结果。</p>
+<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p><strong>计算法：</strong>首先建立一张映射表，对应了罗马字符串和它的值，然后我们将传入的罗马字符串序列化转成数组，初始化结果为 0；直接对罗马字符串进行 forEach 循环，如果判断前面字符串比后面的小就累减，反之就累加（类似 IV &#x3D; 5 - 1 &#x3D; 4）；最后返回结果。</p>
 <h3 id="解法-1"><a href="#解法-1" class="headerlink" title="解法"></a>解法</h3><h4 id="计算法-1"><a href="#计算法-1" class="headerlink" title="计算法"></a>计算法</h4><pre><code class="js">// 建立映射表
 const romanStringMap = &#123;
   I: 1,
@@ -231,7 +231,7 @@ const romanToInt = (romanString) =&gt; &#123;
   const romanStringArray = [...romanString];
   // 初始化结果
   let result = 0;
-    // 执行循环
+  // 执行循环
   romanStringArray.forEach((item, idx) =&gt; &#123;
     // 判断前一个字符串是否小于后一个字符串对应的值
     if (romanStringMap[item] &lt; romanStringMap[romanStringArray[idx + 1]]) &#123;
@@ -244,7 +244,7 @@ const romanToInt = (romanString) =&gt; &#123;
   &#125;);
   // 返回结果
   return result;
-&#125;
+&#125;;
 </code></pre>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
@@ -266,12 +266,12 @@ const romanToInt = (romanString) =&gt; &#123;
                 <hr>
                 
                     <div class="post-nav-item">Previous Post:<a href="/2021/11/03/%E3%80%8CLeetCode%E3%80%8D%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E3%80%81%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91%E3%80%81%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="prev" 
-                        title="中序遍历、相同的树、对称二叉树">中序遍历、相同的树、对称二叉树
+                        title="「LeetCode」中序遍历、相同的树、对称二叉树">「LeetCode」中序遍历、相同的树、对称二叉树
                       </a></div>
                 
                 
                     <div class="post-nav-item">Next Post:<a href="/2021/10/31/%E3%80%8CLeetCode%E3%80%8D%E6%95%B0%E7%9A%84%E5%8F%8D%E8%BD%AC/" rel="next" 
-                        title="数的反转">数的反转</a></div>
+                        title="「LeetCode」数的反转">「LeetCode」数的反转</a></div>
                                 
             </div>   
                         
@@ -291,7 +291,7 @@ const romanToInt = (romanString) =&gt; &#123;
                 </div>
                 <ul>
                     <li><a href="/">57 <p>Articles</p></a></li>
-                    <li><a href="/categories">18 <p>Categories</p></a></li>
+                    <li><a href="/categories">17 <p>Categories</p></a></li>
                     <li><a href="/tags">36 <p>Tags</p></a></li>
                 </ul>
             </div>
@@ -320,18 +320,19 @@ const romanToInt = (romanString) =&gt; &#123;
 </body>
 <footer>
     <p class="copyright" id="copyright">
-        &copy; 2023
-        <span class="gradient-text">
+        &copy; 2020
+        <!-- <span class="gradient-text">
             Lee 62
-        </span>.
-        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        </span>. -->
+        Powered by <span class="gradient-text">Lee 62</span>
+        <!-- <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
         Theme
         <span class="gradient-text">
             <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
         </span>
         <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.7" target="_blank" rel="noopener">v1.4.7</a></small>
         
-        
+         -->
     </p>
 </footer>
 

@@ -344,19 +344,19 @@
     <div class="else">
         <p class="animated fadeInDown">
             
-                <a href="/categories/JavaScript">
-                  <b>「 </b>JAVASCRIPT<b> 」</b>
+                <a href="/categories/系列">
+                  <b>「 </b>系列<b> 」</b>
                 </a>
             
             December 27, 2020
         </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2020/12/27/this%E8%AF%A6%E8%A7%A3/" title="this详解" class="posttitle">this详解</a></h3>
+        <h3 class="post-title animated fadeInDown"><a href="/2020/12/27/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8Dthis%E8%AF%A6%E8%A7%A3/" title="「ES6朝圣」this详解" class="posttitle">「ES6朝圣」this详解</a></h3>
         
             <p class="post-count animated fadeInDown">
                 
                     <span>
                         <b class="iconfont icon-text2"></b> <i>Words count</i>
-                        3.5k
+                        3.6k
                     </span>
                 
                 
@@ -373,18 +373,18 @@
         
         <div class="md-content animated fadeIn">
             
-                <p>解析器在调用函数的时候，每次都会向函数内部传入两个隐含参数，其中一个是this。this的指向是一个对象，这个对象称为函数执行时的 上下文对象 。</p>
-<p>根据函数的调用方式不同，this的指向也会不同。</p>
+                <p>解析器在调用函数的时候，每次都会向函数内部传入两个隐含参数，其中一个是 this。this 的指向是一个对象，这个对象称为函数执行时的 上下文对象 。</p>
+<p>根据函数的调用方式不同，this 的指向也会不同。</p>
 <ul>
-<li>以函数<code>fuction()</code>来调用，this永远指向window。</li>
-<li>以方法来调用，this指向调用方法的对象。</li>
+<li>以函数<code>fuction()</code>来调用，this 永远指向 window。</li>
+<li>以方法来调用，this 指向调用方法的对象。</li>
 </ul>
 <pre><code class="javascript">var user = &#123;
     name: &quot;张三&quot;,
     major: fuction()&#123;
-        console.log(this.name + &quot;要敲...</code></pre>
+        console.log(this.name + &quot...</code></pre>
             
-            <span class="read-more"><a href="/2020/12/27/this%E8%AF%A6%E8%A7%A3/" title="Read article" class="posttitle">Read article</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+            <span class="read-more"><a href="/2020/12/27/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8Dthis%E8%AF%A6%E8%A7%A3/" title="Read article" class="posttitle">Read article</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -518,19 +518,19 @@ let proxyUserObj = new Proxy(user,&#123;
     <div class="else">
         <p class="animated fadeInDown">
             
-                <a href="/categories/JavaScript">
-                  <b>「 </b>JAVASCRIPT<b> 」</b>
+                <a href="/categories/系列">
+                  <b>「 </b>系列<b> 」</b>
                 </a>
             
             April 21, 2020
         </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2020/04/21/Async%E4%B8%8EPromise%E6%80%BB%E7%BB%93/" title="Async与Promise总结" class="posttitle">Async与Promise总结</a></h3>
+        <h3 class="post-title animated fadeInDown"><a href="/2020/04/21/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8DAsync%E4%B8%8EPromise%E6%80%BB%E7%BB%93/" title="「ES6朝圣」Async与Promise总结" class="posttitle">「ES6朝圣」Async与Promise总结</a></h3>
         
             <p class="post-count animated fadeInDown">
                 
                     <span>
                         <b class="iconfont icon-text2"></b> <i>Words count</i>
-                        6.9k
+                        6.8k
                     </span>
                 
                 
@@ -547,25 +547,24 @@ let proxyUserObj = new Proxy(user,&#123;
         
         <div class="md-content animated fadeIn">
             
-                <p>ES5写法</p>
-<pre><code class="javascript">getAjax(url,(res)=&gt;&#123;
-    console.log(&quot;我是回调&quot;);
-&#125;)
+                <p>ES5 写法</p>
+<pre><code class="javascript">getAjax(url, (res) =&gt; &#123;
+  console.log(&quot;我是回调&quot;);
+&#125;);
 </code></pre>
-<p>Promise写法</p>
+<p>Promise 写法</p>
 <pre><code class="javascript">get(url).then((res)=&gt;&#123;
     console.log(&quot;我是回调&quot;);
 &#125;))
 </code></pre>
-<p>Async写法</p>
-<pre><code class="javascript">(async ()=&gt;&#123;
-    let res = await get(url);
-&#125;)()
+<p>Async 写法</p>
+<pre><code class="javascript">(async () =&gt; &#123;
+  let res = await get(url);
+&#125;)();
 </code></pre>
-<h3 id="Async和Promise不同的总结"><a href="#Async和Promise不同的总结" class="headerlink" title="Async和Promise不同的总结"></a>Async和Promise不同的总结</h3><ul>
-<li>ES5与Promise...</li></ul>
+<h3 id="Async-和-Promise-不同的总结"><a href="#Async-和-Promise-不同的总结" class="headerlink" title="Async 和 Promise 不同的总结"></a>Async 和 Promise 不...</h3>
             
-            <span class="read-more"><a href="/2020/04/21/Async%E4%B8%8EPromise%E6%80%BB%E7%BB%93/" title="Read article" class="posttitle">Read article</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+            <span class="read-more"><a href="/2020/04/21/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8DAsync%E4%B8%8EPromise%E6%80%BB%E7%BB%93/" title="Read article" class="posttitle">Read article</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -584,18 +583,19 @@ let proxyUserObj = new Proxy(user,&#123;
 </body>
 <footer>
     <p class="copyright" id="copyright">
-        &copy; 2023
-        <span class="gradient-text">
+        &copy; 2020
+        <!-- <span class="gradient-text">
             Lee 62
-        </span>.
-        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        </span>. -->
+        Powered by <span class="gradient-text">Lee 62</span>
+        <!-- <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
         Theme
         <span class="gradient-text">
             <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
         </span>
         <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.7" target="_blank" rel="noopener">v1.4.7</a></small>
         
-        
+         -->
     </p>
 </footer>
 

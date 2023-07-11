@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>另一棵树的子树，二叉树的坡度、N叉树的最大深度 - Lee 62&#39;s Site</title>
+    <title>「LeetCode」另一棵树的子树，二叉树的坡度、N叉树的最大深度 - Lee 62&#39;s Site</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
@@ -63,7 +63,7 @@ TAG： #相同的树
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">另一棵树的子树，二叉树的坡度、N叉树的最大深度</h3>
+        <h3 class="subtitle">「LeetCode」另一棵树的子树，二叉树的坡度、N叉树的最大深度</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -95,7 +95,7 @@ TAG： #相同的树
                 
                 January 19, 2022
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2022/01/19/%E3%80%8CLeetCode%E3%80%8D%E5%8F%A6%E4%B8%80%E6%A3%B5%E6%A0%91%E7%9A%84%E5%AD%90%E6%A0%91%EF%BC%8C%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%9D%A1%E5%BA%A6%E3%80%81N%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" title="另一棵树的子树，二叉树的坡度、N叉树的最大深度" class="">另一棵树的子树，二叉树的坡度、N叉树的最大深度</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2022/01/19/%E3%80%8CLeetCode%E3%80%8D%E5%8F%A6%E4%B8%80%E6%A3%B5%E6%A0%91%E7%9A%84%E5%AD%90%E6%A0%91%EF%BC%8C%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%9D%A1%E5%BA%A6%E3%80%81N%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" title="「LeetCode」另一棵树的子树，二叉树的坡度、N叉树的最大深度" class="">「LeetCode」另一棵树的子树，二叉树的坡度、N叉树的最大深度</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
@@ -147,24 +147,26 @@ TAG： #相同的树
 </blockquote>
 <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给你两棵二叉树<code>root</code>和<code>subRoot</code>。检验<code>root</code>中是否包含和<code>subRoot</code>具有相同结构和节点值的子树。如果存在，返回 <code>true</code> ；否则，返回 <code>false</code> 。</p>
 <p>二叉树 <code>tree</code> 的一棵子树包括 <code>tree</code> 的某个节点和这个节点的所有后代节点。<code>tree</code> 也可以看做它自身的一棵子树。</p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>此处只需要去递归检查每棵子树和<code>subRoot</code>是否相同就行了，可以直接copy之前的<a target="_blank" rel="noopener" href="https://www.ashenone62.ltd/_posts/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E3%80%81%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91%E3%80%81%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91.html#%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91">相同的树的算法题</a>。</p>
-<h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><pre><code class="js">var isSameTree = function(tree1, tree2) &#123;
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>此处只需要去递归检查每棵子树和<code>subRoot</code>是否相同就行了，可以直接 copy 之前的<a target="_blank" rel="noopener" href="https://www.ashenone62.ltd/_posts/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E3%80%81%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91%E3%80%81%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91.html#%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91">相同的树的算法题</a>。</p>
+<h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><pre><code class="js">var isSameTree = function (tree1, tree2) &#123;
   const checkTreeLeave = (tree1, tree2) =&gt; &#123;
     if (!tree1 &amp;&amp; !tree2) return true;
 
     if (tree1 &amp;&amp; tree2) &#123;
       if (tree1.val === tree2.val) &#123;
-        return checkTreeLeave(tree1.left, tree2.left)
-        &amp;&amp; checkTreeLeave(tree1.right, tree2.right);
-      &#125; 
+        return (
+          checkTreeLeave(tree1.left, tree2.left) &amp;&amp;
+          checkTreeLeave(tree1.right, tree2.right)
+        );
+      &#125;
       return false;
-    &#125; 
+    &#125;
     return false;
-  &#125;
+  &#125;;
   return checkTreeLeave(tree1, tree2);
 &#125;;
 
-var isSubtree = function(root, subRoot) &#123;
+var isSubtree = function (root, subRoot) &#123;
   let res = false;
 
   const checkIsSubTree = (root, subRoot) =&gt; &#123;
@@ -175,10 +177,10 @@ var isSubtree = function(root, subRoot) &#123;
       checkIsSubTree(root.left, subRoot);
       checkIsSubTree(root.right, subRoot);
     &#125;
-  &#125;
+  &#125;;
 
   checkIsSubTree(root, subRoot);
- 
+
   return res;
 &#125;;
 </code></pre>
@@ -188,12 +190,12 @@ var isSubtree = function(root, subRoot) &#123;
 <h3 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h3><p>给你一个二叉树的根节点 <code>root</code> ，计算并返回 整个树 的坡度 。</p>
 <p>一个树的 节点的坡度 定义即为，该节点左子树的节点之和和右子树节点之和的 差的绝对值 。如果没有左子树的话，左子树的节点之和为 0 ；没有右子树的话也是一样。空结点的坡度是 0 。</p>
 <p>整个树 的坡度就是其所有节点的坡度之和。</p>
-<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>在外部设置一个res值，递归获取左右子树的坡度（坡度之和），然后去计算当前节点的坡度，并和res进行累加，最终返回这个res。</p>
+<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>在外部设置一个 res 值，递归获取左右子树的坡度（坡度之和），然后去计算当前节点的坡度，并和 res 进行累加，最终返回这个 res。</p>
 <h3 id="解法-1"><a href="#解法-1" class="headerlink" title="解法"></a>解法</h3><pre><code class="js">/**
  * @param &#123;TreeNode&#125; root
  * @return &#123;number&#125;
  */
- var findTilt = function(root) &#123;
+var findTilt = function (root) &#123;
   let res = 0;
   const computeTilt = (root) =&gt; &#123;
     if (!root) return 0;
@@ -202,18 +204,18 @@ var isSubtree = function(root, subRoot) &#123;
     const currentTilt = Math.abs(leftTilt - rightTilt);
     res += currentTilt;
     return root.val + leftTilt + rightTilt;
-  &#125;
+  &#125;;
   computeTilt(root);
   return res;
 &#125;;
 </code></pre>
-<h2 id="N叉树的深度"><a href="#N叉树的深度" class="headerlink" title="N叉树的深度"></a>N叉树的深度</h2><blockquote>
+<h2 id="N-叉树的深度"><a href="#N-叉树的深度" class="headerlink" title="N 叉树的深度"></a>N 叉树的深度</h2><blockquote>
 <p>TAG： #递归 #每次递归取最深</p>
 </blockquote>
 <h3 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h3><p>给定一个 N 叉树，找到其最大深度。</p>
 <p>最大深度是指从根节点到最远叶子节点的最长路径上的节点总数。</p>
 <p>N 叉树输入按层序遍历序列化表示，每组子节点由空值分隔（请参见示例）。</p>
-<h3 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h3><p>N叉树的结构是一个数组，因此我们每遍历一层深度就要加1。我们在递归中写一个forEach循环来一层一层遍历它，每次遍历取当前当前深度和遍历的深度最大值，遍历完成后返回。</p>
+<h3 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h3><p>N 叉树的结构是一个数组，因此我们每遍历一层深度就要加 1。我们在递归中写一个 forEach 循环来一层一层遍历它，每次遍历取当前当前深度和遍历的深度最大值，遍历完成后返回。</p>
 <h3 id="解法-2"><a href="#解法-2" class="headerlink" title="解法"></a>解法</h3><pre><code class="js">/**
  * @return &#123;number&#125;
  * @param &#123;
@@ -221,16 +223,15 @@ var isSubtree = function(root, subRoot) &#123;
  *  children: &#123; val:..., children: ... &#125; [];
  * &#125;
  */
- var maxDepth = function(root) &#123;
-
+var maxDepth = function (root) &#123;
   const getMaxDep = (root) =&gt; &#123;
-      if (!root) return 0;
-      let maxDep = 0;
-      root.children.forEach((child) =&gt; &#123;
-          maxDep = Math.max(maxDep, getMaxDep(child));
-      &#125;);
-      return maxDep + 1;
-  &#125;
+    if (!root) return 0;
+    let maxDep = 0;
+    root.children.forEach((child) =&gt; &#123;
+      maxDep = Math.max(maxDep, getMaxDep(child));
+    &#125;);
+    return maxDep + 1;
+  &#125;;
 
   return getMaxDep(root);
 &#125;;
@@ -254,13 +255,13 @@ var isSubtree = function(root, subRoot) &#123;
             <div class="post-nav">
                 <hr>
                 
-                    <div class="post-nav-item">Previous Post:<a href="/2022/01/27/%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%88string%EF%BC%89%E7%9A%84%E6%8B%93%E5%B1%95/" rel="prev" 
-                        title="字符串（string）的拓展">字符串（string）的拓展
+                    <div class="post-nav-item">Previous Post:<a href="/2022/01/27/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8D%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%88string%EF%BC%89%E7%9A%84%E6%8B%93%E5%B1%95/" rel="prev" 
+                        title="「ES6朝圣」字符串（string）的拓展">「ES6朝圣」字符串（string）的拓展
                       </a></div>
                 
                 
                     <div class="post-nav-item">Next Post:<a href="/2021/12/31/%E3%80%8CLeetCode%E3%80%8D%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84%EF%BC%8C%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E7%BB%9D%E5%AF%B9%E5%B7%AE/" rel="next" 
-                        title="二叉树的直径，二叉树的最小绝对差">二叉树的直径，二叉树的最小绝对差</a></div>
+                        title="「LeetCode」二叉树的直径，二叉树的最小绝对差">「LeetCode」二叉树的直径，二叉树的最小绝对差</a></div>
                                 
             </div>   
                         
@@ -280,7 +281,7 @@ var isSubtree = function(root, subRoot) &#123;
                 </div>
                 <ul>
                     <li><a href="/">57 <p>Articles</p></a></li>
-                    <li><a href="/categories">18 <p>Categories</p></a></li>
+                    <li><a href="/categories">17 <p>Categories</p></a></li>
                     <li><a href="/tags">36 <p>Tags</p></a></li>
                 </ul>
             </div>
@@ -290,7 +291,7 @@ var isSubtree = function(root, subRoot) &#123;
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>Contents</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%A6%E4%B8%80%E6%A3%B5%E6%A0%91%E7%9A%84%E5%AD%90%E6%A0%91"><span class="toc-number">1.</span> <span class="toc-text">另一棵树的子树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">1.2.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">解法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%9D%A1%E5%BA%A6"><span class="toc-number">2.</span> <span class="toc-text">二叉树的坡度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="toc-number">2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF-1"><span class="toc-number">2.2.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95-1"><span class="toc-number">2.3.</span> <span class="toc-text">解法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#N%E5%8F%89%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6"><span class="toc-number">3.</span> <span class="toc-text">N叉树的深度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-2"><span class="toc-number">3.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF-2"><span class="toc-number">3.2.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95-2"><span class="toc-number">3.3.</span> <span class="toc-text">解法</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%A6%E4%B8%80%E6%A3%B5%E6%A0%91%E7%9A%84%E5%AD%90%E6%A0%91"><span class="toc-number">1.</span> <span class="toc-text">另一棵树的子树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">1.2.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">解法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%9D%A1%E5%BA%A6"><span class="toc-number">2.</span> <span class="toc-text">二叉树的坡度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="toc-number">2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF-1"><span class="toc-number">2.2.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95-1"><span class="toc-number">2.3.</span> <span class="toc-text">解法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#N-%E5%8F%89%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6"><span class="toc-number">3.</span> <span class="toc-text">N 叉树的深度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-2"><span class="toc-number">3.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF-2"><span class="toc-number">3.2.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95-2"><span class="toc-number">3.3.</span> <span class="toc-text">解法</span></a></li></ol></li></ol>
                 </div>
             </div>
             
@@ -309,18 +310,19 @@ var isSubtree = function(root, subRoot) &#123;
 </body>
 <footer>
     <p class="copyright" id="copyright">
-        &copy; 2023
-        <span class="gradient-text">
+        &copy; 2020
+        <!-- <span class="gradient-text">
             Lee 62
-        </span>.
-        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        </span>. -->
+        Powered by <span class="gradient-text">Lee 62</span>
+        <!-- <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
         Theme
         <span class="gradient-text">
             <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
         </span>
         <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.7" target="_blank" rel="noopener">v1.4.7</a></small>
         
-        
+         -->
     </p>
 </footer>
 

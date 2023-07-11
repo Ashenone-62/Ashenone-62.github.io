@@ -5,14 +5,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>LeetCode——矩阵置0 - Lee 62&#39;s Site</title>
+    <title>「LeetCode」矩阵置0 - Lee 62&#39;s Site</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="TriDiamond Obsidian,"> 
     <meta name="description" content="给定一个 m x n 的矩阵，如果一个元素为 0 ，则将其所在行和列的所有元素都设为 0。
 
-我的思路将矩阵每行遍历一遍，去找0的列位置，找到之后单独用一个数组管理起来，只要有0我们最后的时候就直接,"> 
+我的思路将矩阵每行遍历一遍，去找 0 的列位置，找到之后单独用一个数组管理起来，只要有 0 我们最后的时,"> 
     <meta name="author" content="Lee 62"> 
     <link rel="alternative" href="atom.xml" title="Lee 62&#39;s Site" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -62,7 +62,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">LeetCode——矩阵置0</h3>
+        <h3 class="subtitle">「LeetCode」矩阵置0</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -94,14 +94,14 @@
                 
                 March 22, 2021
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2021/03/22/%E3%80%8CLeetCode%E3%80%8D%E7%9F%A9%E9%98%B5%E7%BD%AE0/" title="LeetCode——矩阵置0" class="">LeetCode——矩阵置0</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/03/22/%E3%80%8CLeetCode%E3%80%8D%E7%9F%A9%E9%98%B5%E7%BD%AE0/" title="「LeetCode」矩阵置0" class="">「LeetCode」矩阵置0</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    3.2k
+                    3k
                 </span>
                 
                 
@@ -143,85 +143,88 @@
         <div class="content markdown animated fadeIn">
             <p>给定一个 m x n 的矩阵，如果一个元素为 <strong>0</strong> ，则将其所在行和列的所有元素都设为 0。</p>
 <p><img src="https://assets.leetcode.com/uploads/2020/08/17/mat1.jpg" alt="示例"></p>
-<h2 id="我的思路"><a href="#我的思路" class="headerlink" title="我的思路"></a>我的思路</h2><p>将矩阵每行遍历一遍，去找0的列位置，找到之后单独用一个数组管理起来，只要有0我们最后的时候就直接把整行置为0。然后去设置列，将每行中的列位置（刚刚记录的）数字置为0。</p>
-<h2 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h2><pre><code class="javascript">var setZeroes = function(matrix) &#123;
-    //定义一个数组管理每列0的位置
-    let posistion_column = [];
-    //定义一个number保存每行的长度
-    let matrix_child_lenth = matrix[0].length;
-    
-    //行循环，循环传入的矩阵
-    for (let row in matrix) &#123;
-        //定义一个变量来表示是否此行存在0
-        let isZero = false;
-        //列循环，循环每行找到0的位置，把他放入上面提到的数组中，同时把isZero置为true
-        for (let column in matrix[row]) &#123;
-            if (matrix[row][column] == 0) &#123;
-                isZero = true;
-                posistion_column.push(column);
-            &#125;
-        &#125;
-        //再列循环完后，判断一下有无0，有0就直接把整行换为长度相同的每个元素为0的数组
-        if (isZero) &#123;
-            matrix[row] = new Array(matrix_child_lenth).fill(0);
-        &#125;
-    &#125;
-    //修改列，再次循环行，同时循环位置数组，将对应位置改为0
-    for (let row in matrix) &#123;
-        for (let column of posistion_column) &#123;
-            matrix[row][column]=0
-        &#125;
-    &#125;
+<h2 id="我的思路"><a href="#我的思路" class="headerlink" title="我的思路"></a>我的思路</h2><p>将矩阵每行遍历一遍，去找 0 的列位置，找到之后单独用一个数组管理起来，只要有 0 我们最后的时候就直接把整行置为 0。然后去设置列，将每行中的列位置（刚刚记录的）数字置为 0。</p>
+<h2 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h2><pre><code class="javascript">var setZeroes = function (matrix) &#123;
+  //定义一个数组管理每列0的位置
+  let posistion_column = [];
+  //定义一个number保存每行的长度
+  let matrix_child_lenth = matrix[0].length;
 
-    return matrix
-&#125;;
-</code></pre>
-<h2 id="LC时间第一"><a href="#LC时间第一" class="headerlink" title="LC时间第一"></a>LC时间第一</h2><pre><code class="javascript">var setZeroes = function(matrix) &#123;
-    if (matrix.length === 0) return matrix
-    let m = matrix.length, n = matrix[0].length, row = [], col = [];
-    for (let i = 0; i &lt; m; i++) &#123;
-        for (let j = 0; j &lt; n; j++) &#123;
-            if (matrix[i][j] === 0) &#123;
-                row.findIndex(item =&gt; item === i) === -1 &amp;&amp; row.push(i);
-                col.findIndex(item =&gt; item === j) === -1 &amp;&amp; col.push(j);
-            &#125;
-        &#125;
+  //行循环，循环传入的矩阵
+  for (let row in matrix) &#123;
+    //定义一个变量来表示是否此行存在0
+    let isZero = false;
+    //列循环，循环每行找到0的位置，把他放入上面提到的数组中，同时把isZero置为true
+    for (let column in matrix[row]) &#123;
+      if (matrix[row][column] == 0) &#123;
+        isZero = true;
+        posistion_column.push(column);
+      &#125;
     &#125;
-    row.forEach(item =&gt; &#123;
-        matrix[item] = new Array(n).fill(0);
-    &#125;)
-    col.forEach(item =&gt; &#123;
-        for (let i = 0; i &lt; m; i++) &#123;
-            matrix[i][item] = 0;
-        &#125;
-    &#125;)
+    //再列循环完后，判断一下有无0，有0就直接把整行换为长度相同的每个元素为0的数组
+    if (isZero) &#123;
+      matrix[row] = new Array(matrix_child_lenth).fill(0);
+    &#125;
+  &#125;
+  //修改列，再次循环行，同时循环位置数组，将对应位置改为0
+  for (let row in matrix) &#123;
+    for (let column of posistion_column) &#123;
+      matrix[row][column] = 0;
+    &#125;
+  &#125;
+
+  return matrix;
 &#125;;
 </code></pre>
-<h2 id="LC空间第一"><a href="#LC空间第一" class="headerlink" title="LC空间第一"></a>LC空间第一</h2><pre><code class="javascript">/**
+<h2 id="LC-时间第一"><a href="#LC-时间第一" class="headerlink" title="LC 时间第一"></a>LC 时间第一</h2><pre><code class="javascript">var setZeroes = function (matrix) &#123;
+  if (matrix.length === 0) return matrix;
+  let m = matrix.length,
+    n = matrix[0].length,
+    row = [],
+    col = [];
+  for (let i = 0; i &lt; m; i++) &#123;
+    for (let j = 0; j &lt; n; j++) &#123;
+      if (matrix[i][j] === 0) &#123;
+        row.findIndex((item) =&gt; item === i) === -1 &amp;&amp; row.push(i);
+        col.findIndex((item) =&gt; item === j) === -1 &amp;&amp; col.push(j);
+      &#125;
+    &#125;
+  &#125;
+  row.forEach((item) =&gt; &#123;
+    matrix[item] = new Array(n).fill(0);
+  &#125;);
+  col.forEach((item) =&gt; &#123;
+    for (let i = 0; i &lt; m; i++) &#123;
+      matrix[i][item] = 0;
+    &#125;
+  &#125;);
+&#125;;
+</code></pre>
+<h2 id="LC-空间第一"><a href="#LC-空间第一" class="headerlink" title="LC 空间第一"></a>LC 空间第一</h2><pre><code class="javascript">/**
  * @param &#123;number[][]&#125; matrix
  * @return &#123;void&#125; Do not return anything, modify matrix in-place instead.
  */
-var setZeroes = function(matrix) &#123;
-    let rLen = matrix.length;
-    let cLen = matrix[0].length;
-    let col0Deal = false;
-    // 标记
-    for(let i = 0;i&lt;rLen;i++)&#123;
-        if(matrix[i][0] === 0) col0Deal = true;
-        for(let j = 1;j&lt;cLen;j++)&#123;
-            if(matrix[i][j] === 0) &#123;
-                matrix[i][0] = 0;
-                matrix[0][j] = 0;
-            &#125;
-        &#125;
+var setZeroes = function (matrix) &#123;
+  let rLen = matrix.length;
+  let cLen = matrix[0].length;
+  let col0Deal = false;
+  // 标记
+  for (let i = 0; i &lt; rLen; i++) &#123;
+    if (matrix[i][0] === 0) col0Deal = true;
+    for (let j = 1; j &lt; cLen; j++) &#123;
+      if (matrix[i][j] === 0) &#123;
+        matrix[i][0] = 0;
+        matrix[0][j] = 0;
+      &#125;
     &#125;
-    // 处理
-    for(let i = rLen - 1;i&gt;=0;i--)&#123;
-        for(let j = cLen - 1;j &gt; 0;j--)&#123;
-            if(matrix[i][0] === 0 || matrix[0][j] === 0) matrix[i][j] = 0;
-        &#125;
+  &#125;
+  // 处理
+  for (let i = rLen - 1; i &gt;= 0; i--) &#123;
+    for (let j = cLen - 1; j &gt; 0; j--) &#123;
+      if (matrix[i][0] === 0 || matrix[0][j] === 0) matrix[i][j] = 0;
     &#125;
-    if(col0Deal) for(let i = 0;i&lt;rLen;i++) matrix[i][0] = 0;
+  &#125;
+  if (col0Deal) for (let i = 0; i &lt; rLen; i++) matrix[i][0] = 0;
 &#125;;
 </code></pre>
 
@@ -244,12 +247,12 @@ var setZeroes = function(matrix) &#123;
                 <hr>
                 
                     <div class="post-nav-item">Previous Post:<a href="/2021/03/22/%E3%80%8CLeetCode%E3%80%8D%E4%BD%8D1%E7%9A%84%E4%B8%AA%E6%95%B0/" rel="prev" 
-                        title="LeetCode——位1的个数">LeetCode——位1的个数
+                        title="「LeetCode」位1的个数">「LeetCode」位1的个数
                       </a></div>
                 
                 
                     <div class="post-nav-item">Next Post:<a href="/2021/03/21/%E3%80%8CLeetCode%E3%80%8D%E9%80%86%E6%B3%A2%E5%85%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BF%90%E7%AE%97/" rel="next" 
-                        title="LeetCode——逆波兰表达式运算">LeetCode——逆波兰表达式运算</a></div>
+                        title="「LeetCode」逆波兰表达式运算">「LeetCode」逆波兰表达式运算</a></div>
                                 
             </div>   
                         
@@ -269,7 +272,7 @@ var setZeroes = function(matrix) &#123;
                 </div>
                 <ul>
                     <li><a href="/">57 <p>Articles</p></a></li>
-                    <li><a href="/categories">18 <p>Categories</p></a></li>
+                    <li><a href="/categories">17 <p>Categories</p></a></li>
                     <li><a href="/tags">36 <p>Tags</p></a></li>
                 </ul>
             </div>
@@ -279,7 +282,7 @@ var setZeroes = function(matrix) &#123;
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>Contents</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="toc-number">1.</span> <span class="toc-text">我的思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">我的代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LC%E6%97%B6%E9%97%B4%E7%AC%AC%E4%B8%80"><span class="toc-number">3.</span> <span class="toc-text">LC时间第一</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LC%E7%A9%BA%E9%97%B4%E7%AC%AC%E4%B8%80"><span class="toc-number">4.</span> <span class="toc-text">LC空间第一</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="toc-number">1.</span> <span class="toc-text">我的思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">我的代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LC-%E6%97%B6%E9%97%B4%E7%AC%AC%E4%B8%80"><span class="toc-number">3.</span> <span class="toc-text">LC 时间第一</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LC-%E7%A9%BA%E9%97%B4%E7%AC%AC%E4%B8%80"><span class="toc-number">4.</span> <span class="toc-text">LC 空间第一</span></a></li></ol>
                 </div>
             </div>
             
@@ -298,18 +301,19 @@ var setZeroes = function(matrix) &#123;
 </body>
 <footer>
     <p class="copyright" id="copyright">
-        &copy; 2023
-        <span class="gradient-text">
+        &copy; 2020
+        <!-- <span class="gradient-text">
             Lee 62
-        </span>.
-        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        </span>. -->
+        Powered by <span class="gradient-text">Lee 62</span>
+        <!-- <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
         Theme
         <span class="gradient-text">
             <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
         </span>
         <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.7" target="_blank" rel="noopener">v1.4.7</a></small>
         
-        
+         -->
     </p>
 </footer>
 

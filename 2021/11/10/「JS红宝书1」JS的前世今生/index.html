@@ -1,0 +1,499 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>「JS红宝书1」JS的前世今生 - Lee 62&#39;s Site</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="TriDiamond Obsidian,"> 
+    <meta name="description" content="前言这篇文章是 JS 考古这个系列的开篇之笔。
+这一系列主要是参考 Nicholas C.Zakas 所著由李松峰、曹力两人所译的 JavaScript 高级程序设计一书（其实就是学习笔记啦 🤡）,"> 
+    <meta name="author" content="Lee 62"> 
+    <link rel="alternative" href="atom.xml" title="Lee 62&#39;s Site" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+    
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Lee 62&#39;s Site</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">「JS红宝书1」JS的前世今生</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/系列"><b>「
+                    </b>系列<b> 」</b></a>
+                
+                November 10, 2021
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/11/10/%E3%80%8CJS%E7%BA%A2%E5%AE%9D%E4%B9%A61%E3%80%8DJS%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/" title="「JS红宝书1」JS的前世今生" class="">「JS红宝书1」JS的前世今生</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>Words count</i>
+                    6.1k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                    6 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>Read count</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/JavaScript%E8%80%83%E5%8F%A4%E7%B3%BB%E5%88%97/" rel="tag">JavaScript考古系列</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章是 JS 考古这个系列的开篇之笔。</p>
+<p>这一系列主要是参考 Nicholas C.Zakas 所著由李松峰、曹力两人所译的 JavaScript 高级程序设计一书<del>（其实就是学习笔记啦 🤡）</del>。这篇文章主要介绍下面这些内容：</p>
+<ul>
+<li>JS 的简史</li>
+<li>JS 的三大组成部分：ECMAScript、DOM、BOM</li>
+</ul>
+<h2 id="JS-诞生之路"><a href="#JS-诞生之路" class="headerlink" title="JS 诞生之路"></a>JS 诞生之路</h2><h3 id="JS-的出生"><a href="#JS-的出生" class="headerlink" title="JS 的出生"></a>JS 的出生</h3><p><strong>背景：</strong>1995 年前，是绝大多数人网速还停留在 28.8kbit&#x2F;s 的时代，是表单校验只能由服务器完成的时代，是会出现填写完一张表单等待 30 秒后因关键字段没有填写而重填的时代！如果这些东西换到今天你会不会血压拉满？会不会捶胸顿足？会不会心脏直接漏跳半拍！？</p>
+<p><strong>诞生：</strong>当时的互联网大头 Netscape（网景）公司决定开发一门语言在客户端完成一些简单的验证任务。在那个年代，数据能在发送到服务器之前，在客户端阶段完成校验工作的壮举绝对令人兴奋。当时就职于 Netscape 的 Brendan Eich（布兰登-艾奇）计划为 1995 年 2 月发布的<code>Netscape Navigtor 2(Netscape的浏览器)</code>开发一款脚本语言，最初定名为 LiveScript。再后来，为了赶在发布日期前完成任务，Netscape 和 Sun（开发 Java 的公司，后被 Oracle 收购）成立了一个开发联盟，并在发布前夕蹭了一波 Java 的热度（当时的 Java 可谓是如日中天，属于顶流级别），将 LiveScript 改名为 JavaScript。</p>
+<h3 id="微软暗中发展，拿里程碑助攻"><a href="#微软暗中发展，拿里程碑助攻" class="headerlink" title="微软暗中发展，拿里程碑助攻"></a>微软暗中发展，拿里程碑助攻</h3><p>JavaScript1.0 的发布获得了巨大成功，Netscape 随即在自家浏览器 Netscape Navigator 3 中发布了 JavaScript1.1，并将自己定位为行业领袖型公司。微软一看，不干了，我好歹也是互联网大佬啊，我面子不要啦！在自家浏览器投入了更多资源，在 Netscape Navigator 3 发布不久后发布了 Internet Explore 3，并在其中加入了 JScript（本质上是 JavaScript 的实现，两者没有太多区别；命名上为了避免撞名 JavaScript 引发版权纠纷，因为当时 Netscape 是付了钱给 Sun 拿到了 Java 名字的使用权的）。</p>
+<p>微软正式进军 Web 浏览器领域这一动作，标志着 JavaScript 作为一门开发语言前进了里程碑式的一步。</p>
+<h3 id="JS-的事业编"><a href="#JS-的事业编" class="headerlink" title="JS 的事业编"></a>JS 的事业编</h3><p>两大巨头在 JS 领域的互相欧拉欧拉让市面上出现了两个版本的 JS，即 Netscape Navigator 的 JavaScript 和 I Internal Explorer 的 JScript，随着业界的担心日益加剧，JavaScript 的标准化问题被提上了日程。两种版本的 JS 会引发啥问题呢？必然是公司为了牟利搞垄断，你用其他版本的 JS 在我的浏览器就跑不起来，这对一门开发语言来说是非常可怕的。</p>
+<p>1997 年，JavaScript1.1 作为蓝本提交给了欧洲计算机制造商协会（European Computer Manufacturers Association，简称 ECMA），由该协会的 39 号技术委员会负责标准化一种<strong>通用的、跨平台的、供应商中立的脚本语言的语义和语法</strong>。经过数月的努力，这个团队拿出了他们的成果 ECMA-262，次年国际标准化组织和国际电工委员会（International Organization For Standardization and International Electrotechnical Commission，简称 ISO&#x2F;IEC）采用了 ECMAScript 作为标准，即 ISO&#x2F;IEC-16262。</p>
+<p>此后，浏览器开发商致力于将 ECMAScript 作为各自 JavaScript 实现的基础，取得了不同程度上的成功。</p>
+<h3 id="ECMAScript"><a href="#ECMAScript" class="headerlink" title="ECMAScript"></a>ECMAScript</h3><blockquote>
+<p>JavaScript 是由 ECMAScript、DOM、BOM 组成的，接下来会简单地聊聊他们的故事。</p>
+</blockquote>
+<p>通常谈到 JS 我们最先联想到的东西就是脚本、交互、浏览器。ECMAScript 和 Web 浏览器并没有任何依赖关系，事实上 ECMAScript 并不包含输入和输出的定义，它只定义了 JavaScript 这门语言的基础，在此基础之上可以构建更完善的脚本语言。硬要说 Web 浏览器和 ECMAScript 有什么关系的话，Web 浏览器上 ECMAScript 实现可能的宿主环境之一（宿主环境会提供基本的实现和拓展，以便语言和环境之间对接交互），Node、Adobe Flash 这些是我们常见的宿主环境。</p>
+<p>ECMAScript 都规定了哪些内容呢？大致说来，它规定下面列表里的东西：</p>
+<ul>
+<li>语法</li>
+<li>类型</li>
+<li>语句</li>
+<li>关键字</li>
+<li>保留字</li>
+<li>操作符</li>
+<li>对象</li>
+</ul>
+<p>简单来说，<strong>ECMAScrip 就是对实现自身（ECMA-262）各方面的语言描述，而 JavaScript 实现了 ECMAScript</strong>，同理 Node、Adobe Flash 也实现了 ECMAScript。</p>
+<h3 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h3><p>文档对象模型（Document Object Model，简称 DOM），是针对 XML 但经过拓展用于 HMTL 的应用程序编程接口（Application Programming Interface，简称 API）。DOM 把整个页面映射成一个多层节点结构，这些节点又包含着不同类型的数据。</p>
+<pre><code class="html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;我是标题&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;我是内容&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>上面这份 HTML 代码就会被映射为下面这个树形数据结构。通过 DOM 创建的这个树形图，开发者获得了控制页面内容和结构的主动权，能轻松自如地执行增、删、改操作。</p>
+<pre><code class="shell"># |html
+# |- head
+# |- |- title
+# |- |- |- 我是标题
+# |- body
+# |- |- p
+# |- |- |- 我是内容
+</code></pre>
+<h4 id="DOM-的事业编"><a href="#DOM-的事业编" class="headerlink" title="DOM 的事业编"></a>DOM 的事业编</h4><p>随着 Netscape Navigator 4 和 Internet Explore 4 的发布，两种浏览器都支持了不同形式的 Dynamic HTML（简称 DHTML）。在此基础上，开发者不用刷新页面就能修改 HTML 的内容和外观。但是 Microsoft 和 Netscape 在 DHTML 方面各持己见，这意味着过去那个只编写一个 HTML 就能在不同浏览器上访问的时代已经结束了，DOM 的标准化的问题被放在的台面上。负责 Web 通信标准的万维网联盟（World Wide Web Consortium，简称 W3C）揽下了这个活儿。</p>
+<h4 id="DOM-从-1-到-3"><a href="#DOM-从-1-到-3" class="headerlink" title="DOM 从 1 到 3"></a>DOM 从 1 到 3</h4><p>到目前为止 DOM 总共有三个级别，DOM1 级、DOM2 级、DOM3 级。在网上冲浪的时候，你有可能会看见 DOM0 级的字眼，事实上 DOM0 级是不存在的，DOM0 级一般泛指 DOM 历史坐标中的一个时间点，即 Netscape Navigator 4 和 Internet Explore 4 最初支持的那版 DHTML。</p>
+<p><strong>DOM1 级：</strong>DOM1 级于 1998 年 10 月称为 W3C 推荐标准，由 DOM 核心（DOM Core）和 DOM HTML 两部分组成。DOM 核心规定了如何去映射基于 XML 的文档结构，简化了对文档中任意部分的访问和操作，而 DOM HTML 则在 DOM 核心的基础上加以拓展，添加了针对 HTML 的对象和方法。</p>
+<p><strong>DOM2 级：</strong>DOM2 级在原有 DOM 基础上拓展了鼠标和用户界面的事件，遍历 DOM 的方法等细分模块，而且通过对象接口增加了对 CSS 的支持。</p>
+<p><strong>DOM3 级：</strong>DOM3 级进一步拓展了 DOM，引入了统一的加载和保存文档的方式，新增验证文档的方法。DOM3 级也对 DOM 核心做了拓展，开始支持 XML1.0 规范，覆盖了 XML Infoset，XPath 和 XML Base。</p>
+<h4 id="浏览器与-DOM-的那些事"><a href="#浏览器与-DOM-的那些事" class="headerlink" title="浏览器与 DOM 的那些事"></a>浏览器与 DOM 的那些事</h4><p>冷知识，DOM 标准出现一段时间后，浏览器才开始实现它。</p>
+<p>Microsoft 打算在 IE 5 中实现 DOM，但在 IE 5.5 的时候才算真正支持 DOM1 级，并且在 6，7 版本没有更新任何和 DOM 相关的内容，在 IE 8 的时候才修复了之前 DOM 相关的 BUG。</p>
+<p>Netscape 则被 AOL 收购，一部分资源被注入一个非盈利基金会——Mozilla 基金会，在 Netscape 6（Mozilla 0.6.0）的时候开始支持 DOM。Netscape 7 之后，Mozilla 基金会将开发重心转向到了今天我们熟知的 Firefox 上面，Mozilla 的目标是打造一款构建与标准 100%兼容的浏览器，他们的努力也获得了回报。Firefox 3 完全支持了 DOM1 级，几乎支持了 DOM2 级，甚至还支持了 DOM3 级的一部分功能。</p>
+<h3 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h3><p>DOM 是文档对象模型，大致猜一猜就能知道 BOM 是啥东西了，BOM 代表的是浏览器对象模型（Browser Object Model）。从根本上讲，BOM 只处理浏览器的窗口和框架，开发者可以使用 BOM 来控制浏览器显示页面以外的地方，但人们习惯性的将所有针对浏览器的 JavaScript 拓展也算作 BOM 的一部分，这些拓展包括不限于下面这些：</p>
+<ul>
+<li>弹出新浏览器的窗口</li>
+<li>移动、缩放、关闭浏览器窗口</li>
+<li>提供浏览器详细信息的 navigator 对象</li>
+<li>提供加载页面详细信息的 location 对象</li>
+<li>提供用户显示器分辨率详细信息的 screen 对象</li>
+<li>对 cookie 的支持</li>
+<li>自定义对象，如 XMLHttpRequest、IE 的 ActionXObject</li>
+</ul>
+<p>BOM 真正神奇的地方在于，它是 JavaScript 实现的一部分，但是没有相关标准。由于没有相关标准，因此每个浏览器都有自己的实现，对于一些约定俗成的标准，如 window 和 navigator 对象，不同的浏览器也往里面封装一些自己的属性和方法。这个问题在 HTML5 得到了解决，H5 致力于很多 BOM 功能写入正式规范，BOM 的高兼容性未来可期。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>JavaScript 是一种专门为网页交互而设计的脚本语言，由 ECMAScript、DOM、BOM 三部分组成。</li>
+<li>ECMAScript 是对 JavaScript 的语言描述，JavaScript 实现了 ECMAScript。</li>
+<li>DOM，文档对象模型，提供了访问和操作网页的方法和接口。</li>
+<li>BOM，浏览器对象模型，提供了与浏览器交互的方法和接口。</li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            <div class="post-nav">
+                <hr>
+                
+                    <div class="post-nav-item">Previous Post:<a href="/2021/11/11/%E3%80%8CLeetCode%E3%80%8D%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6%E3%80%81%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E6%B7%B1%E5%BA%A6%E3%80%81%E5%88%A4%E6%96%AD%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%E3%80%81%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E5%8C%96%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" rel="prev" 
+                        title="「LeetCode」树的最大深度、树的最小深度、判断平衡二叉树、将有序数组转化为二叉搜索树">「LeetCode」树的最大深度、树的最小深度、判断平衡二叉树、将有序数组转化为二叉搜索树
+                      </a></div>
+                
+                
+                    <div class="post-nav-item">Next Post:<a href="/2021/11/03/%E3%80%8CLeetCode%E3%80%8D%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E3%80%81%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91%E3%80%81%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="next" 
+                        title="「LeetCode」中序遍历、相同的树、对称二叉树">「LeetCode」中序遍历、相同的树、对称二叉树</a></div>
+                                
+            </div>   
+                        
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://res.cloudinary.com/tridiamond/image/upload/v1573019751/TriDiamond_logo_ui_xeublz.jpg" height=300 width=300></img>
+                    <p>Lee 62</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        
+                        
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">57 <p>Articles</p></a></li>
+                    <li><a href="/categories">17 <p>Categories</p></a></li>
+                    <li><a href="/tags">36 <p>Tags</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>Contents</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS-%E8%AF%9E%E7%94%9F%E4%B9%8B%E8%B7%AF"><span class="toc-number">2.</span> <span class="toc-text">JS 诞生之路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JS-%E7%9A%84%E5%87%BA%E7%94%9F"><span class="toc-number">2.1.</span> <span class="toc-text">JS 的出生</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E8%BD%AF%E6%9A%97%E4%B8%AD%E5%8F%91%E5%B1%95%EF%BC%8C%E6%8B%BF%E9%87%8C%E7%A8%8B%E7%A2%91%E5%8A%A9%E6%94%BB"><span class="toc-number">2.2.</span> <span class="toc-text">微软暗中发展，拿里程碑助攻</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS-%E7%9A%84%E4%BA%8B%E4%B8%9A%E7%BC%96"><span class="toc-number">2.3.</span> <span class="toc-text">JS 的事业编</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ECMAScript"><span class="toc-number">2.4.</span> <span class="toc-text">ECMAScript</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DOM"><span class="toc-number">2.5.</span> <span class="toc-text">DOM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BOM"><span class="toc-number">2.6.</span> <span class="toc-text">BOM</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-number">3.</span> <span class="toc-text">小结</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2020
+        <!-- <span class="gradient-text">
+            Lee 62
+        </span>. -->
+        Powered by <span class="gradient-text">Lee 62</span>
+        <!-- <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.7" target="_blank" rel="noopener">v1.4.7</a></small>
+        
+         -->
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+ 
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+   
+<script src="/js/busuanzi.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    if ($('span[id^="busuanzi_"]').length) {
+      initialBusuanzi();
+    }
+  });
+</script>
+ 
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149874671-1');
+</script>
+ 
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Think like an artist, develop like an artisan', '艺术家思维去思考问题，工匠创造精神去开发'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+
+
+
+
+
+</html>

@@ -5,14 +5,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>中序遍历、相同的树、对称二叉树 - Lee 62&#39;s Site</title>
+    <title>「LeetCode」中序遍历、相同的树、对称二叉树 - Lee 62&#39;s Site</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="TriDiamond Obsidian,"> 
-    <meta name="description" content="前言凑齐一波LeetCode热门Eazy算法儿（狐化🦊），本期嘉宾为二叉树的中序遍历、相同的树、对称二叉树🎉🎉
-二叉树的中序遍历题目给定一个二叉树的根节点 root ，返回它的 中序 遍历。
-,"> 
+    <meta name="description" content="前言凑齐一波 LeetCode 热门 Eazy 算法儿（狐化 🦊），本期嘉宾为二叉树的中序遍历、相同的树、对称二叉树 🎉🎉
+二叉树的中序遍历题目给定一个二叉树的根节点 root ，返回它的 中,"> 
     <meta name="author" content="Lee 62"> 
     <link rel="alternative" href="atom.xml" title="Lee 62&#39;s Site" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -62,7 +61,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">中序遍历、相同的树、对称二叉树</h3>
+        <h3 class="subtitle">「LeetCode」中序遍历、相同的树、对称二叉树</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -94,14 +93,14 @@
                 
                 November 03, 2021
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2021/11/03/%E3%80%8CLeetCode%E3%80%8D%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E3%80%81%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91%E3%80%81%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" title="中序遍历、相同的树、对称二叉树" class="">中序遍历、相同的树、对称二叉树</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/11/03/%E3%80%8CLeetCode%E3%80%8D%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E3%80%81%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91%E3%80%81%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" title="「LeetCode」中序遍历、相同的树、对称二叉树" class="">「LeetCode」中序遍历、相同的树、对称二叉树</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    3.7k
+                    3.6k
                 </span>
                 
                 
@@ -141,42 +140,42 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>凑齐一波LeetCode热门Eazy算法儿（狐化🦊），本期嘉宾为二叉树的中序遍历、相同的树、对称二叉树🎉🎉</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>凑齐一波 LeetCode 热门 Eazy 算法儿（狐化 🦊），本期嘉宾为二叉树的中序遍历、相同的树、对称二叉树 🎉🎉</p>
 <h2 id="二叉树的中序遍历"><a href="#二叉树的中序遍历" class="headerlink" title="二叉树的中序遍历"></a>二叉树的中序遍历</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个二叉树的根节点 <code>root</code> ，返回它的 <strong>中序</strong> 遍历。</p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>通过递归去取节点的值，每次递归先判断这个节点是否为空，为空则不继续遍历。由于是中序遍历，所以遍历的顺序是<code>左子树-&gt;根节点-&gt;右子树（这条规则是针对参与中序遍历的树的，例如根节点的左子树相当于是它自己的左子树的根节点）</code>。</p>
 <h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><h4 id="递归法"><a href="#递归法" class="headerlink" title="递归法"></a>递归法</h4><pre><code class="js">/**
  * @param &#123;TreeNode&#125; root
  * @return &#123;number[]&#125;
  */
-const inorderTraversal = function(root) &#123;
-      // 初始化结果数组
-    const res = []
-    const inorder = (root) =&gt; &#123;
-          // 判断当前节点是否为空，为空则终止
-        if (!root) return;
-          // 先遍历左子树
-        inorder(root.left);
-          // 再取根节点
-        res.push(root.val);
-          // 最后遍历右子树
-        inorder(root.right);
-    &#125;
-    // 开始递归
-    inorder(root);
-      // 返回结果
-    return res;
+const inorderTraversal = function (root) &#123;
+  // 初始化结果数组
+  const res = [];
+  const inorder = (root) =&gt; &#123;
+    // 判断当前节点是否为空，为空则终止
+    if (!root) return;
+    // 先遍历左子树
+    inorder(root.left);
+    // 再取根节点
+    res.push(root.val);
+    // 最后遍历右子树
+    inorder(root.right);
+  &#125;;
+  // 开始递归
+  inorder(root);
+  // 返回结果
+  return res;
 &#125;;
 </code></pre>
 <h2 id="相同的树"><a href="#相同的树" class="headerlink" title="相同的树"></a>相同的树</h2><h3 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h3><p>给你两棵二叉树的根节点 <code>p</code> 和 <code>q</code> ，编写一个函数来检验这两棵树是否相同。</p>
 <p>如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。</p>
-<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>通过递归的方式来求解，每次递归开始判断一下传入的两个节点是否都为null（如果两棵树从根节点一直顺利进行到叶子结点，那么它们的终点一定是null），如果为真则直接返回true，为假则返回false。</p>
-<p>接下来检验一下两个节点是否都存在，不是的话直接返回false；结果为真则判断两数的这个节点的值是否相同，如果为真则分别将对应的左节点、右节点传入进行递归，为假就返回false。</p>
+<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>通过递归的方式来求解，每次递归开始判断一下传入的两个节点是否都为 null（如果两棵树从根节点一直顺利进行到叶子结点，那么它们的终点一定是 null），如果为真则直接返回 true，为假则返回 false。</p>
+<p>接下来检验一下两个节点是否都存在，不是的话直接返回 false；结果为真则判断两数的这个节点的值是否相同，如果为真则分别将对应的左节点、右节点传入进行递归，为假就返回 false。</p>
 <h3 id="解法-1"><a href="#解法-1" class="headerlink" title="解法"></a>解法</h3><h4 id="递归法-1"><a href="#递归法-1" class="headerlink" title="递归法"></a>递归法</h4><pre><code class="js">/**
  * @param &#123;TreeNode&#125; p
  * @param &#123;TreeNode&#125; q
  * @return &#123;boolean&#125;
  */
-var isSameTree = function(tree1, tree2) &#123;
+var isSameTree = function (tree1, tree2) &#123;
   const checkTreeLeave = (tree1, tree2) =&gt; &#123;
     // 判断两个节点是否都不存在
     if (!tree1 &amp;&amp; !tree2) return true;
@@ -185,13 +184,15 @@ var isSameTree = function(tree1, tree2) &#123;
       // 判断两个节点值是否相同
       if (tree1.val === tree2.val) &#123;
         // 对对应的左节点和右节点进行递归，左右都ok返回true
-        return checkTreeLeave(tree1.left, tree2.left)
-        &amp;&amp; checkTreeLeave(tree1.right, tree2.right);
+        return (
+          checkTreeLeave(tree1.left, tree2.left) &amp;&amp;
+          checkTreeLeave(tree1.right, tree2.right)
+        );
       &#125;
       return false;
     &#125;
     return false;
-  &#125;
+  &#125;;
   return checkTreeLeave(tree1, tree2);
 &#125;;
 </code></pre>
@@ -203,15 +204,15 @@ var isSameTree = function(tree1, tree2) &#123;
  * @return &#123;boolean&#125;
  */
 const check = (p, q) =&gt; &#123;
-    // 如果两个节点都不存在说明顺利的走到了叶子结点返回true
-    if (!p &amp;&amp; !q) return true;
-      // 如果两个节点有一个不存在则说明不对称返回false
-    if (!p || !q) return false;
-      // 如果两个节点都存在，则值相等的情况下，左节点对应的右节点，右节点对应的左节点传入进行递归check
-    return p.val === q.val &amp;&amp; check(p.left, q.right) &amp;&amp; check(p.right, q.left);
-&#125;
-var isSymmetric = function(root) &#123;
-    return check(root, root);
+  // 如果两个节点都不存在说明顺利的走到了叶子结点返回true
+  if (!p &amp;&amp; !q) return true;
+  // 如果两个节点有一个不存在则说明不对称返回false
+  if (!p || !q) return false;
+  // 如果两个节点都存在，则值相等的情况下，左节点对应的右节点，右节点对应的左节点传入进行递归check
+  return p.val === q.val &amp;&amp; check(p.left, q.right) &amp;&amp; check(p.right, q.left);
+&#125;;
+var isSymmetric = function (root) &#123;
+  return check(root, root);
 &#125;;
 </code></pre>
 
@@ -233,13 +234,13 @@ var isSymmetric = function(root) &#123;
             <div class="post-nav">
                 <hr>
                 
-                    <div class="post-nav-item">Previous Post:<a href="/2021/11/10/1-JavaScirpt%E8%80%83%E5%8F%A4-JS%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/" rel="prev" 
-                        title="JavaScirpt考古(一)——JS的前世今生">JavaScirpt考古(一)——JS的前世今生
+                    <div class="post-nav-item">Previous Post:<a href="/2021/11/10/%E3%80%8CJS%E7%BA%A2%E5%AE%9D%E4%B9%A61%E3%80%8DJS%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/" rel="prev" 
+                        title="「JS红宝书1」JS的前世今生">「JS红宝书1」JS的前世今生
                       </a></div>
                 
                 
                     <div class="post-nav-item">Next Post:<a href="/2021/11/01/%E3%80%8CLeetCode%E3%80%8D%E5%9B%9E%E6%96%87%E6%95%B0%E3%80%81%E7%BD%97%E9%A9%AC%E6%95%B0%E7%9A%84%E8%AE%A1%E7%AE%97/" rel="next" 
-                        title="回文数、罗马数的计算">回文数、罗马数的计算</a></div>
+                        title="「LeetCode」回文数、罗马数的计算">「LeetCode」回文数、罗马数的计算</a></div>
                                 
             </div>   
                         
@@ -259,7 +260,7 @@ var isSymmetric = function(root) &#123;
                 </div>
                 <ul>
                     <li><a href="/">57 <p>Articles</p></a></li>
-                    <li><a href="/categories">18 <p>Categories</p></a></li>
+                    <li><a href="/categories">17 <p>Categories</p></a></li>
                     <li><a href="/tags">36 <p>Tags</p></a></li>
                 </ul>
             </div>
@@ -288,18 +289,19 @@ var isSymmetric = function(root) &#123;
 </body>
 <footer>
     <p class="copyright" id="copyright">
-        &copy; 2023
-        <span class="gradient-text">
+        &copy; 2020
+        <!-- <span class="gradient-text">
             Lee 62
-        </span>.
-        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        </span>. -->
+        Powered by <span class="gradient-text">Lee 62</span>
+        <!-- <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
         Theme
         <span class="gradient-text">
             <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
         </span>
         <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.7" target="_blank" rel="noopener">v1.4.7</a></small>
         
-        
+         -->
     </p>
 </footer>
 

@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>LeetCode——K连续位的最小翻转次数 - Lee 62&#39;s Site</title>
+    <title>「LeetCode」K连续位的最小翻转次数 - Lee 62&#39;s Site</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
@@ -60,7 +60,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">LeetCode——K连续位的最小翻转次数</h3>
+        <h3 class="subtitle">「LeetCode」K连续位的最小翻转次数</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -92,14 +92,14 @@
                 
                 February 18, 2021
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2021/02/18/%E3%80%8CLeetCode%E3%80%8DK%E8%BF%9E%E7%BB%AD%E4%BD%8D%E7%9A%84%E6%9C%80%E5%B0%8F%E7%BF%BB%E8%BD%AC%E6%AC%A1%E6%95%B0/" title="LeetCode——K连续位的最小翻转次数" class="">LeetCode——K连续位的最小翻转次数</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/02/18/%E3%80%8CLeetCode%E3%80%8DK%E8%BF%9E%E7%BB%AD%E4%BD%8D%E7%9A%84%E6%9C%80%E5%B0%8F%E7%BF%BB%E8%BD%AC%E6%AC%A1%E6%95%B0/" title="「LeetCode」K连续位的最小翻转次数" class="">「LeetCode」K连续位的最小翻转次数</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    3.3k
+                    3k
                 </span>
                 
                 
@@ -140,96 +140,101 @@
     <div class='main'>
         <div class="content markdown animated fadeIn">
             <p>在仅包含 0 和 1 的数组 A 中，一次 K 位翻转包括选择一个长度为 K 的（连续）子数组，同时将子数组中的每个 0 更改为 1，而每个 1 更改为 0。返回所需的 K 位翻转的最小次数，以便数组没有值为 0 的元素。如果不可能，返回 -1。</p>
-<h2 id="我的思路"><a href="#我的思路" class="headerlink" title="我的思路"></a>我的思路</h2><p>由题推断处理数组的次数不会多过他自己的长度，因此我们循环传入的数组，每次处理我们循环判断一下数组里的0和1的个数，如果1的个数等于数组的长度那我们处理完了直接break，如果一次处理的长度大于0的次数且0只有一个，那么处理不了返回-1。如果能处理，我们获取一下第一个0的位置，从那开始处理。首先判断一下它距离尾部的位置有没有一次处理那么长，或者剩下正好等于要处理的长度的0，如果满足不辽也不能处理返回-1。然后循环一次处理的长度，挨个把0和1的值修改。然后返回处理的次数。这个思路虽然能跑，但是十分冗余，数据一大起来就很慢，作为我的Hard难度首杀，感觉也还没那么不堪，<strong>学习请直接移步LC第一名部分，代码很很优美</strong>。</p>
+<h2 id="我的思路"><a href="#我的思路" class="headerlink" title="我的思路"></a>我的思路</h2><p>由题推断处理数组的次数不会多过他自己的长度，因此我们循环传入的数组，每次处理我们循环判断一下数组里的 0 和 1 的个数，如果 1 的个数等于数组的长度那我们处理完了直接 break，如果一次处理的长度大于 0 的次数且 0 只有一个，那么处理不了返回-1。如果能处理，我们获取一下第一个 0 的位置，从那开始处理。首先判断一下它距离尾部的位置有没有一次处理那么长，或者剩下正好等于要处理的长度的 0，如果满足不辽也不能处理返回-1。然后循环一次处理的长度，挨个把 0 和 1 的值修改。然后返回处理的次数。这个思路虽然能跑，但是十分冗余，数据一大起来就很慢，作为我的 Hard 难度首杀，感觉也还没那么不堪，<strong>学习请直接移步 LC 第一名部分，代码很很优美</strong>。</p>
 <h2 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h2><pre><code class="javascript">var minKBitFlips = function (A, K) &#123;
-    let aimCount = 0;
-    let zeroCount = 0;
-    let oneCount = 0;
+  let aimCount = 0;
+  let zeroCount = 0;
+  let oneCount = 0;
 
-    for (let i = 0; i &lt; A.length; i++) &#123;
-        zeroCount = 0
-        oneCount = 0
+  for (let i = 0; i &lt; A.length; i++) &#123;
+    zeroCount = 0;
+    oneCount = 0;
 
-        A.forEach((item, i) =&gt; &#123;
-            if (item == 0) &#123;
-                zeroCount++
-            &#125; else &#123;
-                oneCount++
-            &#125;
-        &#125;);
+    A.forEach((item, i) =&gt; &#123;
+      if (item == 0) &#123;
+        zeroCount++;
+      &#125; else &#123;
+        oneCount++;
+      &#125;
+    &#125;);
 
-        if (oneCount == A.length) &#123;
-            break
-        &#125;
-
-        if (K &gt; zeroCount &amp;&amp; zeroCount == 1 ) &#123;
-            aimCount = -1
-            break
-        &#125; else &#123;
-            let position = A.indexOf(0)
-            if (A.length - position + 1 &gt; K || A.length - position + 1 == K &amp;&amp; zeroCount == K) &#123;
-                for (let j = 0; j &lt; K; j++) &#123;
-                    if (A[position] == 0) &#123;
-                        A[position] = 1
-                    &#125; else &#123;
-                        A[position] = 0
-                    &#125;
-                    position++
-                &#125;
-                aimCount++
-            &#125; else &#123;
-                aimCount = -1
-                break
-            &#125;
-        &#125;
+    if (oneCount == A.length) &#123;
+      break;
     &#125;
 
-    return aimCount
-&#125;;
-</code></pre>
-<h2 id="LC时间第一"><a href="#LC时间第一" class="headerlink" title="LC时间第一"></a>LC时间第一</h2><pre><code class="javascript">var minKBitFlips = function(A, K) &#123;
-    const n = A.length;
-    let ans = 0, revCnt = 0;
-    for (let i = 0; i &lt; n; ++i) &#123;
-        if (i &gt;= K &amp;&amp; A[i - K] &gt; 1) &#123;
-            revCnt ^= 1;
-            A[i - K] -= 2; // 复原数组元素，若允许修改数组 A，则可以省略
+    if (K &gt; zeroCount &amp;&amp; zeroCount == 1) &#123;
+      aimCount = -1;
+      break;
+    &#125; else &#123;
+      let position = A.indexOf(0);
+      if (
+        A.length - position + 1 &gt; K ||
+        (A.length - position + 1 == K &amp;&amp; zeroCount == K)
+      ) &#123;
+        for (let j = 0; j &lt; K; j++) &#123;
+          if (A[position] == 0) &#123;
+            A[position] = 1;
+          &#125; else &#123;
+            A[position] = 0;
+          &#125;
+          position++;
         &#125;
-        if (A[i] == revCnt) &#123;
-            if (i + K &gt; n) &#123;
-                return -1;
-            &#125;
-            ++ans;
-            revCnt ^= 1;
-            A[i] += 2;
-        &#125;
+        aimCount++;
+      &#125; else &#123;
+        aimCount = -1;
+        break;
+      &#125;
     &#125;
-    return ans;
+  &#125;
+
+  return aimCount;
 &#125;;
 </code></pre>
-<h2 id="LC空间第一"><a href="#LC空间第一" class="headerlink" title="LC空间第一"></a>LC空间第一</h2><pre><code class="javascript">/**
+<h2 id="LC-时间第一"><a href="#LC-时间第一" class="headerlink" title="LC 时间第一"></a>LC 时间第一</h2><pre><code class="javascript">var minKBitFlips = function (A, K) &#123;
+  const n = A.length;
+  let ans = 0,
+    revCnt = 0;
+  for (let i = 0; i &lt; n; ++i) &#123;
+    if (i &gt;= K &amp;&amp; A[i - K] &gt; 1) &#123;
+      revCnt ^= 1;
+      A[i - K] -= 2; // 复原数组元素，若允许修改数组 A，则可以省略
+    &#125;
+    if (A[i] == revCnt) &#123;
+      if (i + K &gt; n) &#123;
+        return -1;
+      &#125;
+      ++ans;
+      revCnt ^= 1;
+      A[i] += 2;
+    &#125;
+  &#125;
+  return ans;
+&#125;;
+</code></pre>
+<h2 id="LC-空间第一"><a href="#LC-空间第一" class="headerlink" title="LC 空间第一"></a>LC 空间第一</h2><pre><code class="javascript">/**
  * @param &#123;number[]&#125; A
  * @param &#123;number&#125; K
  * @return &#123;number&#125;
  */
-var minKBitFlips = function(A, K) &#123;
-    const n = A.length;
-    let ans = 0, revCnt = 0;
-    for (let i = 0; i &lt; n; ++i) &#123;
-        if (i &gt;= K &amp;&amp; A[i - K] &gt; 1) &#123;
-            revCnt ^= 1;
-            A[i - K] -= 2; // 复原数组元素，若允许修改数组 A，则可以省略
-        &#125;
-        if (A[i] == revCnt) &#123;
-            if (i + K &gt; n) &#123;
-                return -1;
-            &#125;
-            ++ans;
-            revCnt ^= 1;
-            A[i] += 2;
-        &#125;
+var minKBitFlips = function (A, K) &#123;
+  const n = A.length;
+  let ans = 0,
+    revCnt = 0;
+  for (let i = 0; i &lt; n; ++i) &#123;
+    if (i &gt;= K &amp;&amp; A[i - K] &gt; 1) &#123;
+      revCnt ^= 1;
+      A[i - K] -= 2; // 复原数组元素，若允许修改数组 A，则可以省略
     &#125;
-    return ans;
+    if (A[i] == revCnt) &#123;
+      if (i + K &gt; n) &#123;
+        return -1;
+      &#125;
+      ++ans;
+      revCnt ^= 1;
+      A[i] += 2;
+    &#125;
+  &#125;
+  return ans;
 &#125;;
 </code></pre>
 
@@ -252,12 +257,12 @@ var minKBitFlips = function(A, K) &#123;
                 <hr>
                 
                     <div class="post-nav-item">Previous Post:<a href="/2021/03/21/%E3%80%8CLeetCode%E3%80%8D%E9%80%86%E6%B3%A2%E5%85%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BF%90%E7%AE%97/" rel="prev" 
-                        title="LeetCode——逆波兰表达式运算">LeetCode——逆波兰表达式运算
+                        title="「LeetCode」逆波兰表达式运算">「LeetCode」逆波兰表达式运算
                       </a></div>
                 
                 
                     <div class="post-nav-item">Next Post:<a href="/2021/02/17/%E3%80%8CLeetCode%E3%80%8D%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" rel="next" 
-                        title="LeetCode——重塑矩阵">LeetCode——重塑矩阵</a></div>
+                        title="「LeetCode」重塑矩阵">「LeetCode」重塑矩阵</a></div>
                                 
             </div>   
                         
@@ -277,7 +282,7 @@ var minKBitFlips = function(A, K) &#123;
                 </div>
                 <ul>
                     <li><a href="/">57 <p>Articles</p></a></li>
-                    <li><a href="/categories">18 <p>Categories</p></a></li>
+                    <li><a href="/categories">17 <p>Categories</p></a></li>
                     <li><a href="/tags">36 <p>Tags</p></a></li>
                 </ul>
             </div>
@@ -287,7 +292,7 @@ var minKBitFlips = function(A, K) &#123;
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>Contents</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="toc-number">1.</span> <span class="toc-text">我的思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">我的代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LC%E6%97%B6%E9%97%B4%E7%AC%AC%E4%B8%80"><span class="toc-number">3.</span> <span class="toc-text">LC时间第一</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LC%E7%A9%BA%E9%97%B4%E7%AC%AC%E4%B8%80"><span class="toc-number">4.</span> <span class="toc-text">LC空间第一</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="toc-number">1.</span> <span class="toc-text">我的思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">我的代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LC-%E6%97%B6%E9%97%B4%E7%AC%AC%E4%B8%80"><span class="toc-number">3.</span> <span class="toc-text">LC 时间第一</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LC-%E7%A9%BA%E9%97%B4%E7%AC%AC%E4%B8%80"><span class="toc-number">4.</span> <span class="toc-text">LC 空间第一</span></a></li></ol>
                 </div>
             </div>
             
@@ -306,18 +311,19 @@ var minKBitFlips = function(A, K) &#123;
 </body>
 <footer>
     <p class="copyright" id="copyright">
-        &copy; 2023
-        <span class="gradient-text">
+        &copy; 2020
+        <!-- <span class="gradient-text">
             Lee 62
-        </span>.
-        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        </span>. -->
+        Powered by <span class="gradient-text">Lee 62</span>
+        <!-- <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
         Theme
         <span class="gradient-text">
             <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
         </span>
         <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.7" target="_blank" rel="noopener">v1.4.7</a></small>
         
-        
+         -->
     </p>
 </footer>
 

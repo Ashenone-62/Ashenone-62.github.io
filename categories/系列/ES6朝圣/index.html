@@ -1,0 +1,902 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Category: ES6朝圣 - Lee 62&#39;s Site</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="TriDiamond Obsidian,"> 
+    
+    <meta name="author" content="Lee 62"> 
+    <link rel="alternative" href="atom.xml" title="Lee 62&#39;s Site" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+    
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Lee 62&#39;s Site</span>
+    <div id="loader"></div>
+    <div class="nav">
+    <ul id="menu-menu" class="menu">
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/whoami/" title="ABOUT" external="false">ABOUT</a>
+        </li>
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/categories/" title="CATEGORIES" external="false">CATEGORIES</a>
+        </li>
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/tags/" title="TAGS" external="false">TAGS</a>
+        </li>
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/archives/" title="ARCHIVES" external="false">ARCHIVES</a>
+        </li>
+        
+    </ul>
+    <p class="copyright" id="copyright">
+        &copy; 2023 Lee 62.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+    </p>
+</div>
+
+<div id="container">
+    
+<div class="search-box">
+    <form class="site-search-form">
+        <span class="iconfont icon-search"></span>
+        <input type="text" id="local-search-input" class="st-search-input" />
+        <div class="iconfont icon-cross search-box-close"></div>
+    </form>
+    <div class="search-scrollable">
+        <div id="local-search-result" class="local-search-result-cls" data-initialise="Initialising search index..."
+            data-start="Please input search keywords." data-empty="No result found, please try other keywords.">
+            <span>Please input search keywords.</span>
+        </div>
+    </div>
+</div>
+<div id="header">
+    <div>
+        <div class="logo animated fadeInDown">
+            <img src="/img/favicon.png" alt="">
+            <a class="image-logo" href="/"></a>
+        </div>
+        <ul id="menu-menu" class="menu text-menu">
+            
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/whoami/" title="ABOUT" external="false" class="menu-link">ABOUT</a>
+            </li>
+            
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/categories/" title="CATEGORIES" external="false" class="menu-link">CATEGORIES</a>
+            </li>
+            
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/tags/" title="TAGS" external="false" class="menu-link">TAGS</a>
+            </li>
+            
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/archives/" title="ARCHIVES" external="false" class="menu-link">ARCHIVES</a>
+            </li>
+            
+            
+        </ul>
+        <div class="iconfont icon-menu switchmenu gradient-text animated fadeInDown"></div>
+    </div>
+</div>
+<div id="screen">
+    <div id="mark">
+        <div class="cover animated fadeIn" style="
+            animation-delay: 900ms;
+            animation-duration: 2.8s;
+            background-image:
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.56), #100e17),
+                url(/img/cover.jpg);">
+        </div>
+    </div>
+    
+    <div id="post0" class="else">
+        <p class="animated fadeInDown">
+            
+            <a href="/categories/系列"><b>「
+                </b>系列<b> 」</b></a>
+            
+            January 27, 2022
+        </p>
+        <h3 class="post-title animated fadeInDown">
+            <a href="/2022/01/27/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8D%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%88string%EF%BC%89%E7%9A%84%E6%8B%93%E5%B1%95/" title="「ES6朝圣」字符串（string）的拓展" class="posttitle">「ES6朝圣」字符串（string）的拓展</a></h3>
+        
+        <p class="post-count animated fadeInDown">
+            
+            <span>
+                <b class="iconfont icon-text2"></b> <i>Words count</i>
+                12k
+            </span>
+            
+            
+            <span>
+                <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                11 mins.
+            </span>
+            
+            
+        </p>
+        
+        
+        <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/ES6/" rel="tag">ES6</a></li></ul>
+        
+        <div class="md-content animated fadeIn">
+            
+            <blockquote>
+<p>TAG： #字符串加强 #Unicode #遍历字符串 #模版字符串 #编译模版 #标签模版</p>
+</blockquote>
+<p>ES6 中针对 string 拓展了一些很好用的功能，主要分为两大类：</p>
+<ol>
+<li>加强对<strong>Unicode</strong>的支持</li>
+...</ol>
+            
+            <span class="read-more"><a href="/2022/01/27/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8D%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%88string%EF%BC%89%E7%9A%84%E6%8B%93%E5%B1%95/" title="Read article" class="posttitle">Read article</a>
+                <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+    
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="typed-text"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div id="primary">
+        
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/系列">
+                  <b>「 </b>系列<b> 」</b>
+                </a>
+            
+            September 19, 2021
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2021/09/19/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8DGenerator%E4%B8%8E%E5%BC%82%E6%AD%A5%E4%B8%8EJS/" title="「ES6朝圣」Generator与异步与JS" class="posttitle">「ES6朝圣」Generator与异步与JS</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        8.9k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        8 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/ES6/" rel="tag">ES6</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>前情回顾，结束了 C 端的魔鬼排期，开发倒是闲下来了。我这边基建做得差不多也没有新任务，遂带薪学习 😇</p>
+<p>学习新知识，争做新青年！💪</p>
+<h3 id="异步概念"><a href="#异步概念" class="headerlink" title="异步概念"></a>异步概念</h3><p>简单来讲，异步就是不是一步到位，一个任务分为多段执行，比如做饭首先你得煮饭，煮饭的时候你可以洗菜切菜，你准备好菜后就可以炒菜，算好时间炒完菜正好饭就煮好了就可以吃了，这种非连续执行的过程就是异步。反之，需要连续执行的，中间不能插入任何事情的任务的，后一个任务只能等前一个任务的过程就是同步。</p>
+<h3 id="JS-中是怎么执行异步任务？"><a href="#JS-中是怎么执行异步任务？" class="headerlink" title="JS 中是怎么执行异步任务？"></a>JS 中是怎么执行异步任务？</h3><blockquote>
+<p>异步对于 JS 太重要了，JS 的执行...</p></blockquote>
+            
+            <span class="read-more"><a href="/2021/09/19/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8DGenerator%E4%B8%8E%E5%BC%82%E6%AD%A5%E4%B8%8EJS/" title="Read article" class="posttitle">Read article</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/系列">
+                  <b>「 </b>系列<b> 」</b>
+                </a>
+            
+            September 17, 2021
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2021/09/17/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8DES6%E8%BF%AD%E4%BB%A3%E5%99%A8%E9%AB%98%E7%BA%A7%E4%B8%80%E7%82%B9%E7%9A%84%E6%B5%85%E5%85%A5%E6%B5%85%E5%87%BA/" title="「ES6朝圣」Generator高级一点的浅入浅出" class="posttitle">「ES6朝圣」Generator高级一点的浅入浅出</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        8.6k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        8 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/ES6/" rel="tag">ES6</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>时过境迁，C 端魔鬼迭代迎来一小段 🈳️ 闲时间，趁这会儿赶紧把 Generator 剩余的内容更了。</p>
+<p>一般情况，在 generator 中调用另外一个 generator 需要手动遍历。ES6 中提供了一种更简洁的方式在 generator 内部执行另一个 generator。其实使用过后不难看出<code>yield*</code>是 for…of…的一种简写形式，这里存在一个问题，如果<code>yield*</code>后面跟的迭代器有 return 语句是执行不到的，需要定一个一个变量来接 return 的值，如<code>const res = yield...</code></p>
+            
+            <span class="read-more"><a href="/2021/09/17/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8DES6%E8%BF%AD%E4%BB%A3%E5%99%A8%E9%AB%98%E7%BA%A7%E4%B8%80%E7%82%B9%E7%9A%84%E6%B5%85%E5%85%A5%E6%B5%85%E5%87%BA/" title="Read article" class="posttitle">Read article</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/系列">
+                  <b>「 </b>系列<b> 」</b>
+                </a>
+            
+            September 12, 2021
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2021/09/12/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8DGenerator%E5%9F%BA%E7%A1%80%E7%9A%84%E6%B5%85%E5%87%BA/" title="「ES6朝圣」Generator基础的浅出" class="posttitle">「ES6朝圣」Generator基础的浅出</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        9.3k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        8 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/ES6/" rel="tag">ES6</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p><del>研究了一段时间 Generator，发现它和 Promise 一个级别的咖位。Generator 能给任何数据结构部署 Symbol.iterator 接口，且不像 Iterator 那般麻烦，同时也是异步编程同步化的一种解决方案，上一个提到的是谁 🤔，不就是 Promise 吗 🤭</del></p>
+<p>时隔一个多月没更新博客了，这段时间实在太忙了，B 端需求一出就去支援 C 端了，本来原定计划的 Generator 是一口气拉扯完。这回也只好分成两部分来写了。</p>
+<p>这段时间压力时大的有点喘不过气，工作、毕设、秋招多线...</p>
+            
+            <span class="read-more"><a href="/2021/09/12/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8DGenerator%E5%9F%BA%E7%A1%80%E7%9A%84%E6%B5%85%E5%87%BA/" title="Read article" class="posttitle">Read article</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/系列">
+                  <b>「 </b>系列<b> 」</b>
+                </a>
+            
+            July 29, 2021
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2021/07/29/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8DIterator%E4%B8%80%E6%97%A5%E6%B8%B8/" title="「ES6朝圣」Iterator一日游" class="posttitle">「ES6朝圣」Iterator一日游</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        8.3k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        8 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/ES6/" rel="tag">ES6</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>Iterator 可以让你在遍历的领域更加融会贯通，同时是学习 Generator 的前奏。虽然但是所以，为了 Generator，学习吧 NOOB !</p>
+<p>Iterator 是 ES6 的一种机制，你也可以理解为它是一类接口，给不同数据结构提供统一访问方式。凡是部署了 Iterator 接口的数据结构都能被遍历。</p>
+<p>Iterator 的遍历过程：</p>
+<ul>
+<li>创建一个指针对象，指向当前数据结构的起始位置。</li>
+<li>第一次调用指针对象的 next 方法，指针就指向该数据结构的第一个成员，返回该成员的信息的对象。（成员的...</li></ul>
+            
+            <span class="read-more"><a href="/2021/07/29/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8DIterator%E4%B8%80%E6%97%A5%E6%B8%B8/" title="Read article" class="posttitle">Read article</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/系列">
+                  <b>「 </b>系列<b> 」</b>
+                </a>
+            
+            July 02, 2021
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2021/07/02/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8DPromise%E4%B9%8B%E5%AD%A6%E4%BA%86%E5%8F%88%E5%AD%A6/" title="「ES6朝圣」Promise2.0之学了又学" class="posttitle">「ES6朝圣」Promise2.0之学了又学</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        13k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        12 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/ES6/" rel="tag">ES6</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.ashenone62.ltd/_posts/Async%E4%B8%8EPromise%E6%80%BB%E7%BB%93.html">Promise-1.0</a></p>
+</blockquote>
+<p>同解构赋值一样，ES6 最出名的特性之一。你在接触 ES6 之前或多或少都听说 Promise，或者在一些工具库里也体验过了 Promise。</p>
+<blockquote>
+<p>概念</p>
+</blockquote>
+<p>Promise 最早是由 JS 社区提出和实现的，在 ES6 中被写入规范大纲。Promise 是一种同步处理异步问题的解决方案，其本身相当于一个容器与它的上下文是同步的关系，内部放入一个未来才会结束的事件（异步事件）。</p>
+<blockquote>
+<p>特点</p>
+</blockquote>
+<ul>
+<li>Promsie 的状态不受外界的影响，其状态值有三个：<code>pending</code>，<code>fulfilled...</code></li></ul>
+            
+            <span class="read-more"><a href="/2021/07/02/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8DPromise%E4%B9%8B%E5%AD%A6%E4%BA%86%E5%8F%88%E5%AD%A6/" title="Read article" class="posttitle">Read article</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/系列">
+                  <b>「 </b>系列<b> 」</b>
+                </a>
+            
+            June 16, 2021
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2021/06/16/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8D%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/" title="「ES6朝圣」解构赋值" class="posttitle">「ES6朝圣」解构赋值</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        4.3k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        4 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/ES6/" rel="tag">ES6</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/" rel="tag">解构赋值</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>解构赋值绝对是 ES6 带来最好用以及现在最常用的功能之一！</p>
+<p>只要数据的数据解构存在 Iterator 接口，它就能被解构。</p>
+<blockquote>
+<p>基本用法</p>
+</blockquote>
+<pre><code class="js">const [one, two, three] = [1, 2, 3];
+
+console.log(one, two, three);
+
+// 1, 2, 3
+</code></pre>
+<blockquote>
+<p>真相只有一个</p>
+</blockquote>
+<pre><code class="js">const [ badGuy, goodGuy ] = [ &#39;张三&#39;，&#39;好人&#39;，&#39;好人&#39;，&#39;好人&#39; ];
+
+console...</code></pre>
+            
+            <span class="read-more"><a href="/2021/06/16/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8D%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/" title="Read article" class="posttitle">Read article</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/系列">
+                  <b>「 </b>系列<b> 」</b>
+                </a>
+            
+            June 12, 2021
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2021/06/12/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8DES6%E5%AD%A6%E4%B9%A0%E5%BC%80%E7%AF%87/" title="「ES6朝圣」ES6简介" class="posttitle">「ES6朝圣」ES6简介</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        4.7k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        4 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/ES6/" rel="tag">ES6</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>ES6，全名<code>ECMAScript 6.0</code>，是 ECMA（European Computer Manufactures Association）组织在 2015 年 6 月发布的标准。</p>
+<blockquote>
+<p>ECMAScript 是怎么来的？</p>
+</blockquote>
+<p>1996 年 11 月 JS 的创造者网景（NetScape）公司将 JS 提交给 ECMA，希望 JS 能成为国际标准。次年 ECMA 发布<code>ECMA-262</code>文件的初版，规定了浏览器脚本语言的标准，并定名位 ECMAScript。</p>
+<blockquote>
+<p>为什么要命名为 ECMAScript？</p>
+</blockquote>
+...
+            
+            <span class="read-more"><a href="/2021/06/12/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8DES6%E5%AD%A6%E4%B9%A0%E5%BC%80%E7%AF%87/" title="Read article" class="posttitle">Read article</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/系列">
+                  <b>「 </b>系列<b> 」</b>
+                </a>
+            
+            May 14, 2021
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2021/05/14/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8Dlet%E4%B8%8Econst%E8%AF%A6%E8%A7%A3%E5%8F%8AEs6%E4%B8%AD%E9%A1%B6%E5%B1%82%E5%AF%B9%E8%B1%A1%E7%9B%B8%E5%85%B3%E5%8F%98%E5%8C%96/" title="「ES6朝圣」let与const详解及ES6中顶层对象相关变化" class="posttitle">「ES6朝圣」let与const详解及ES6中顶层对象相关变化</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        8.6k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        8 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/ES6/" rel="tag">ES6</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>let 的用法就像 ES5 中的 var 一样，但是不允许在一个作用域内重复声明</p>
+<pre><code class="js">var ZS = &quot;ZhangSan&quot;;
+let LS = &quot;LiSi&quot;;
+
+var ZS = &quot;JiaZhangSan&quot;; // 覆盖掉ZhangSan
+let LS = &quot;JiaLiSi&quot;; // SyntaxError
+</code></pre>
+<h3 id="暂时性死区"><a href="#暂时性死区" class="headerlink" title="暂时性死区"></a>暂时性死区</h3><p>使用 let 声明的变量不会出现变量提升。在 ES5 中用 var 声明变量，在进入环境的时候变量就存...</p>
+            
+            <span class="read-more"><a href="/2021/05/14/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8Dlet%E4%B8%8Econst%E8%AF%A6%E8%A7%A3%E5%8F%8AEs6%E4%B8%AD%E9%A1%B6%E5%B1%82%E5%AF%B9%E8%B1%A1%E7%9B%B8%E5%85%B3%E5%8F%98%E5%8C%96/" title="Read article" class="posttitle">Read article</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/系列">
+                  <b>「 </b>系列<b> 」</b>
+                </a>
+            
+            December 27, 2020
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2020/12/27/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8Dthis%E8%AF%A6%E8%A7%A3/" title="「ES6朝圣」this详解" class="posttitle">「ES6朝圣」this详解</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        3.6k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        3 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/ES6/" rel="tag">ES6</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/this/" rel="tag">this</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>解析器在调用函数的时候，每次都会向函数内部传入两个隐含参数，其中一个是 this。this 的指向是一个对象，这个对象称为函数执行时的 上下文对象 。</p>
+<p>根据函数的调用方式不同，this 的指向也会不同。</p>
+<ul>
+<li>以函数<code>fuction()</code>来调用，this 永远指向 window。</li>
+<li>以方法来调用，this 指向调用方法的对象。</li>
+</ul>
+<pre><code class="javascript">var user = &#123;
+    name: &quot;张三&quot;,
+    major: fuction()&#123;
+        console.log(this.name + &quot...</code></pre>
+            
+            <span class="read-more"><a href="/2020/12/27/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8Dthis%E8%AF%A6%E8%A7%A3/" title="Read article" class="posttitle">Read article</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
+    </div>
+    
+    <div id="pager"><a href="/categories/%E7%B3%BB%E5%88%97/ES6%E6%9C%9D%E5%9C%A3/page/2/" class="more" data-loading="加载中..." data-load-more="Load more">Load more</a></div>
+    
+</div>
+<div id="preview"></div>
+
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2020
+        <!-- <span class="gradient-text">
+            Lee 62
+        </span>. -->
+        Powered by <span class="gradient-text">Lee 62</span>
+        <!-- <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.7" target="_blank" rel="noopener">v1.4.7</a></small>
+        
+         -->
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+ 
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+   
+<script src="/js/busuanzi.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    if ($('span[id^="busuanzi_"]').length) {
+      initialBusuanzi();
+    }
+  });
+</script>
+ 
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149874671-1');
+</script>
+ 
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Think like an artist, develop like an artisan', '艺术家思维去思考问题，工匠创造精神去开发'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+
+
+
+
+
+</html>

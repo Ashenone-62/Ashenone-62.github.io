@@ -5,13 +5,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>数的反转 - Lee 62&#39;s Site</title>
+    <title>「LeetCode」数的反转 - Lee 62&#39;s Site</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="TriDiamond Obsidian,"> 
     <meta name="description" content="题目给你一个 32 位的有符号整数 x ，返回将 x 中的数字部分反转后的结果。
-如果反转后整数超过 32 位的有符号整数的范围为大于 -2的31次方，小于2的31次方减1 ，如果不在范围内就返回 ,"> 
+如果反转后整数超过 32 位的有符号整数的范围为大于 -2 的 31 次方，小于 2 的 31 次方减 1 ，如果不,"> 
     <meta name="author" content="Lee 62"> 
     <link rel="alternative" href="atom.xml" title="Lee 62&#39;s Site" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -61,7 +61,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">数的反转</h3>
+        <h3 class="subtitle">「LeetCode」数的反转</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -93,7 +93,7 @@
                 
                 October 31, 2021
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2021/10/31/%E3%80%8CLeetCode%E3%80%8D%E6%95%B0%E7%9A%84%E5%8F%8D%E8%BD%AC/" title="数的反转" class="">数的反转</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/10/31/%E3%80%8CLeetCode%E3%80%8D%E6%95%B0%E7%9A%84%E5%8F%8D%E8%BD%AC/" title="「LeetCode」数的反转" class="">「LeetCode」数的反转</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
@@ -141,28 +141,28 @@
     <div class='main'>
         <div class="content markdown animated fadeIn">
             <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个 32 位的有符号整数 x ，返回将 x 中的数字部分反转后的结果。</p>
-<p>如果反转后整数超过 32 位的有符号整数的范围为大于 -2的31次方，小于2的31次方减1 ，如果不在范围内就返回 0。</p>
+<p>如果反转后整数超过 32 位的有符号整数的范围为大于 -2 的 31 次方，小于 2 的 31 次方减 1 ，如果不在范围内就返回 0。</p>
 <p>假设环境不允许存储 64 位整数（有符号或无符号）。</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p><strong>字符串法：</strong>将传入的number转化为string，然后将string反转即可。</p>
-<p><strong>计算法：</strong>通过对传入的number取模，把number一位一位的推出，然后然后初始化一个值为0，每次计算将这个值乘以10进位后在对推出的值进行累加，最终达到反转的结果。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p><strong>字符串法：</strong>将传入的 number 转化为 string，然后将 string 反转即可。</p>
+<p><strong>计算法：</strong>通过对传入的 number 取模，把 number 一位一位的推出，然后然后初始化一个值为 0，每次计算将这个值乘以 10 进位后在对推出的值进行累加，最终达到反转的结果。</p>
 <h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><pre><code class="js">const max = Math.pow(2, 31) - 1;
 const min = Math.pow(-2, 31);
 
 const reverse_position = (num) =&gt; &#123;
   // 转化为string，再将其序列化
-  const numString = [...(num + &#39;&#39;)];
+  const numString = [...(num + &quot;&quot;)];
   // 判断是否为负数，负数转化为字符串后第一位为符号
-  if (Number.isNaN(Number(numString[0]))) &#123; 
-        // 分离符号和数字
-      const [symbol, ...nums] = numString;
-        // 将数字反转后在和符号做拼接
-      const reverseNum = symbol + nums.reverse().join(&#39;&#39;);
-      // 判断反转后的数是否越过最小值后返回结果
-      return reverseNum &lt; min ? 0 : reverseNum;
+  if (Number.isNaN(Number(numString[0]))) &#123;
+    // 分离符号和数字
+    const [symbol, ...nums] = numString;
+    // 将数字反转后在和符号做拼接
+    const reverseNum = symbol + nums.reverse().join(&quot;&quot;);
+    // 判断反转后的数是否越过最小值后返回结果
+    return reverseNum &lt; min ? 0 : reverseNum;
   &#125;
   // 不是负数就直接反转
-  const reverseNum = numString.reverse().join(&#39;&#39;);
-    // 判断反转后的数是否越过最大值后返回结果
+  const reverseNum = numString.reverse().join(&quot;&quot;);
+  // 判断反转后的数是否越过最大值后返回结果
   return reverseNum &gt; max ? 0 : reverseNum;
 &#125;;
 </code></pre>
@@ -176,19 +176,19 @@ const reverse_compute = (num) =&gt; &#123;
   let result = 0;
 
   // 当原始值不为0的情况下就一直循环
-  while(originValue !== 0) &#123;
+  while (originValue !== 0) &#123;
     // 对原始值取模，拿到推出的数
     const push = originValue % 10;
     // 原始值再除以10进行退位
     originValue = parseInt(originValue / 10, 10);
     // 结果先乘10进行进位再加上推出的值
     result = result * 10 + push;
-        // 判断每次计算后的结果是否在最大最小值范围内
+    // 判断每次计算后的结果是否在最大最小值范围内
     if (result &gt; max || result &lt; min) &#123;
       result = 0;
     &#125;
   &#125;
-    // 返回结果
+  // 返回结果
   return result;
 &#125;;
 </code></pre>
@@ -212,12 +212,12 @@ const reverse_compute = (num) =&gt; &#123;
                 <hr>
                 
                     <div class="post-nav-item">Previous Post:<a href="/2021/11/01/%E3%80%8CLeetCode%E3%80%8D%E5%9B%9E%E6%96%87%E6%95%B0%E3%80%81%E7%BD%97%E9%A9%AC%E6%95%B0%E7%9A%84%E8%AE%A1%E7%AE%97/" rel="prev" 
-                        title="回文数、罗马数的计算">回文数、罗马数的计算
+                        title="「LeetCode」回文数、罗马数的计算">「LeetCode」回文数、罗马数的计算
                       </a></div>
                 
                 
                     <div class="post-nav-item">Next Post:<a href="/2021/10/23/%E3%80%8CLeetCode%E3%80%8D%E6%9D%A5%E8%87%AA%E5%AD%97%E8%8A%82%E7%9A%84%E6%AF%92%E6%89%93/" rel="next" 
-                        title="来自字节的毒打">来自字节的毒打</a></div>
+                        title="「LeetCode」来自字节的毒打">「LeetCode」来自字节的毒打</a></div>
                                 
             </div>   
                         
@@ -237,7 +237,7 @@ const reverse_compute = (num) =&gt; &#123;
                 </div>
                 <ul>
                     <li><a href="/">57 <p>Articles</p></a></li>
-                    <li><a href="/categories">18 <p>Categories</p></a></li>
+                    <li><a href="/categories">17 <p>Categories</p></a></li>
                     <li><a href="/tags">36 <p>Tags</p></a></li>
                 </ul>
             </div>
@@ -266,18 +266,19 @@ const reverse_compute = (num) =&gt; &#123;
 </body>
 <footer>
     <p class="copyright" id="copyright">
-        &copy; 2023
-        <span class="gradient-text">
+        &copy; 2020
+        <!-- <span class="gradient-text">
             Lee 62
-        </span>.
-        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        </span>. -->
+        Powered by <span class="gradient-text">Lee 62</span>
+        <!-- <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
         Theme
         <span class="gradient-text">
             <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
         </span>
         <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.7" target="_blank" rel="noopener">v1.4.7</a></small>
         
-        
+         -->
     </p>
 </footer>
 

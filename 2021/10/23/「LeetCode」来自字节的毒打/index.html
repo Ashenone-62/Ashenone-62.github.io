@@ -5,14 +5,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>来自字节的毒打 - Lee 62&#39;s Site</title>
+    <title>「LeetCode」来自字节的毒打 - Lee 62&#39;s Site</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="TriDiamond Obsidian,"> 
     <meta name="description" content="前言周五面了字节，面试官很善良，对我进行了长达一小时的毒打。大体过程基本如下：
-面试官：这个xxx你了解吗？
-我：嗯了解，这个xxx是巴拉巴拉巴拉巴拉，我们会巴拉巴拉巴拉去用这个xxx…(省略一堆东,"> 
+面试官：这个 xxx 你了解吗？
+我：嗯了解，这个 xxx 是巴拉巴拉巴拉巴拉，我们会巴拉巴拉巴拉去用这个 xxx…(,"> 
     <meta name="author" content="Lee 62"> 
     <link rel="alternative" href="atom.xml" title="Lee 62&#39;s Site" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -62,7 +62,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">来自字节的毒打</h3>
+        <h3 class="subtitle">「LeetCode」来自字节的毒打</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -94,7 +94,7 @@
                 
                 October 23, 2021
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2021/10/23/%E3%80%8CLeetCode%E3%80%8D%E6%9D%A5%E8%87%AA%E5%AD%97%E8%8A%82%E7%9A%84%E6%AF%92%E6%89%93/" title="来自字节的毒打" class="">来自字节的毒打</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/10/23/%E3%80%8CLeetCode%E3%80%8D%E6%9D%A5%E8%87%AA%E5%AD%97%E8%8A%82%E7%9A%84%E6%AF%92%E6%89%93/" title="「LeetCode」来自字节的毒打" class="">「LeetCode」来自字节的毒打</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
@@ -142,16 +142,16 @@
     <div class='main'>
         <div class="content markdown animated fadeIn">
             <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>周五面了字节，面试官很善良，对我进行了长达一小时的毒打。大体过程基本如下：</p>
-<p>面试官：这个xxx你了解吗？</p>
-<p>我：嗯了解，这个xxx是巴拉巴拉巴拉巴拉，我们会巴拉巴拉巴拉去用这个xxx…(省略一堆东西)</p>
-<p>面试官：那你能说一下xxx里的xxxx和yyyy有什么区别吗？</p>
+<p>面试官：这个 xxx 你了解吗？</p>
+<p>我：嗯了解，这个 xxx 是巴拉巴拉巴拉巴拉，我们会巴拉巴拉巴拉去用这个 xxx…(省略一堆东西)</p>
+<p>面试官：那你能说一下 xxx 里的 xxxx 和 yyyy 有什么区别吗？</p>
 <p>我：额，是巴拉巴拉拉巴拉巴？↗️↘️</p>
 <p>面试官：能具体一点吗？比如说为什么要这么用，或者什么时候用？</p>
 <p>我：额……，阿巴阿巴…🤡</p>
-<p>属于是直接喜提新一届八股文大神，接下来就应了那句广为流传的名言——有人相爱，有人开车看海，有人leetcode第一题做不出来😢（平时没怎么刷题今天才发现的）</p>
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。你可以按任意顺序返回答案。</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="暴力破解"><a href="#暴力破解" class="headerlink" title="暴力破解"></a>暴力破解</h3><p>直接两层循环，将所有情况枚举出来进行判断是否等于target，如果等于就直接返回两个数的下标。</p>
-<h3 id="hashMap"><a href="#hashMap" class="headerlink" title="hashMap"></a>hashMap</h3><p>外部设置一个map数据结构用于保存之前的遍历过的值，每次便利一开始就去查询map中是否有target和当前遍历数的差值，如果有直接就返回两个数的下标，如果没有就将当前遍历数的值作为key，idx作为value存入表中。这样一次循环就能找出值了👍👍。</p>
+<p>属于是直接喜提新一届八股文大神，接下来就应了那句广为流传的名言——有人相爱，有人开车看海，有人 leetcode 第一题做不出来 😢（平时没怎么刷题今天才发现的）</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target 的那 两个 整数，并返回它们的数组下标。你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。你可以按任意顺序返回答案。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="暴力破解"><a href="#暴力破解" class="headerlink" title="暴力破解"></a>暴力破解</h3><p>直接两层循环，将所有情况枚举出来进行判断是否等于 target，如果等于就直接返回两个数的下标。</p>
+<h3 id="hashMap"><a href="#hashMap" class="headerlink" title="hashMap"></a>hashMap</h3><p>外部设置一个 map 数据结构用于保存之前的遍历过的值，每次便利一开始就去查询 map 中是否有 target 和当前遍历数的差值，如果有直接就返回两个数的下标，如果没有就将当前遍历数的值作为 key，idx 作为 value 存入表中。这样一次循环就能找出值了 👍👍。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="js">const nums = [1, 2, 3, 4];
 const target = 3;
 
@@ -185,16 +185,16 @@ console.log(twoSum_force(nums, target));
 console.log(twoSum_hashMap(nums, target));
 </code></pre>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这次字节面试虽然是透心凉心飞扬，但也带来一些启发。</p>
-<p>首先是算法题，一开始我其实是想到了两次循环暴力解法，但是觉得太low了就去思考其他方法了（说得跟hashMap方法好难一样🤡）。归根结底还是算法刷少了，而且思维方式停留到平时做业务的模式——因为排的事件比较足会去优先想最优解，面试应该还是得主打短时间内解决问题为主，方法虽然low一点但是把问题解决了，优化可以后续慢慢来。</p>
+<p>首先是算法题，一开始我其实是想到了两次循环暴力解法，但是觉得太 low 了就去思考其他方法了（说得跟 hashMap 方法好难一样 🤡）。归根结底还是算法刷少了，而且思维方式停留到平时做业务的模式——因为排的事件比较足会去优先想最优解，面试应该还是得主打短时间内解决问题为主，方法虽然 low 一点但是把问题解决了，优化可以后续慢慢来。</p>
 <p>还有就是需要去思考平时敲代码的意义，还原一下凶案现场：</p>
 <ul>
 <li>面试官：你能讲一下如何实现垂直居中吗？</li>
-<li>我：通过定位和transform的translate；margin为auto和top、left、bottom、right为0是；flex的justify-content和align-items</li>
+<li>我：通过定位和 transform 的 translate；margin 为 auto 和 top、left、bottom、right 为 0 是；flex 的 justify-content 和 align-items</li>
 <li>面试官：那你能讲一下日常开发中怎么选择这些方法以及为什么要选吗？</li>
 <li>我：。。。。</li>
 </ul>
-<p>除了垂直居中这个题还有JS处理事件的机制也是同样的套路&#x3D;&#x3D;</p>
-<p>秋招尚未成功，同志还努力💪💪💪💪</p>
+<p>除了垂直居中这个题还有 JS 处理事件的机制也是同样的套路&#x3D;&#x3D;</p>
+<p>秋招尚未成功，同志还努力 💪💪💪💪</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -215,12 +215,12 @@ console.log(twoSum_hashMap(nums, target));
                 <hr>
                 
                     <div class="post-nav-item">Previous Post:<a href="/2021/10/31/%E3%80%8CLeetCode%E3%80%8D%E6%95%B0%E7%9A%84%E5%8F%8D%E8%BD%AC/" rel="prev" 
-                        title="数的反转">数的反转
+                        title="「LeetCode」数的反转">「LeetCode」数的反转
                       </a></div>
                 
                 
-                    <div class="post-nav-item">Next Post:<a href="/2021/09/19/Generator%E4%B8%8E%E5%BC%82%E6%AD%A5%E4%B8%8EJS/" rel="next" 
-                        title="Generator与异步与JS">Generator与异步与JS</a></div>
+                    <div class="post-nav-item">Next Post:<a href="/2021/09/19/%E3%80%8CES6%E6%9C%9D%E5%9C%A3%E3%80%8DGenerator%E4%B8%8E%E5%BC%82%E6%AD%A5%E4%B8%8EJS/" rel="next" 
+                        title="「ES6朝圣」Generator与异步与JS">「ES6朝圣」Generator与异步与JS</a></div>
                                 
             </div>   
                         
@@ -240,7 +240,7 @@ console.log(twoSum_hashMap(nums, target));
                 </div>
                 <ul>
                     <li><a href="/">57 <p>Articles</p></a></li>
-                    <li><a href="/categories">18 <p>Categories</p></a></li>
+                    <li><a href="/categories">17 <p>Categories</p></a></li>
                     <li><a href="/tags">36 <p>Tags</p></a></li>
                 </ul>
             </div>
@@ -269,18 +269,19 @@ console.log(twoSum_hashMap(nums, target));
 </body>
 <footer>
     <p class="copyright" id="copyright">
-        &copy; 2023
-        <span class="gradient-text">
+        &copy; 2020
+        <!-- <span class="gradient-text">
             Lee 62
-        </span>.
-        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        </span>. -->
+        Powered by <span class="gradient-text">Lee 62</span>
+        <!-- <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
         Theme
         <span class="gradient-text">
             <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
         </span>
         <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.7" target="_blank" rel="noopener">v1.4.7</a></small>
         
-        
+         -->
     </p>
 </footer>
 
