@@ -5,16 +5,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>「LeetCode」二叉树的反转、二叉树的最近祖先、二叉树的所有路径、二叉树左叶子之和 - Lee 62&#39;s Site</title>
+    <title>二叉树的反转、二叉树的最近祖先、二叉树的所有路径、二叉树左叶子之和 - Lee 62&#39;s Site</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="TriDiamond Obsidian,"> 
     <meta name="description" content="二叉树的反转题目翻转一棵二叉树。
 思路思路很简单～
-首先，判断一下节点是否为空，为空就返回null；
+首先，判断一下节点是否为空，为空就返回 null；
 否则创建一个节点，将当前的节点的值赋给树节点的值，左右节点交换递归；（整个过程自上而下）
-代码/,"> 
+代码,"> 
     <meta name="author" content="Lee 62"> 
     <link rel="alternative" href="atom.xml" title="Lee 62&#39;s Site" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -64,7 +64,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">「LeetCode」二叉树的反转、二叉树的最近祖先、二叉树的所有路径、二叉树左叶子之和</h3>
+        <h3 class="subtitle">二叉树的反转、二叉树的最近祖先、二叉树的所有路径、二叉树左叶子之和</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -92,11 +92,11 @@
             <p class="animated fadeInDown">
                 
                 <a href="/categories/LeetCode"><b>「
-                    </b>LEETCODE<b> 」</b></a>
+                    </b>LEETCODE-EASY<b> 」</b></a>
                 
                 November 17, 2021
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2021/11/17/%E3%80%8CLeetCode%E3%80%8D%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%8F%8D%E8%BD%AC%E3%80%81%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E7%A5%96%E5%85%88%E3%80%81%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%89%80%E6%9C%89%E8%B7%AF%E5%BE%84%E3%80%81%E4%BA%8C%E5%8F%89%E6%A0%91%E5%B7%A6%E5%8F%B6%E5%AD%90%E4%B9%8B%E5%92%8C/" title="「LeetCode」二叉树的反转、二叉树的最近祖先、二叉树的所有路径、二叉树左叶子之和" class="">「LeetCode」二叉树的反转、二叉树的最近祖先、二叉树的所有路径、二叉树左叶子之和</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/11/17/%E3%80%8CLeetCode%E3%80%8D%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%8F%8D%E8%BD%AC%E3%80%81%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E7%A5%96%E5%85%88%E3%80%81%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%89%80%E6%9C%89%E8%B7%AF%E5%BE%84%E3%80%81%E4%BA%8C%E5%8F%89%E6%A0%91%E5%B7%A6%E5%8F%B6%E5%AD%90%E4%B9%8B%E5%92%8C/" title="二叉树的反转、二叉树的最近祖先、二叉树的所有路径、二叉树左叶子之和" class="">二叉树的反转、二叉树的最近祖先、二叉树的所有路径、二叉树左叶子之和</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
@@ -145,20 +145,20 @@
         <div class="content markdown animated fadeIn">
             <h2 id="二叉树的反转"><a href="#二叉树的反转" class="headerlink" title="二叉树的反转"></a>二叉树的反转</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>翻转一棵二叉树。</p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>思路很简单～</p>
-<p>首先，判断一下节点是否为空，为空就返回null；</p>
+<p>首先，判断一下节点是否为空，为空就返回 null；</p>
 <p>否则创建一个节点，将当前的节点的值赋给树节点的值，左右节点交换递归；（整个过程自上而下）</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="js">/**
  * @param &#123;TreeNode&#125; root
  * @return &#123;TreeNode&#125;
  */
 
-var invertTree = function(root) &#123;
+var invertTree = function (root) &#123;
   const invert = (root) =&gt; &#123;
     // 判空
     if (!root) return null;
     // 创建节点，第二三个参数是树节点，可以直接在这里搞递归套娃
     return new TreeNode(root?.val, invert(root?.right), invert(root?.left));
-  &#125;
+  &#125;;
   return invert(root);
 &#125;;
 </code></pre>
@@ -166,12 +166,12 @@ var invertTree = function(root) &#123;
 <p>百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”</p>
 <h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>这个题给了一个很厉害的限制条件——传入的树肯定是二叉搜索树，<strong>秩序</strong>💪</p>
 <p>值是有序的，那么当前节点的值小于了目标节点的值说明，目标节点肯定在当前节点的右边，我们只需要去右树寻找；同理，如果当前节点的值大于了目标节点，说明目标节点肯定在当前节点的左边，我们只用去左树即可。</p>
-<p>有了上述的一个逻辑，我们就可以将对象的纬度降到数值的维度（第一版我想的使用判断两棵树是否相同来完成这道题🤡）。</p>
+<p>有了上述的一个逻辑，我们就可以将对象的纬度降到数值的维度（第一版我想的使用判断两棵树是否相同来完成这道题 🤡）。</p>
 <p>首先初始化俩数组用于保存来目标节点的路径；</p>
 <p>然后开始递归套娃，先判断节点是否为空，为空直接退出；不为空继续</p>
 <p>然后判断是否为目标节点，是的话就推入对应的路径数组并退出；不是目标节点继续</p>
 <p>然后判断当前节点的值和目标节点的值的大小，来确定去左子树还右子树寻找，最后推入当前节点的值到数组，表示已经到过这一路径了；</p>
-<p>递归结束后，对两个目标节点的路径数组进行遍历，这里使用find只要找到就结束循环；由于我们将推路径放在递归的最后一步，因此路径是从下到上的，两个路径数组中索引值最小且相等的值即目标节点的最近祖先👌</p>
+<p>递归结束后，对两个目标节点的路径数组进行遍历，这里使用 find 只要找到就结束循环；由于我们将推路径放在递归的最后一步，因此路径是从下到上的，两个路径数组中索引值最小且相等的值即目标节点的最近祖先 👌</p>
 <h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre><code class="js">/**
  * @param &#123;TreeNode&#125; root
  * @param &#123;TreeNode&#125; p
@@ -179,7 +179,7 @@ var invertTree = function(root) &#123;
  * @return &#123;TreeNode&#125;
  */
 
-var lowestCommonAncestor = function(tree, a, b) &#123;
+var lowestCommonAncestor = function (tree, a, b) &#123;
   // 初始化路径数组
   const pathA = [];
   const pathB = [];
@@ -194,7 +194,7 @@ var lowestCommonAncestor = function(tree, a, b) &#123;
     if (root.val &gt; target) getPath(root.left, target, res);
     // 将当前节点的值推入路径数组
     res.push(root.val);
-  &#125;
+  &#125;;
 
   // 递归ing
   getPath(tree, a.val, pathA);
@@ -204,9 +204,9 @@ var lowestCommonAncestor = function(tree, a, b) &#123;
   const res = pathA.find((nodeA) =&gt; &#123;
     return pathB.find((nodeB) =&gt; &#123;
       if (nodeA === nodeB) &#123;
-        return nodeA
+        return nodeA;
       &#125;
-    &#125;)
+    &#125;);
   &#125;);
   // 用这个值构造一个树节点（题目要求的返回值是个TreeNode）
   return new TreeNode(res);
@@ -216,7 +216,7 @@ var lowestCommonAncestor = function(tree, a, b) &#123;
 <p><strong>叶子节点</strong> 是指没有子节点的节点。</p>
 <h3 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h3><p>首先初始化一个数组用来存放，每棵树的路径；</p>
 <p>然后开始递归，首先万年不变的判空，节点为空直接返回当前的路径；不为空继续</p>
-<p>然后使用模版字符串对当前节点的值进行字符串拼接，这里选择将箭头放在值的前面，然后通过判断path是否为空来确定当前拼接的节点是否是根节点；</p>
+<p>然后使用模版字符串对当前节点的值进行字符串拼接，这里选择将箭头放在值的前面，然后通过判断 path 是否为空来确定当前拼接的节点是否是根节点；</p>
 <p>再然后判断当前节点存不存在子树，如果已经是叶子节点了就返回当前拼接好的路径，并退出递归；</p>
 <p>如果存在就继续递归，直至到达所有叶子节点。</p>
 <h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><pre><code class="js">/**
@@ -224,18 +224,18 @@ var lowestCommonAncestor = function(tree, a, b) &#123;
  * @return &#123;string[]&#125;
  */
 
-var binaryTreePaths = function(root) &#123;
+var binaryTreePaths = function (root) &#123;
   // 初始化路径数组
   const res = [];
-  
-  const getPath = (root, path = &#39;&#39;) =&gt; &#123;
+
+  const getPath = (root, path = &quot;&quot;) =&gt; &#123;
     // 判空
     if (!root) return path;
-        // 对路径进行累加，中间判断是否是根节点来决定箭头的存在
-    path += `$&#123;path ? &#39;-&gt;&#39; : &#39;&#39;&#125;$&#123;root?.val&#125;`
-        // 判断还有没有子树，如果没有就将当前路径推入路径数组，并退出递归
+    // 对路径进行累加，中间判断是否是根节点来决定箭头的存在
+    path += `$&#123;path ? &quot;-&gt;&quot; : &quot;&quot;&#125;$&#123;root?.val&#125;`;
+    // 判断还有没有子树，如果没有就将当前路径推入路径数组，并退出递归
     if (!root?.left &amp;&amp; !root?.right) return res?.push(path);
-        // 否则就继续递归
+    // 否则就继续递归
     getPath(root?.left, path);
     getPath(root?.right, path);
   &#125;;
@@ -248,40 +248,43 @@ var binaryTreePaths = function(root) &#123;
 <h2 id="二叉树的左叶子之和"><a href="#二叉树的左叶子之和" class="headerlink" title="二叉树的左叶子之和"></a>二叉树的左叶子之和</h2><h3 id="题目-3"><a href="#题目-3" class="headerlink" title="题目"></a>题目</h3><p>计算给定二叉树的所有左叶子之和。</p>
 <h3 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h3><p>这里的也是采用递归的方式，且听我娓娓道来。</p>
 <p>首先初始化一个数组用来装叶子的对象；</p>
-<p>递归开始前，判断节点是否只是一个根节点，是直接返回结果0；不然就继续；</p>
+<p>递归开始前，判断节点是否只是一个根节点，是直接返回结果 0；不然就继续；</p>
 <p>然后开始递归，开始也是万年不变的判空，为空就退出，不为空就继续；</p>
 <p>再判断当前节点是否为非根节点的叶子节点，如果是，就将其值和一个标记是左叶子还是右叶子的布尔值一起包装成一个对象推入叶子数组中；（这里能直接推是因为根节点必不可能进入，所以能进入肯定是第二次或者再往后的递归了）</p>
-<p>最后分为左右继续递归节点，是左标记值就传true，不是就传false。</p>
-<p>递归结束后，通过数组的reduce方法，将左叶子节点捞出，并返回累加的值。</p>
+<p>最后分为左右继续递归节点，是左标记值就传 true，不是就传 false。</p>
+<p>递归结束后，通过数组的 reduce 方法，将左叶子节点捞出，并返回累加的值。</p>
 <h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><pre><code class="js">/**
  * @param &#123;TreeNode&#125; root
  * @return &#123;number&#125;
  */
 
-var sumOfLeftLeaves = function(root) &#123;
+var sumOfLeftLeaves = function (root) &#123;
   // 初始化左叶子数组
   const res = [];
 
   const getSumOfLeftLeaves = (root, isLeft = true) =&gt; &#123;
     // 判空，为空直接退出，非空继续
-    if (!root ) return;
-        // 判断是否是叶子节点，是推入对象并退出；不是继续
-    if (!root?.left &amp;&amp; !root?.right) return res.push(&#123;
-      val: root?.val,
-      isLeft,
-    &#125;);
-        // 继续递归，分为左和右，左打上true的标记，右打上false标记
-    getSumOfLeftLeaves(root?.left, isLeft = true);
-    getSumOfLeftLeaves(root?.right, isLeft = false);
-  &#125;
-    // 判断是否只存在根节点
+    if (!root) return;
+    // 判断是否是叶子节点，是推入对象并退出；不是继续
+    if (!root?.left &amp;&amp; !root?.right)
+      return res.push(&#123;
+        val: root?.val,
+        isLeft,
+      &#125;);
+    // 继续递归，分为左和右，左打上true的标记，右打上false标记
+    getSumOfLeftLeaves(root?.left, (isLeft = true));
+    getSumOfLeftLeaves(root?.right, (isLeft = false));
+  &#125;;
+  // 判断是否只存在根节点
   if (!Number.isNaN(Number(root?.val)) &amp;&amp; !root?.left &amp;&amp; !root?.right) return 0;
-    // 递归
+  // 递归
   getSumOfLeftLeaves(root);
-    // 返回左叶子的累加值
-  return res.filter((leaves) =&gt; leaves.isLeft).reduce((prev, cur) =&gt; &#123;
-    return prev += cur?.val;
-  &#125;, 0)
+  // 返回左叶子的累加值
+  return res
+    .filter((leaves) =&gt; leaves.isLeft)
+    .reduce((prev, cur) =&gt; &#123;
+      return (prev += cur?.val);
+    &#125;, 0);
 &#125;;
 </code></pre>
 
@@ -303,13 +306,13 @@ var sumOfLeftLeaves = function(root) &#123;
             <div class="post-nav">
                 <hr>
                 
-                    <div class="post-nav-item">Previous Post:<a href="/2021/11/27/%E3%80%8CJS%E7%BA%A2%E5%AE%9D%E4%B9%A62%E3%80%8D%E4%BC%9A%E7%94%A8%E5%AE%83%E7%9A%84%E4%BD%A0%E5%B7%B2%E7%BB%8F%E6%98%AF%E5%8D%8A%E4%B8%AA%E5%89%8D%E7%AB%AF%E5%A4%A7%E4%BD%AC%E4%BA%86%EF%BC%81/" rel="prev" 
-                        title="「JS红宝书2」会用它的你已经是半个前端大佬了！">「JS红宝书2」会用它的你已经是半个前端大佬了！
+                    <div class="post-nav-item">Previous Post:<a href="/2021/11/27/%E3%80%8CJS%E7%BA%A2%E5%AE%9D%E4%B9%A6%E3%80%8D%E4%BC%9A%E7%94%A8%E5%AE%83%E7%9A%84%E4%BD%A0%E5%B7%B2%E7%BB%8F%E6%98%AF%E5%8D%8A%E4%B8%AA%E5%89%8D%E7%AB%AF%E5%A4%A7%E4%BD%AC%E4%BA%86%EF%BC%81/" rel="prev" 
+                        title="会用它的你已经是半个前端大佬了！">会用它的你已经是半个前端大佬了！
                       </a></div>
                 
                 
                     <div class="post-nav-item">Next Post:<a href="/2021/11/15/%E3%80%8CLeetCode%E3%80%8D%E8%B7%AF%E5%BE%84%E4%B9%8B%E5%92%8C%E3%80%81%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86%E3%80%81%E5%90%8E%E7%BB%AD%E9%81%8D%E5%8E%86/" rel="next" 
-                        title="「LeetCode」路径之和、前序遍历、后续遍历">「LeetCode」路径之和、前序遍历、后续遍历</a></div>
+                        title="路径之和、前序遍历、后续遍历">路径之和、前序遍历、后续遍历</a></div>
                                 
             </div>   
                         
