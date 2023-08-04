@@ -141,22 +141,22 @@
             <a href="/categories/系列"><b>「
                 </b>系列-泥潭打滚<b> 」</b></a>
             
-            June 28, 2021
+            December 10, 2021
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/2021/06/28/%E3%80%8C%E6%B3%A5%E6%BD%AD%E6%89%93%E6%BB%9A%E3%80%8DAntd%E7%9A%84Tag%E7%BB%84%E4%BB%B6%E8%B8%A9%E5%9D%91/" title="Antd的Tag组件踩坑" class="posttitle">Antd的Tag组件踩坑</a></h3>
+            <a href="/2021/12/10/%E3%80%8C%E6%B3%A5%E6%BD%AD%E6%89%93%E6%BB%9A%E3%80%8Dwindow-open%E7%9A%84%E5%A5%87%E5%A6%99%E5%86%92%E9%99%A9/" title="window.open()的奇妙冒险" class="posttitle">window.open()的奇妙冒险</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>Words count</i>
-                1.4k
+                4.3k
             </span>
             
             
             <span>
                 <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                1 mins.
+                4 mins.
             </span>
             
             
@@ -167,12 +167,10 @@
         
         <div class="md-content animated fadeIn">
             
-            <blockquote>
-<p>先说结论，给 Tag 设置 Key，如果同时存在删除和重排的操作就不要用 index 来设置。</p>
-</blockquote>
-<p>需求涉及的表单控件需要一个可多选的级联组件，恰巧 Antd 的级联组件（<code>Cascader</code>）没有提供多...</p>
+            <p>一个简单的优化需求，竟然引发了<code>window.open()</code>的奇妙化学反应 ☠️</p>
+<p>项目 X 的 A 页面需要点击一个区域后，跳转到对应的页面 B，这个页面需要新开窗口来展示。B 页面成功打开后再起接口还在 ...</p>
             
-            <span class="read-more"><a href="/2021/06/28/%E3%80%8C%E6%B3%A5%E6%BD%AD%E6%89%93%E6%BB%9A%E3%80%8DAntd%E7%9A%84Tag%E7%BB%84%E4%BB%B6%E8%B8%A9%E5%9D%91/" title="Read article" class="posttitle">Read article</a>
+            <span class="read-more"><a href="/2021/12/10/%E3%80%8C%E6%B3%A5%E6%BD%AD%E6%89%93%E6%BB%9A%E3%80%8Dwindow-open%E7%9A%84%E5%A5%87%E5%A6%99%E5%86%92%E9%99%A9/" title="Read article" class="posttitle">Read article</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -193,6 +191,57 @@
 
     <div id="primary">
         
+<!-- prettier-ignore -->
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/系列">
+                  <b>「 </b>系列-泥潭打滚<b> 」</b>
+                </a>
+            
+            June 28, 2021
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2021/06/28/%E3%80%8C%E6%B3%A5%E6%BD%AD%E6%89%93%E6%BB%9A%E3%80%8DAntd%E7%9A%84Tag%E7%BB%84%E4%BB%B6%E8%B8%A9%E5%9D%91/" title="Antd的Tag组件踩坑" class="posttitle">Antd的Tag组件踩坑</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        1.4k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        1 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E8%B8%A9%E5%9D%91/" rel="tag">踩坑</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <blockquote>
+<p>先说结论，给 Tag 设置 Key，如果同时存在删除和重排的操作就不要用 index 来设置。</p>
+</blockquote>
+<p>需求涉及的表单控件需要一个可多选的级联组件，恰巧 Antd 的级联组件（<code>Cascader</code>）没有提供多选相关的功能，遂只能自己封装。这里的封装思路是用一个数组来管理每个选项的数据，使用 Antd 的<code>Tag</code>组件来展示。<code>Tag</code>组件上提供了<code>onClose</code>方法来删除<code>Tag</code>。问题就来了，当我点击删除<code>Tag</code>的 ❌ 的时候，它不仅删掉了点击的 Tag 和它相邻靠后的那个<code>Tag</code>!!!</p>
+<h3 id="确认数据层"><a href="#确认数据层" class="headerlink" title="确认数据层"></a>确认数据层</h3><p>在遍历 Tag 节点...</p>
+            
+            <span class="read-more"><a href="/2021/06/28/%E3%80%8C%E6%B3%A5%E6%BD%AD%E6%89%93%E6%BB%9A%E3%80%8DAntd%E7%9A%84Tag%E7%BB%84%E4%BB%B6%E8%B8%A9%E5%9D%91/" title="Read article" class="posttitle">Read article</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
     </div>
     
 </div>
